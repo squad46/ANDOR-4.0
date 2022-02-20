@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/img/logotipo-icon.svg" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!--<link rel="stylesheet" href="~/css/site.css" />-->
+    <link rel="stylesheet" href="~/css/style.css" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="~/js/script.js" defer></script>
+    <title>Andor - @ViewData["Title"]</title>
+</head>
+
+<body>
+    <header>
+        <!-- Nav do menu superior fixo -->
+        <nav class="menu-top shadow-sm row fixed-top">
+            <div class="col d-flex pr-0 align-items-center">
+                <div class="button-menu text-center">
+                    <a onclick="btnMenu()" class="d-flex flex-column">
+                        <img src="~/img/menu-topo.svg" alt="imagem do menu principal" width="25px">
+                        <span>Menu</span>
+                    </a>
+                    <ul class="text-start">
+                        <div class="d-flex btn-x justify-content-end">
+                            <a onclick="btnClose()">
+                                Fechar
+                                <img src="~/img/closed.svg" width="15px" alt="Fechar">
+                            </a>
+                        </div>
+                        <img src="~/img/logotipo-new-dark.svg" width="160px" alt="logotipo andor refugiados">
+                        <h4>Plataforma</h4>
+                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
+                        <li><a asp-controller="Andor" asp-action="index">Sobre à Andor</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Informações Úteis</a></li>
+                        <li><a asp-controller="Feed" asp-action="index">Novas Postagens</a></li>
+                        <li><a asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Primeiros Passos</a></li>
+                        <li><a asp-controller="Ajuda" asp-action="index">Dúvidas Frequentes</a></li>
+                        <li><a asp-controller="Contato" asp-action="index">Contato</a></li>
+
+                        <h4>Contas</h4>
+                        <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                        <li><a asp-controller="Pessoa" asp-action="create">Cadastrar</a></li>
+
+                        <h4>Postagens</h4>
+                        <li><a asp-controller="Moradia" asp-action="index">Moradias</a></li>
+                        <li><a asp-controller="Trabalho" asp-action="index">Empregos</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Informações Úteis</a></li>
+                        <li><a asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
+
+                        <h4>Onde Encontar</h4>
+                        <li><a asp-controller="Ong" asp-action="index">Ongs</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Documentacoes</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Revalidaçoes</a></li>
+                        <li><a asp-controller="Blog" asp-action="index">Minha Comunidade</a></li>
+
+                    </ul>
+                </div>
+                <div class="space-search flex-fill">
+                    <label for="search"><img src="~/img/search.svg" alt=""></label>
+                    <input type="text" id="search" placeholder="PESQUISAR...">
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-center justify-content-center">
+                <div class="logotype flex-fill text-center">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logotipo-new.svg" width="160px" alt="Logotipo Andor"></a>
+                </div>
+            </div>
+
+            <div class="col p-0 d-flex align-items-center">
+
+                <div class="flex-fill text-end">
+                    <div class="linguage">
+                        Idioma: <br>
+                        <select class="form-select-sm" aria-label=".form-select-sm">
+                            <option selected value="1">PORTUGUÊS</option>
+                            <option value="2">INGLÊS</option>
+                            <option value="3">ESPANHOL</option>
+                        </select>
+                        <img src="~/img/Lenguages.svg" alt="linguage">
+                    </div>
+                </div>
+                <div id="off" class="login-register text-end">
+                    <a asp-area="" asp-controller="Login" asp-action="Index">LOGIN</a>-<a asp-controller="Pessoa" asp-action="Create">CADASTRAR</a>
+                    <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
+                </div>
+                <div id="on" class="login-register text-end">
+                    <a id="usuario"></a>
+                    <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
+                    <a asp-controller="Login" asp-action="Logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Container Geral -->
+    <div class="container-fluid">
+        <main class="row">
+            <!-- Menu Lateral fixo -->
+            <nav class="menu-right">
+                <div class="button-bg one"><a asp-area="" asp-controller="Blog" asp-action="index"><img src="~/img/info uteis.svg"></a></div>
+                <div class="button-bg two"><a asp-area="" asp-controller="Trabalho" asp-action="index"><img src="~/img/empregos.svg"></a></div>
+                <div class="button-bg three"><a asp-area="" asp-controller="Moradia" asp-action="index"><img src="~/img/moradia.svg"></a></div>
+                <div class="button-bg four"><a asp-area="" asp-controller="Ong" asp-action="index"><img src="~/img/ongs parceiras.svg"></a></div>
+                <div class="button-bg five"><a asp-area="" asp-controller="Doacao" asp-action="index"><img src="~/img/doacao.svg"></a></div>
+                <div class="button-bg six"><a asp-area="" asp-controller="Emergencia" asp-action="index"><img src="~/img/Vector.svg"></a></div>
+                <ul class="d-flex flex-column justify-content-around">
+                    <li><a asp-area="" asp-controller="Blog" asp-action="index">Notícias</a></li>
+                    <li><a asp-area="" asp-controller="Trabalho" asp-action="index">Empregos</a></li>
+                    <li><a asp-area="" asp-controller="Moradia" asp-action="index">Moradia</a></li>
+                    <li><a asp-area="" asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
+                    <li><a asp-area="" asp-controller="Doacao" asp-action="index">Doação</a></li>
+                    <li><a asp-area="" asp-controller="Emergencia" asp-action="index">Emergência</a></li>
+                </ul>
+            </nav>
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Rodapé da página -->
+
+    <footer class="text-center ">Andor - Todos os Direitos reservados 2022</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script _src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        const id = Cookies.get('Id');
+                const user = Cookies.get('Usuario');
+                if (typeof id !== 'undefined') {
+                    $('#on').show();
+                    $('#off').hide();
+                    var nome = user.split(' ').shift();
+                    $('#usuario').text(nome);
+                    var link = "/Pessoa/Details/" + id;
+                    $('#usuario').attr('href', link);
+                }
+                else {
+                    $('#on').hide();
+                    $('#off').show();
+                }
+
+                $("#feed-trabalhos").click(function () {
+                    $("#trabalhos").show();
+                    $("#moradias").hide();
+                    $("#informacoes").hide();
+                    $("#ongs").hide();
+                });
+                $("#feed-moradias").click(function () {
+                    $("#trabalhos").hide();
+                    $("#moradias").show();
+                    $("#informacoes").hide();
+                    $("#ongs").hide();
+                });
+                // https://github.com/js-cookie/js-cookie</script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+<script>
+    $("#senha").mousedown(function () {
+            $("#s-senha").show();
+    });
+    $("#senha").mouseup(function () {
+            $("#s-senha").hide();
+    });
+</script>
+
+
+<script src="~/js/jq.js"></script>

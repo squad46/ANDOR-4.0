@@ -1,0 +1,259 @@
+﻿@{
+    ViewData["Title"] = "Refugiados";
+    var _trabalhos = ViewData["_trabalhos"] as List<Trabalho>;
+    var trabalhos = ViewData["trabalhos"] as List<Trabalho>;
+    var moradias = ViewData["moradias"] as List<Moradia>;
+
+}
+<!-- Section dos Cards Informacoes uteis -->
+<section id="scrollbar" class="info-utels d-flex align-items-start justify-content-center flex-wrap col">
+    <div class="max-width-800 d-flex flex-wrap">
+        <div class="tit-home">News</div>
+
+        <!--Card 1-->
+        <div class="card-infos d-flex align-items-end flex-wrap w-100">
+            <div class="link-cat-news">
+                <a asp-controller="Blog" asp-action="index">
+                    Informações Úteis
+                    <img src="/img/Arrow.svg" alt="">
+                </a>
+            </div>
+            <div class="card-infos-img">
+                <img src="/img/banner-primeiros-passos.svg" />
+            </div>
+            <article class="text-start cards-infos-desc">
+                <div class="d-flex h-100 align-items-start justify-content-center flex-column">
+                    <div class="risk-title-left">
+                        <h2 class="title-banner">Primeiros Passos</h2>
+                        <p>
+                            Tudo o que você precisa saber
+                            antes de se refugiar para o Brasil!
+                        </p>
+                    </div>
+                    <a asp-controller="Blog" asp-action="index">Continue <img src="/img/Arrow.svg" style="width:15px" alt="Seta link para continuar"></a>
+                </div>
+            </article>
+        </div>
+
+        <!--Card 2-->
+        <div class="row m-0">
+            <div class="card-infos-2-3 d-flex align-items-end flex-wrap col">
+                <div class="link-cat-news">
+                    <a asp-controller="Blog" asp-action="index">
+                        Informações Úteis
+                        <img src="/img/Arrow.svg" alt="">
+                    </a>
+                    <div class="card-infos-img-m">
+                        <img src="/img/banner-estudos.svg" />
+                    </div>
+                </div>
+                <article class="text-start cards-infos-desc">
+                    <div class="d-flex h-100 align-items-start justify-content-center flex-column">
+                        <h2 class="title-banner">Estudos</h2>
+                        <p>
+                            Conheça as principais Ongs responsáveis por revalidação
+                            de diplomas no Brasil, conheça também cursos da Língua
+                            Portuguesa!
+                        </p>
+                        <a asp-controller="Blog" asp-action="index">Continue <img src="/img/Arrow.svg" style="width:15px" alt="Seta link para continuar"></a>
+                    </div>
+                </article>
+            </div>
+
+            <!--Card 3-->
+            <div class="card-infos-2-3 d-flex align-items-end flex-wrap col">
+                <div class="link-cat-news">
+                    <a asp-controller="Blog" asp-action="index">
+                        Informações Úteis
+                        <img src="/img/Arrow.svg" alt="">
+                    </a>
+                    <div class="card-infos-img-m">
+                        <img src="/img/banner-documentacao.svg" />
+                    </div>
+                </div>
+                <article class="text-start cards-infos-desc">
+                    <div class="d-flex h-100 align-items-start justify-content-center flex-column">
+                        <h2 class="title-banner">Violência</h2>
+                        <p>
+                            Ajude a evitar a violência Física e Emocional contra
+                            as mulheres refugiadas, Veja Ongs parceiras!
+                        </p>
+                        <a asp-controller="Blog" asp-action="index">Continue <img src="/img/Arrow.svg" style="width:15px" alt="Seta link para continuar"></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!--Card 4-->
+        <div class="card-infos d-flex align-items-end flex-wrap w-100">
+            <div class="link-cat-news">
+                <a asp-controller="Blog" asp-action="index">
+                    Informações Úteis
+                    <img src="/img/Arrow.svg" alt="">
+                </a>
+            </div>
+            <div class="card-infos-img">
+                <img src="/img/banner-cidadania.svg" />
+            </div>
+            <article class="text-start cards-infos-desc">
+                <div class="d-flex h-100 align-items-start justify-content-center flex-column">
+                    <div class="risk-title-left">
+                        <h2 class="title-banner">Primeiros Passos</h2>
+                        <p>
+                            Saiba do que é necessário no Brasil para
+                            tirar um documento de Dupla-Cidadania!
+                        </p>
+                    </div>
+                    <a asp-controller="Blog" asp-action="index">Continue <img src="/img/Arrow.svg" style="width:15px" alt="Seta link para continuar"></a>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Section dos Feeds Gerais -->
+<section id="scrollbar" class="feeds col-5">
+    <h1 class="tit-home">Feeds</h1>
+
+    <div class="d-flex justify-content-center align-items-center flex-wrap">
+
+        <!-- Novas Postagens-->
+        <div class="new-post p-3 d-flex flex-column  justify-content-center">
+
+            <h3>
+                <b>
+                    "Escreva e compartilhe sobre assuntos que possa ajudar e contribuir
+                    com sua comunidade, escolha uma categoria e comece!"
+                </b>
+            </h3>
+
+            <!-- Radio de selecao da categoria da nova postagem -->
+
+            <div class="switch-field px-3 py-0">
+
+                <input type="radio" id="radio-three" name="post-tema" value="yes" checked />
+                <label id="feed-moradias" for="radio-three"><img src="~/img/moradia-light.svg" width="20px" alt="postagens sobre moradias" srcset=""><br />Moradia</label>
+
+                <input type="radio" id="radio-four" name="post-tema" value="maybe" />
+                <label id="feed-trabalhos" for="radio-four"><img src="~/img/empregos-light.svg" width="20px" alt="postagens sobre empregos" srcset=""><br />Emprego</label>
+
+                <input type="radio" id="radio-five" name="post-tema" value="no" />
+                <label for="radio-five"><img src="~/img/info-uteis.svg" alt="postagens sobre  info úteis" srcset=""><br />Informações</label>
+
+                <input type="radio" id="radio-six" name="post-tema" value="no" />
+                <label for="radio-six"><img src="~/img/ongs-parceiras.svg" alt="postagens sobre ongs" srcset=""><br />Ongs</label>
+
+            </div>
+
+            <!-- Botao e input de enviar nova postagem com ou sem imagem-->
+            <div class="d-flex flex-fill">
+                <input type="text" class="d-flex flex-fill" placeholder="Descreva Aqui!"
+                       aria-label="Descreva Aqui!" aria-describedby="button-addon4">
+                <div class="d-flex btn-up align-items-center">
+                    <label for="upload-post"><img src="~/img/src-image.svg" alt=""></label>
+                    <input type="file" name="upload-post" id="upload-post">
+                    <button type="submit"><img src="~/img/arrow-3.svg" width="15px" alt=""></button>
+                </div>
+            </div>
+
+        </div>
+        <!-- Postagem Única 1-->
+
+        <div id="trabalhos">
+            @{
+                // Faz a lista oportunidade de trabalho se existir alguma.
+                if (trabalhos.Count > 0)
+                {
+                    foreach (var trabalho in trabalhos)
+                    {
+
+                        <article class="feed-unique p-3 d-flex flex-column">
+
+                            <div class="post-profile d-flex flex-fill justify-content-between">
+                                <div class="avatar-profile">
+                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
+                                        <img src="/Imagem/VerImagem/@trabalho.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h4><a href="">@trabalho.NomeContato</a></h4>
+                                    <div class="post-profile-cat">
+                                        <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</span><br />
+                                        <span>Oferta de Emprego</span>
+                                    </div>
+                                </div>
+                                <div class="edit-post d-flex flex-column align-items-center">
+                                    <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
+                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Ver detalhes</a>
+                                </div>
+                            </div>
+                            <div class="description-profile">
+                                <h3>@trabalho.Nome</h3>
+                                <p>
+                                    @trabalho.Atividade
+                                </p>
+
+                                <div class="post-img d-flex flex-fill mb-3 align-items-center">
+                                    <img src="~/img/post-imag-1.jpg" width="100%" alt="">
+                                </div>
+                                <div class="d-flex justify-content-evenly">
+                                    <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
+                                    <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
+                                </div>
+                            </div>
+                        </article>
+
+                    }
+                }
+            }
+        </div>
+        <div id="moradias" class="posts">
+            @{ // Faz a lista moradias se existir alguma.
+                if (moradias.Count > 0)
+                {
+                    foreach (var moradia in moradias)
+                    {
+                        <article class="feed-unique p-3 d-flex flex-column">
+
+                            <div class="post-profile d-flex flex-fill justify-content-between">
+                                <div class="avatar-profile">
+                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
+                                        <img src="/Imagem/VerImagem/@moradia.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h4><a href="">@moradia.NomeContato</a></h4>
+                                    <div class="post-profile-cat">
+                                        <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro)</span><br />
+                                        <span>Oferta de Moradia</span>
+                                    </div>
+                                </div>
+                                <div class="edit-post d-flex flex-column align-items-center">
+                                    <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
+                                    <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Ver detalhes</a>
+                                </div>
+                            </div>
+                            <div class="description-profile">
+                                <h3>@moradia.Name</h3>
+                                <p>@moradia.Descricao</p>
+
+                                <div class="post-img d-flex flex-fill mb-3 align-items-center">
+                                    <img src="~/img/moradia.jpg" width="100%" alt="">
+                                </div>
+                                <div class="d-flex justify-content-evenly">
+                                    <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
+                                    <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
+                                </div>
+                            </div>
+                        </article>
+
+                    }
+                }
+            }
+        </div>
+
+        <div id="pai"></div>
+    </div>
+</section>

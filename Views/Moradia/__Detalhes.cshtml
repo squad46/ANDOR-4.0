@@ -1,0 +1,44 @@
+﻿<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50 p-3">
+        <h4 class="text-right">Detalhes da moradia</h4>
+        <hr />
+        <div class="row">
+            <div class="col-6"><!-- coluna da esquerda -->
+                <img class="col-md-12" src="~/img/moradia.jpg"/>
+            </div>
+            <div class="col-6"><!-- coluna da direita -->
+                @{
+                    var moradias = ViewData["_moradias"] as List<Moradia>;
+                    var pessoas   = ViewData["_pessoas"] as List<Pessoa>;
+                    if (pessoas != null && moradias != null)
+                    {
+                        foreach (var moradia in moradias)
+                        {
+                            <h1>@moradia.Name</h1>
+                            <dl class="row">
+                                <dt class="col-3">Descrição</dt><dd class="col-9">@moradia.Descricao</dd>
+                                <dt class="col-3">Tipo</dt><dd class="col-9">@moradia.Tipo</dd>
+                                <dt class="col-3">Preco</dt><dd class="col-9">@moradia.Preco</dd>
+                                <dt class="col-3">Endereco</dt><dd class="col-9">@moradia.Endereco, @moradia.Numero. CEP @moradia.CEP.ToString("#####-###") @moradia.Cidade/@moradia.UF</dd>
+                                <dt class="col-3">Contato</dt><dd class="col-9">@moradia.NomeContato - @moradia.EmailContato Tel. @Convert.ToInt64(moradia.TelefoneContato).ToString("(00) 00000-0000")</dd>
+                                @{
+                                    foreach (var pessoa in pessoas)
+                                    {
+                                        <dt class="col-3">Autor</dt> <dd class="col-9"><a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@pessoa.Id">@pessoa.Nome</a></dd>
+                                    }
+                                }
+                            </dl>
+                        }
+                    }
+                    else
+                    {
+                        <h1>Algo deu errado!</h1>
+                    }                     
+                }     
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

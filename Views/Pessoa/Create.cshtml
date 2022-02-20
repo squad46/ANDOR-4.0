@@ -1,0 +1,81 @@
+﻿@model Andor.Models.Pessoa
+@{
+    ViewData["Title"] = "Cadastro";
+}
+<!--Inicio Aréa Cadastro-->   
+<div class="container-fluid pt-0">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center cadastro">
+                <span class="mb-0 pb-3 Cadastro">Cadastrar</span>
+                <span class="mb-0 pb-3 Login">Login</span>
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                    <label for="reg-log" ></label>
+                <div class="card-3d-wrap mx-auto">
+                    <div class="card-3d-wrapper">
+                        <div class="card-back">
+                            <div class="center-wrap">
+                                <div class="section text-center">
+                                    <form asp-controller="Login" asp-action="Logar" method="post">
+                                        <h4 class="mb-4 pb-3">Login</h4>
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>	
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <input type="submit" value="Enviar" class="btn mt-4"/>
+                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Esqueceu sua senha?</a></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-front">
+                            <div class="center-wrap">
+                                <div class="section text-center">
+                                    <h4 class="mb-4 pb-3">Cadastro</h4>
+                                    <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <input asp-for="Nome" class="form-style" placeholder="Seu Nome completo" id="logname" autocomplete="off">
+                                            <i class="input-icon uil uil-user"></i>
+                                        </div>	
+                                        <div class="form-group mt-2">
+                                            <input type="email" asp-for="Email" class="form-style" placeholder="Seu E-mail" id="logemail" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>	
+                                        <div class="form-group mt-2">
+                                            <input type="password" asp-for="Senha" class="form-style" placeholder="Sua senha" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                         <div class="form-group mt-2">
+                                            <label class="form-style text-left" for='logavatar'>Selecionar uma foto para o perfil</label>
+                                            <input type="file" class="form-style" placeholder="Avatar" id="logavatar" name="arquivos" autocomplete="off" style="display:none;">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group" style="display:none;">
+                                            @{DateTime thisDay = DateTime.Today;}
+                                            <label asp-for="DataCadastro" class="control-label"></label>
+                                            <input type="datetime" value="@{@thisDay.Date.ToString();}" asp-for="DataCadastro" class="form-control" />
+                                        </div>
+                                            @{
+                                                if (ViewData["mensagem"] != null)
+                                                {  
+                                                    <span class="text-warning">@ViewData["mensagem"]</span>
+                                                }
+                                            }
+                                        <div class="form-group">
+                                            <input type="submit" value="Cadastrar" class="btn mt-4" />
+                                        </div>
+                                    </form>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fim Aréa Cadastro-->

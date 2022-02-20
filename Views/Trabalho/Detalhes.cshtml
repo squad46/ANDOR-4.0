@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Detalhes";
+}
+<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50 p-3">
+        <h4 class="text-right pr-3">Trabalho / Emprego</h4>
+        
+        <div class="row justify-content-center pt-2">
+            <!-- coluna da esquerda -->
+            <div class="perfil-detalhes forms-details-full mr-2">
+                <img width="100%" src="~/img/post-imag-1.jpg" />
+            </div>
+            <!-- coluna da direita -->
+            <div class="forms-details-detalhes">
+                @{
+                    var trabalhos = ViewData["_trabalhos"] as List<Trabalho>;
+                    var pessoas = ViewData["_pessoas"] as List<Pessoa>;
+                    if (pessoas != null && trabalhos != null)
+                    {
+                        foreach (var trabalho in trabalhos)
+                        {
+                            <h1 class="title-details pb-2 border-bottom"><strong>@trabalho.Nome</strong></h1>
+                            <dl class="row">
+                                <dt class="col-3">Instituição</dt>
+                                <dd class="col-9">@trabalho.Instituicao</dd>
+                                <dt class="col-3">Descrição</dt>
+                                <dd class="col-9">@trabalho.Atividade</dd>
+                                <dt class="col-3">Tipo</dt>
+                                <dd class="col-9">@trabalho.Tipo</dd>
+                                <dt class="col-3">Salário</dt>
+                                <dd class="col-9">R$@trabalho.Salario.ToString("#,###,###.00")</dd>
+
+                                <dt class="col-3">Endereco</dt>
+                                <dd class="col-9">@trabalho.Endereco, @trabalho.Numero. @trabalho.Bairro CEP @trabalho.CEP.ToString("#####-###") @trabalho.Cidade/@trabalho.UF</dd>
+                                <dt class="col-3">Contato</dt>
+                                <dd class="col-9">@trabalho.NomeContato - @trabalho.EmailContato Tel. @Convert.ToInt64(trabalho.TelefoneContato).ToString("(00) 00000-0000")</dd>
+                                <dt class="col-3">Publicação</dt>
+                                <dd class="col-9">@String.Format("{0:dd/MM/yyyy}",trabalho.DataCadastro)</dd>
+                                @{
+                                    foreach (var pessoa in pessoas)
+                                    {
+                                        <dt class="col-3">Autor</dt>
+                                        <dd class="col-9"><a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@pessoa.Id">@pessoa.Nome</a></dd>
+                                    }
+                                }
+                            </dl>
+                        }
+                    }
+                    else
+                    {
+                        <h1>Algo deu errado!</h1>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

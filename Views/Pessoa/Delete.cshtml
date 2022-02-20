@@ -1,0 +1,65 @@
+﻿@model Andor.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+<h1>Excluir</h1>
+<div class="container-fluid pt-0 bg-light" >
+    <div class="container" style="padding-bottom:150px;">
+        <div class="row container-perfil-details p-2">
+            <div class="col perfil-menu p-3">
+                <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem do perfil"/>
+            </div>  
+            <!-- Forms -->
+            <div class="forms-details col mt-2"><!-- coluna da direita -->
+                <div id="perfil">
+                    <div class="row">
+                        <div class="col-12">
+                             <h4 class="text-center mt-2 py-1 text-white bg-danger rounded-3">Tem certeza que deseja excluir o seu perfil?</h4>
+                        </div>
+                    </div>
+                    <div class="">
+                        <dl class="row mt-3">
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nome)</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Nome)</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+                            @{ 
+                            /*
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Senha)</dt>
+                            <dd class="col-sm-9"><a id="senha"><img src="~/img/ver.png" width="30px"/></a> <span id="s-senha" style="display:none">@Html.DisplayFor(model => model.Senha)</span></dd>
+                            */
+                            }
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Telefone)</dt>
+                            <dd class="col-sm-9">@Convert.ToInt64(Model.Telefone).ToString("(00) 00000-0000")</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CRNM)</dt>
+                            <dd class="col-sm-9">@Model.CRNM</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CPF)</dt>
+                            <dd class="col-sm-9">@Convert.ToInt64(Model.CPF).ToString(@"000\.000\.000\-00")</dd>
+                            <dt class="col-sm-3">Endereço</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Endereco)</dd>
+                            <dt class="col-sm-3">Número</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Numero)</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CEP)</dt>
+                            <dd class="col-sm-9">@Model.CEP.ToString("#####-###")</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sexo)</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Sexo)</dd>
+                            <dt class="col-sm-3">Data de nascimento</dt>
+                            <dd class="col-sm-9">@String.Format("{0:dd/MM/yyyy}",Model.DataNascimento)</dd>
+                            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nacionalidade)</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Nacionalidade)</dd>
+                            <dt class="col-sm-3">Data de cadastro</dt>
+                            <dd class="col-sm-9">@String.Format("{0:dd/MM/yyyy}",Model.DataCadastro)</dd>
+                        </dl>
+                        <div class="d-flex justify-content-end pt-2">
+                            <form asp-action="Delete"> 
+                                <input type="hidden" asp-for="Id" />            
+                                <a class="btnn btn-editar" asp-action="Details" asp-route-id="@Model.Id">Não</a> 
+                                <input type="submit" value="Sim" class="btnn btn-excluir ml-2" />  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+         </div>
+    </div>
+</div>

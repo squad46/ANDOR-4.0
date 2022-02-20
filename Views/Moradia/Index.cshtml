@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Moradias";
+    var moradias = ViewData["moradias"] as List<Moradia>;
+}
+<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50 p-3">
+        <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
+            <div class="row">
+                <div class="col">
+                    <h3>Moradias</h3>
+                </div>
+                <div class="col text-right">
+                    <form asp-controller="Moradia" asp-action="Filtrar" method="post">
+                        <select name="uf" class="select-uf">
+                            <option selected>UF</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AP</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MS</option>
+                            <option>MT</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>PI</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                        </select>                     
+                        <input type="submit" value="Filtrar" class="btn btn-principal" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        @{  // Faz a lista de moradia se existir alguma.
+            if (moradias.Count > 0)
+            {
+                foreach (var moradia in moradias)
+                { 
+                    <div class="pt-3 px-3 mb-2 forms-details-full">
+                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">@moradia.Name</a></strong></h1>
+     
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="/Imagem/VerImagem/@moradia.Id?tipo=moradia_lista" alt="imagem do perfil" style="width:100%"/>
+                            </div>
+                            <div class="col-sm-9">
+                                <dl class="row pt-4">       
+                                    <dt class="col-3">Descrição</dt><dd class="col-9">@moradia.Descricao</dd>
+                                    <dt class="col-3">Tipo</dt><dd class="col-9">@moradia.Tipo</dd>
+                                    <dt class="col-3">Bairro</dt><dd class="col-9">@moradia.Bairro</dd>   
+                                    <dt class="col-3">Preço</dt><dd class="col-9">R$ @moradia.Preco.ToString("#,###,###.00") </dd>   
+                                    <dt class="col-3">Publicado</dt><dd class="col-9">@String.Format("{0:dd/MM/yyyy}",moradia.DataCadastro)</dd>
+                                </dl>
+                            </div>
+                        </div>      
+                    </div> 
+                }
+            }
+        }      
+        <br />
+        <br />
+        <br />
+    </div>
+</div>

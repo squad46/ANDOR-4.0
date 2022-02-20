@@ -1,0 +1,291 @@
+﻿@model Andor.Models.Pessoa
+@{
+    ViewData["Title"] = "Perfil";
+    var formacoes = ViewData["formacoes"] as List<Formacao>;
+    var experiencias = ViewData["experiencias"] as List<Experiencia>;
+    var trabalhos = ViewData["trabalhos"] as List<Trabalho>;
+    var moradias = ViewData["moradias"] as List<Moradia>;
+}
+<div class="container-fluid modal-dialog-scrollable pt-0 bg-light">
+    <div class="container">
+        <div class="container-perfil-details pt-2" style="padding-bottom:130px;">
+            <div class="perfil-menu mb-3 p-3"><!-- coluna da esquerda -->  
+                <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem do perfil" class=""/>
+         
+                <!-- Menu do Perfil-->
+                <ul class="p-0 m-0 mt-3 border text-black-50 rounded-5">
+                    <li id="btn-perfil" class="btn-light pl-2 py-2">Exibir perfil</li>
+                    <li id="btn-formacao" class="btn-light pl-2 py-2">Formação profissional</li>
+                    <li id="btn-experiencia"class="btn-light pl-2 py-2">Experiência profissional</li>
+                    <li id="btn-moradia"class="btn-light pl-2 py-2">Oferta de Imóvel</li>
+                    <li id="btn-trabalho"class="btn-light pl-2 py-2">Oferta de Trabalho</li>
+                </ul>
+            </div>
+            <!-- Forms -->
+            <div class="forms-details bg-white text-black-50"><!-- coluna da direita -->
+                <div id="perfil">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="pt-3 border-bottom">@Model.Nome</h4>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <dl class="row mt-3">
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.Nome)</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Nome)</dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.Email)</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Email)</dd>
+                            @{/*
+                            <dt class="col-4 bg-danger">@Html.DisplayNameFor(model => model.Senha)</dt>                 
+                            <dd class="col-8 bg-danger"><a id="senha"><img src="~/img/ver.png" width="30px" /></a> <span id="s-senha" style="display:none">@Html.DisplayFor(model => model.Senha)</span></dd>
+                            */
+                            } 
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.Telefone)</dt>
+                            <dd class="col-8">@Convert.ToInt64(Model.Telefone).ToString("(00) 00000-0000")</dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.CRNM)</dt>
+                            <dd class="col-8">@Model.CRNM</dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.CPF)</dt>
+                            <dd class="col-8">@Convert.ToInt64(Model.CPF).ToString(@"000\.000\.000\-00")</dd>
+                            <dt class="col-4">Endereço</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Endereco)</dd>
+                            <dt class="col-4">Número</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Numero)</dd>
+                            <dt class="col-4">Bairro</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Bairro)</dd>
+                            <dt class="col-4">UF</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.UF)</dd>
+                            <dt class="col-4">Cidade</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Cidade)</dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.CEP)</dt>
+                            <dd class="col-8">@Model.CEP.ToString("#####-###")</dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.Sexo)</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Sexo)</dd>
+                            <dt class="col-4">Data de nascimento</dt>
+                            <dd class="col-8">@String.Format("{0:dd/MM/yyyy}",Model.DataNascimento) </dd>
+                            <dt class="col-4">@Html.DisplayNameFor(model => model.Nacionalidade)</dt>
+                            <dd class="col-8">@Html.DisplayFor(model => model.Nacionalidade)</dd>
+                            <dt class="col-4">Data de cadastro</dt>
+                            <dd class="col-8">@String.Format("{0:dd/MM/yyyy}",Model.DataCadastro)</dd>
+                        </dl>
+                    </div>
+
+                    <div class="d-flex justify-content-end pt-2">
+                        <a class="btnn ml-3 mt-3 btn-editar" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                        <a class="btnn ml-3 mt-3 btn-excluir" asp-action="Delete" asp-route-id="@Model.Id">Excluir</a>
+                    </div>
+
+                </div>
+                <!-- formacao profissional-->
+                <div id="formacao" style="display:none;">
+                    <div class="row">
+                        <div class="col pt-3 ">
+                            <h4 class="title-details">Formação profissional</h4>
+                        </div>
+                        <div class="col pt-2 text-right">
+                            <a class="btnn btn-editar border" asp-controller="Pessoa" asp-action="formacaoCreate" asp-route-Id_pessoa="@Model.Id">Adicionar</a>
+                        </div>
+                    </div>
+                    @{
+                        if (formacoes.Count > 0)
+                        {
+                            foreach (var formacao in formacoes)
+                            {
+                                <div class="col-12 border p-2 mt-2">
+                                    <div class="row pl-3">
+                                        <div class="col">
+                                            <h2 class="title-details">@formacao.Nome</h2>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form asp-controller="Pessoa" asp-action="deletarFormacao">
+                                                <input asp-for="Id" type="text" value="@formacao.Id" style="display:none;">
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <dl class="row pl-3 pt-3">
+                                        <dt class="col-4">Instituição</dt>
+                                        <dd class="col-8">@formacao.Instituicao</dd>
+                                        <dt class="col-4">Descrição</dt>
+                                        <dd class="col-8">@formacao.Descricao</dd>
+                                        <dt class="col-4">Início</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", formacao.Inicio)</dd>
+                                        <dt class="col-4">Término</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", formacao.Fim)</dd>
+                                        <dt class="col-4">Situação</dt>
+                                        <dd class="col-8">@formacao.Situacao</dd>
+                                    </dl>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Adicione uma formação profissional</p>
+                        }
+                    }
+                </div>
+                <!-- Experiencia profissional -->
+                <div id="experiencia" style="display:none;">
+                    <div class="row">
+                        <div class="col pt-3">
+                            <h4 class="title-details">Experiência profissional</h4>
+                        </div>
+                        <div class="col pt-2 text-right">
+                            <a class="btnn btn-editar border" asp-controller="Pessoa" asp-action="experienciaCreate" asp-route-Id_pessoa="@Model.Id">Adicionar</a>
+                        </div>
+                    </div>
+                    @{
+                        if (experiencias.Count > 0)
+                        {
+                            foreach (var experiencia in experiencias)
+                            {
+                                <div class="col-12 border p-2 mt-2">
+                                    <div class="row pl-3">
+                                        <div class="col">
+                                            <h2 class="title-details">@experiencia.Nome</h2>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form asp-controller="Pessoa" asp-action="deletarExperiencia">
+                                                <input asp-for="Id" type="text" value="@experiencia.Id" style="display:none;">
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <dl class="row pl-2 pt-3">
+                                        <dt class="col-4">Instituição</dt>
+                                        <dd class="col-8">@experiencia.Instituicao</dd>
+                                        <dt class="col-4">Cargo</dt>
+                                        <dd class="col-8">@experiencia.Cargo</dd>
+                                        <dt class="col-4">Descrição</dt>
+                                        <dd class="col-8">@experiencia.Descricao</dd>
+                                        <dt class="col-4">Início</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", experiencia.Inicio)</dd>
+                                        <dt class="col-4">Término</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", experiencia.Fim)</dd>
+                                    </dl>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Adicione uma experiência profissional</p>
+                        }
+                    }
+                </div>
+                <!-- Oferta de trabalho -->
+                <div id="trabalho" style="display:none;">
+                    <div class="row">
+                        <div class="col pt-3">
+                            <h4 class="title-details">Oferta de Trabalho</h4>
+                        </div>
+                        <div class="col pt-2 text-right">
+                            <a class="btnn btn-editar border" asp-controller="Pessoa" asp-action="trabalhoCreate" asp-route-Id_pessoa="@Model.Id">Adicionar</a>
+                        </div>
+                    </div>
+                    @{
+                        if (trabalhos.Count > 0)
+                        {
+                            foreach (var trabalho in trabalhos)
+                            {
+                                <div class="col-12 border p-2 mt-2">
+                                    <div class="row pl-3">
+                                        <div class="col">
+                                            <h2 class="title-details">@trabalho.Nome</h2>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form asp-controller="Pessoa" asp-action="deletarTrabalho">
+                                                <input asp-for="Id" type="text" value="@trabalho.Id" style="display:none;">
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <dl class="row pl-2 pt-3">
+                                                <dt class="col-4">Instituição</dt>
+                                                <dd class="col-8">@trabalho.Instituicao</dd>
+                                                <dt class="col-4">Tipo</dt>
+                                                <dd class="col-8">@trabalho.Tipo</dd>
+                                                <dt class="col-4">Endereço</dt>
+                                                <dd class="col-8">@trabalho.Endereco, @trabalho.Numero. @trabalho.Bairro - CEP @trabalho.CEP.ToString("#####-###") @trabalho.Cidade/@trabalho.UF </dd>
+                                                <dt class="col-4">Postado</dt>
+                                                <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</dd>
+                                                <dt class="col-4">Atividade</dt>
+                                                <dd class="col-8">@trabalho.Atividade</dd>
+                                                <dt class="col-4">Salário</dt>
+                                                <dd class="col-8">R$@trabalho.Salario.ToString("#,###,###.00")</dd>
+                                                <dt class="col-4">Contato</dt>
+                                                <dd class="col-8">@trabalho.NomeContato Tel: @Convert.ToInt64(trabalho.TelefoneContato).ToString("(00) 00000-0000") email: @trabalho.EmailContato</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Adicione uma oferta de trabalho ou emprego</p>
+                        }
+                    }
+                </div>
+                <div id="moradia" style="display:none;"><!-- oferta de moradia -->
+                    <div class="row">
+                        <div class="col pt-3">
+                            <h4 class="title-details">Oferta de imóvel</h4>
+                        </div>
+                        <div class="col pt-2 text-right">
+                            <a class="btnn btn-editar border" asp-controller="Moradia" asp-action="Novo" asp-route-Id_pessoa="@Model.Id">Adicionar</a>
+                            <!-- <a class="btnn btn-editar border" asp-controller="Pessoa" asp-action="moradiaCreate" asp-route-Id_pessoa="@Model.Id">Adicionar</a> -->
+                        </div>
+                    </div>
+                    @{
+                        if (moradias.Count > 0)
+                        {
+                            foreach (var moradia in moradias)
+                            {
+                                <div class="col-12 border p-2 mt-2">
+                                    <div class="row pl-3">
+                                        <div class="col">
+                                            <h2 class="title-details">@moradia.Name</h2>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form asp-controller="Moradia" asp-action="Excluir">
+                                                <input asp-for="Id" type="text" value="@moradia.Id" style="display:none;">
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <dl class="row pl-2 pt-3">
+                                                <dt class="col-4">Descrição </dt>
+                                                <dd class="col-8">@moradia.Descricao </dd>
+                                                <dt class="col-4">Endereço </dt>
+                                                <dd class="col-8">@moradia.Endereco, @moradia.Numero. CEP @moradia.CEP.ToString("#####-###") @moradia.Cidade/@moradia.UF</dd>
+                                                <dt class="col-4">Tipo </dt>
+                                                <dd class="col-8">@moradia.Tipo </dd>
+                                     
+                                                <dt class="col-4">Preço </dt>
+                                                <dd class="col-8">R$@moradia.Preco.ToString("#,###,###.00") </dd>
+                                                <dt class="col-4">Locador</dt>
+                                                <dd class="col-8">@moradia.NomeContato </dd>
+                                                <dt class="col-4">Telefone</dt>
+                                                <dd class="col-8">@moradia.TelefoneContato </dd>
+                                                <dt class="col-4">Email</dt>
+                                                <dd class="col-8">@moradia.EmailContato </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Adicione uma oferta de moradia / imóvel</p>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

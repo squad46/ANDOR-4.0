@@ -1,0 +1,61 @@
+﻿@model Andor.Models.Experiencia
+@{
+    ViewData["Title"] = "Adicionar";
+    var id_pessoa = ViewData["Id_pessoa"];
+}
+<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50 p-3">
+        
+        <div class="row justify-content-center">
+            <!-- coluna da esquerda -->
+            <!--
+            <div class="col-6">
+                <img class="col-md-12" src=~/img/experiencia.jpg />
+            </div>
+            -->
+            <!-- coluna da direita -->
+            <div class="col-11 bg-cards-1">
+                <h4 class="text-right">Experiência profissional</h4>
+                <hr />
+                <form asp-action="experienciaCreate">
+                    <div class="form-group" style="display:none">
+                        <input type="text" value="@ViewData["Id_pessoa"]" asp-for="Id_pessoa" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ramo</label>
+                        <input asp-for="Nome" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Descrição</label>
+                        <input asp-for="Descricao" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cargo" class="control-label"></label>
+                        <input asp-for="Cargo" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Instituição</label>
+                        <input asp-for="Instituicao" class="form-control" />
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="control-label">Início</label>
+                        <input asp-for="Inicio" class="form-control" />
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="control-label">Término</label>
+                        <input asp-for="Fim" class="form-control" />
+                    </div>
+                    <div class="form-group d-flex mt-4 justify-content-end">
+                        <hr />
+                        <input type="submit" value="Adicionar" class="btnn btn-editar " />
+                        <a asp-controller="Pessoa" asp-action="Details" asp-route-id="@id_pessoa" class="btnn btn-editar ml-2 ">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    </div>
+</div>

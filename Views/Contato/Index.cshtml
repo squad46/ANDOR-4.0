@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "Contato";
+}
+<div class="container-fluid pt-0">
+    <div class="container mt-3">
+        <div class="forms-details-full bg-white text-black-50">
+
+            <h2 class="pt-3 border-bottom">Contato</h2>
+
+            <form class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip01"></label>
+                        <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" required>
+                        <div class="valid-tooltip">
+                            Muito Bom!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip02"></label>
+                        <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" required>
+                        <div class="valid-tooltip">
+                            Muito Bom!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip03"></label>
+                        <input type="text" class="form-control" id="validationTooltip03" placeholder="Whatsapp" required>
+                        <div class="valid-tooltip">
+                            Muito Bom!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationTooltip04"></label>
+                        <input type="text" class="form-control" id="validationTooltip04" placeholder="E-mail" required>
+                        <div class="invalid-tooltip">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState"></label>
+                        <select id="inputState" class="form-control" required>
+                            <option selected>Dúvida sobre...</option>
+                            <option>Postagem</option>
+                            <option>Notícia</option>
+                            <option>Moradia</option>
+                            <option>Emprego</option>
+                            <option>Funcionalidades</option>
+                            <option>Outros...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="validationTextarea"></label>
+                    <textarea class="form-control" id="validationTextarea" placeholder="Descreva aqui sua Dúvida" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter a message in the textarea.
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+
+            <div class="row">
+                <div class="col-md-4 my-4">
+                    <div class="">
+                        <h4>Dúvidas Frequentes</h4>
+                        <ul class="p-0">"                            
+                            <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Cadastrar</a></li>
+                            <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Buscar Emprego</a></li>
+                            <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Buscar Moradia</a></li>
+                            <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Buscar ONGs</a></li>
+                            <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Recuperar Senha</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-4">
+                    <div class="">
+                        <h4>E-mails</h4>
+                        <ul class="p-0">
+                            <li>
+                                <span>Dúvidas</span>
+                                <a href="mailto:duvidas@andor.org.br">duvidas@andor.org.br</a>
+                            </li>
+                            <li>
+                                <span>Financeiro</span>
+                                <a href="mailto:financeiro@andor.org.br">financeiro@andor.org.br</a>
+                            </li>
+                            <li>
+                                <span>Pesquisas</span>
+                                <a href="mailto:pesquisas@andor.org.br">pesquisas@andor.org.br</a>
+                            </li>
+                            <li>
+                                <span>Marketing</span>
+                                <a href="mailto:marketing@andor.org.br">marketing@andor.org.br</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-4">
+                    <div class="">
+                        <h4>ONGs Parceiras</h4>
+                        <ul class="p-0">
+                            <li>
+                                <span>ACNUR</span>
+                                <a href="mailto:duvidas@unhcr.org.br">contato@unhcr.org.br</a>
+                            </li>
+                            <li>
+                                <span>Abraço Cultural</span>
+                                <a href="mailto:duvidas@abracocultural.org.br">contato@abracocultural.org.br</a>
+                            </li>
+                            <li>
+                                <span>Cáritas</span>
+                                <a href="mailto:duvidas@caricas.org.br">contato@caricas.org.br</a>
+                            </li>
+                            <li>
+                                <span>GADE</span>
+                                <a href="mailto:duvidas@gade.org.br">contato@gade.org.br</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

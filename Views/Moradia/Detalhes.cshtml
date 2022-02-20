@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["title"] = "Moradia"; 
+    var imagens  = ViewData["imagens"] as List<Imagem>;
+    var moradias = ViewData["_moradias"] as List<Moradia>;
+    var pessoas  = ViewData["_pessoas"] as List<Pessoa>;
+    var i = imagens.Count();
+    var active = "active";
+}
+
+<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50 p-3">
+        <h4 class="text-right">Detalhes da moradia</h4>
+        <hr />
+        <div class="row justify-content-center pt-2">
+            <div class="perfil-detalhes forms-details-full mr-2"><!-- coluna da esquerda -->
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"><!-- caroussel com imagens-->
+                <ol class="carousel-indicators">
+                    @for(int x = 0; x < i; x++)
+                    {
+                        if (x == 0) 
+                        { 
+                            <li data-target="#carouselExampleIndicators" data-slide-to="@x" class="active"></li>
+                        }else
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="@x"></li> 
+                        }
+                    }
+                </ol>
+                             
+                <div class="carousel-inner">
+                    @foreach (var imagem in imagens)
+                    {
+                        <div class="carousel-item @active">
+                            <img class="d-block w-100" src="/Imagem/VerImagem/@imagem.Id?tipo=moradia" style="width:100%">
+                        </div>
+                        active = "";
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            </div>
+            <div class="forms-details-detalhes"><!-- coluna da direita -->
+                @{
+                    if (pessoas != null && moradias != null)
+                    {
+                        foreach (var moradia in moradias)
+                        {
+                            <h1 class="title-details">@moradia.Name</h1>
+                            <br />
+                            <dl class="row">
+                                <dt class="col-3">Descrição</dt><dd class="col-9">@moradia.Descricao</dd>
+                                <dt class="col-3">Tipo</dt><dd class="col-9">@moradia.Tipo</dd>
+                                <dt class="col-3">Preço</dt><dd class="col-9">R$ @moradia.Preco.ToString("#,###,###.00") </dd>
+                                <dt class="col-3">Endereço</dt><dd class="col-9">@moradia.Endereco, @moradia.Numero. @moradia.Bairro CEP @moradia.CEP.ToString("#####-###") @moradia.Cidade/@moradia.UF</dd>
+                                <dt class="col-3">Contato</dt><dd class="col-9">@moradia.NomeContato - @moradia.EmailContato Tel. @Convert.ToInt64(moradia.TelefoneContato).ToString("(00) 00000-0000")</dd>
+                                <dt class="col-3">Publicação</dt>
+                                <dd class="col-9">@String.Format("{0:dd/MM/yyyy}",moradia.DataCadastro)</dd>
+                                @{
+                                    foreach (var pessoa in pessoas)
+                                    {
+                                        <dt class="col-3">Autor</dt> <dd class="col-9"><a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@pessoa.Id">@pessoa.Nome</a></dd>
+                                    }
+                                }
+                            </dl>        
+                        }
+                    }
+                    else
+                    {
+                        <h1>Algo deu errado!</h1>
+                    }  
+                }      
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

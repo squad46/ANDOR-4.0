@@ -1,0 +1,53 @@
+﻿<div class="container-fluid pt-0 bg-light">
+    <div class="container">
+        @{
+            var temAvatar = ViewData["temAvatar"];
+            var pessoas = ViewData["perfil"] as List<Pessoa>;
+            foreach (var pessoa in pessoas)
+            {
+                <div class="row container-perfil-details p-2">
+                    <div class="perfil-menu mt-2 p-3"><!-- coluna da esquerda -->
+                        @{
+                            <img src="/Imagem/VerImagem/@pessoa.Id?tipo=perfil" alt="imagem do perfil"/>
+                        }
+                    </div>   
+                
+                    <div class="forms-details mt-2"><!-- coluna da direita -->
+                    
+                        <h4 class="text-black-50 pt-3 ">@pessoa.Nome</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col col-md-3">
+                                <p>Email:</p>
+                                <p>Telefone:</p>
+                                <p>Endereço:</p>
+                                <p>Sexo:</p>
+                                <p>Data de nascimento:</p>
+                                <p>Nacionalidade: </p>
+                                <p>Registrado em: </p>
+                            </div>
+                            <div class="col col-md-9">
+                                <p>@pessoa.Email &nbsp;</p>
+                                <p>@Convert.ToInt64(pessoa.Telefone).ToString("(00) 00000-0000") &nbsp;</p>
+                                @{
+                                    if (pessoa.Endereco != null)
+                                    {
+                                        <p>@pessoa.Endereco, @pessoa.Numero - @pessoa.Bairro. @pessoa.Cidade/@pessoa.UF &nbsp;  </p>
+                                    }
+                                    else
+                                    {
+                                        <p>&nbsp;</p>
+                                    }
+                                }   
+                                <p>@pessoa.Sexo &nbsp;</p>
+                                <p>@String.Format("{0:dd/MM/yyyy}",pessoa.DataNascimento) &nbsp;</p>
+                                <p>@pessoa.Nacionalidade &nbsp;</p>
+                                <p>@String.Format("{0:dd/MM/yyyy}",pessoa.DataCadastro) &nbsp;</p>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            }
+        }
+    </div>
+</div>

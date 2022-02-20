@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Andor.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Pessoas";
+}
+
+<h1>Listagem de pessoas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Adicionar</a>
+</p>
+<div style="overflow:auto;">
+<table class="table text-light" >
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Senha
+            </th>
+            <th>
+                Telefone
+            </th>
+             <th>
+                CRNM
+            </th>
+            <th>
+                CPF
+            </th>
+            <th>
+                Endereco
+            </th>
+            <th>
+                Número
+            </th>
+            <th>
+                CEP
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Data de nascimento
+            </th>
+            <th>
+                Nacionalidade
+            </th>
+            <th>
+                Data de cadastro
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CRNM) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td  style="float:right; width:170px;">
+                <a class="btn btn-light" asp-action="Edit" asp-route-id="@item.Id">&#9998;</a>
+                <a class="btn btn-light" asp-action="Details" asp-route-id="@item.Id">&#128269;</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"> X </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
