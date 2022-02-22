@@ -308,10 +308,9 @@ li {
 
 /*Coluna 1 - News informacoes uteis */
 .info-utels {
-    padding-top: 10px;
     padding-left: 85px;
     background-color: #F2F2F2;
-    padding-bottom: 105px;
+    padding-bottom: 10px;
     margin: 0 auto;
 }
 
@@ -529,7 +528,7 @@ li {
 /*Coluna 2 - Area dos feeds*/
 .feeds {
     background-color: #081333;
-    padding-bottom: 80px;
+    padding-bottom: 10px;
 }
 
 .tit-home {
@@ -1537,7 +1536,8 @@ h4 {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px 80px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
 .blog {
