@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Profissionais";
     var profissionais = ViewData["profissional"] as List<Profissional>;
-   
 }
 
 <div class="container-fluid pt-0 bg-light">
@@ -9,10 +8,11 @@
         <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
             <div class="row">
                 <div class="col">
-                    <h3>Profissionais</h3>
+                    <h3>Profissionais / Serviços</h3>
                 </div>
                 <div class="col text-right">
-                    <form asp-controller="Trabalho" asp-action="Filtrar" method="post">
+                    <form asp-controller="Profissional" asp-action="Filtrar" method="post">
+                        <input type="text" name="profissao" placeholder="Profissão" class="select-uf mb-1" />
                         <select name="uf" class="select-uf">
                             <option selected>UF</option>
                             <option>AC</option>
@@ -54,16 +54,14 @@
                 foreach (var profissional in profissionais)
                 {
                     <div class="pt-3 px-3 mb-2 forms-details-full">
-                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="" asp-route-pessoaId="">@profissional.Nome</a></strong></h1>
+                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@profissional.PessoaId">@profissional.Nome</a></strong></h1>
                         <dl class="row">
                             <dt class="col-3">Instituição</dt>
                             <dd class="col-9">@profissional.Instituicao</dd>
                             <dt class="col-3">Descrição</dt>
                             <dd class="col-9">@profissional.Descricao</dd>
-                            
                             <dt class="col-3">Início</dt>
                             <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Inicio)</dd>
-                            
                             <dt class="col-3">Fim</dt>
                             <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Fim)</dd>
                             <dt class="col-3">Nome</dt>
@@ -75,32 +73,6 @@
                 }
             }
         }   
-        
-
-        @{  /*
-            if (pro != null)
-            {
-                foreach (var profissional in pro)
-                {
-                    <div class="pt-3 px-3 mb-2 forms-details-full">
-                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="" asp-route-pessoaId="">@profissional.Nome</a></strong></h1>
-                        <dl class="row">
-                            <dt class="col-3">Instituição</dt>
-                            <dd class="col-9">@profissional.Instituicao</dd>
-                            <dt class="col-3">Descrição</dt>
-                            <dd class="col-9">@profissional.Descricao</dd>
-                            
-                            <dt class="col-3">Início</dt>
-                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Inicio)</dd>
-                            
-                            <dt class="col-3">Fim</dt>
-                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Fim)</dd>
-                        </dl>
-                    </div>
-                }
-            }*/
-        } 
-
 
         <br />
         <br />
