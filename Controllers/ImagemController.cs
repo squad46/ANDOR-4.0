@@ -33,7 +33,7 @@ namespace Andor.Controllers
                 if (imagemEnviada.ContentType == "image/jpeg" || imagemEnviada.ContentType == "image/png")
                 {
 
-                    var imagemAntiga = _context.Imagens.Where(p => p.Id_tipo == id_pessoa).ToList(); // excluir imagem antiga do perfil 
+                    var imagemAntiga = _context.Imagens.Where(p => p.Id_tipo == id_pessoa && p.Tipo == "perfil").ToList(); // excluir imagem antiga do perfil 
                     foreach (var _imagemAntiga in imagemAntiga)
                     {
                         _context.Imagens.Remove(_imagemAntiga);
