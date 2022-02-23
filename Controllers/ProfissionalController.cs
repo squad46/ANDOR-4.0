@@ -1,8 +1,6 @@
 ﻿using Andor.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Andor.Controllers
 {
@@ -15,36 +13,35 @@ namespace Andor.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> View()
+        public IActionResult Index()
         {
-            /*
-            var  _trabalhos = _context.Trabalhos.Join(
-                    _context.Imagens,
-                    trabalho => trabalho.Id_pessoa,
-                    imagem => imagem.Id_tipo,
-                    (trabalho, imagem) => new
-                    {
-                        Id = trabalho.Id,
-                        Id_pessoa = trabalho.Id_pessoa,
-                        NomeContato = trabalho.NomeContato,
-                        DataCadastro = trabalho.DataCadastro,
-                        Nome = trabalho.Nome,
-                        Atividade = trabalho.Atividade,
-                        //Id_imagem = imagem.Id,
-                    }
-                ).ToList();
+            var list = from f in _context.Formacoes
+                       join p in _context.Pessoas on f.Id_pessoa equals p.Id
+                       // where p.UF == "RJ" && f.Nome.Contains("Des")
+                       select new Profissional
+                       {
+                           Id = f.Id,
+                           Nome = f.Nome,
+                           Descricao = f.Descricao,
+                           Instituicao = f.Instituicao,
+                           Inicio = f.Inicio,
+                           Fim = f.Fim,
+                           Situacao = f.Situacao,
+                           PessoaNome = p.Nome,
+                           PessoaUF = p.UF
+                       };
+            ViewData["profissional"] = list.ToList();
 
-            ViewData["_trabalhos"] = _trabalhos;
-            */
-            var profissional = await _context.Formacoes.Join(
+            /*
+            ViewData["profissional"] = _context.Formacoes.Join(
                 _context.Pessoas,
                 formacao => formacao.Id_pessoa,
                 pessoa => pessoa.Id,
-                (formacao, pessoa) => new
+                (formacao, pessoa) => new Profissional
                 {
                     Id = formacao.Id,
                     Nome = formacao.Nome,
-                    Descicao = formacao.Descricao,
+                    Descricao = formacao.Descricao,
                     Instituicao = formacao.Instituicao,
                     Inicio = formacao.Inicio,
                     Fim = formacao.Fim,
@@ -52,10 +49,12 @@ namespace Andor.Controllers
                     PessoaNome = pessoa.Nome,
                     PessoaUF = pessoa.UF
                 }
-            ).ToListAsync();
+                
+            ).ToList();
+            */
 
-          //  ViewData["formacoes"] = _context.Formacoes.OrderByDescending(x => x.Id).ToList(); // cria lista de formações
-            return View(profissional);
+            return View();
         }
     }
 }
+

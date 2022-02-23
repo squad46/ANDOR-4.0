@@ -1,11 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Profissionais";
-    var formacoes = ViewData["formacoes"] as List<Formacao>;
-    //var profissionais = ViewData["profissionais"] as List<Formacao>;
-    var pro = ViewData["profissionais"];
-    //var profissionais = pro as List<Profissional>;
-
+    var profissionais = ViewData["profissional"] as List<Profissional>;
+   
 }
+
 <div class="container-fluid pt-0 bg-light">
     <div class="container text-black-50 p-3">
         <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
@@ -51,23 +49,27 @@
             </div>
         </div>
         @{  // lista formaçoes se existir alguma.
-            if (formacoes.Count > 0)
+            if (profissionais.Count > 0)
             {
-                foreach (var formacao in formacoes)
+                foreach (var profissional in profissionais)
                 {
                     <div class="pt-3 px-3 mb-2 forms-details-full">
-                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="" asp-route-pessoaId="">@formacao.Nome</a></strong></h1>
+                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="" asp-route-pessoaId="">@profissional.Nome</a></strong></h1>
                         <dl class="row">
                             <dt class="col-3">Instituição</dt>
-                            <dd class="col-9">@formacao.Instituicao</dd>
+                            <dd class="col-9">@profissional.Instituicao</dd>
                             <dt class="col-3">Descrição</dt>
-                            <dd class="col-9">@formacao.Descricao</dd>
+                            <dd class="col-9">@profissional.Descricao</dd>
                             
                             <dt class="col-3">Início</dt>
-                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", formacao.Inicio)</dd>
+                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Inicio)</dd>
                             
                             <dt class="col-3">Fim</dt>
-                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", formacao.Fim)</dd>
+                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", profissional.Fim)</dd>
+                            <dt class="col-3">Nome</dt>
+                            <dd class="col-9">@profissional.PessoaNome</dd>
+                            <dt class="col-3">UF</dt>
+                            <dd class="col-9">@profissional.PessoaUF</dd>
                         </dl>
                     </div>
                 }

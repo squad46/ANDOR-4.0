@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Andor.Models;
 
 namespace Andor.Models
 {
@@ -28,8 +27,8 @@ namespace Andor.Models
             // conexao somee.com
             // optionsBuilder.UseSqlServer(connectionString: @"workstation id = DBANDOR.mssql.somee.com; packet size = 4096; user id = Ferretti_SQLLogin_1; pwd = khoi5d5m8w; data source = DBANDOR.mssql.somee.com; persist security info = False; initial catalog = DBANDOR");
 
-        }
 
-        public DbSet<Andor.Models.Profissional> Profissional { get; set; }
+
+        }
     }        
 }
