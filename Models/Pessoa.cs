@@ -13,7 +13,7 @@ namespace Andor.Models
         public string Nome { get; set; }
         [Required][Column(TypeName = "nvarchar(40)")]
         public string Email { get; set; }
-        [Required][Column(TypeName = "nvarchar(15)")]
+        [Required][Column(TypeName = "nvarchar(60)")]
         public string Senha { get; set; }
         [Column(TypeName = "nvarchar(13)")]
         public string Telefone { get; set; }

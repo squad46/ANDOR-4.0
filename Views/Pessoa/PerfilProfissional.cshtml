@@ -1,8 +1,13 @@
-﻿<div class="container-fluid pt-0 bg-light">
-    <div class="container">
+﻿@{
+    ViewData["title"] = "Perfil profissional";
+}
+<div class="container-fluid pt-0 bg-light">
+    <div class="container text-black-50">
         @{
-            var temAvatar = ViewData["temAvatar"];
-            var pessoas = ViewData["perfil"] as List<Pessoa>;
+            var temAvatar    = ViewData["temAvatar"];
+            var pessoas      = ViewData["perfil"] as List<Pessoa>;
+            var formacoes = ViewData["formacao"] as List<Formacao>;
+            var experiencias = ViewData["experiencia"] as List<Experiencia>;
             foreach (var pessoa in pessoas)
             {
                 <div class="row container-perfil-details p-2">
@@ -11,10 +16,10 @@
                             <img src="/Imagem/VerImagem/@pessoa.Id?tipo=perfil" alt="imagem do perfil"/>
                         }
                     </div>   
-                
-                    <div class="forms-details mt-2"><!-- coluna da direita -->
                     
-                        <h4 class="text-black-50 pt-3 ">@pessoa.Nome</h4>
+                    <div class="forms-details mt-2"><!-- coluna da direita -->
+                        
+                        <h4 class="pt-3 ">@pessoa.Nome</h4>
                         <hr />
                         <div class="row">
                             <div class="col col-md-3">
@@ -45,9 +50,65 @@
                                 <p>@String.Format("{0:dd/MM/yyyy}",pessoa.DataCadastro) &nbsp;</p>
                             </div>
                         </div>
+
+                        @if (formacoes.Count > 0)
+                        {
+                            <h4 class="mt-5">Formação profissional</h4>
+                        }
+                        
+                        @foreach (var formacao in formacoes)
+                        {
+                            <div class="row mt-3">
+                                <div class="col mx-3 border">
+                                    <div class="row">
+                                        <h2 class="title-details pt-3">@formacao.Nome</h2>
+                                    </div>
+                                    <dl class="row pt-3">
+                                        <dt class="col-4 text-black-50">Instituição</dt>
+                                        <dd class="col-8">@formacao.Instituicao</dd>
+                                        <dt class="col-4 text-black-50">Descrição</dt>
+                                        <dd class="col-8">@formacao.Descricao</dd>
+                                        <dt class="col-4 text-black-50">Início</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", formacao.Inicio)</dd>
+                                        <dt class="col-4 text-black-50">Término</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", formacao.Fim)</dd>
+                                        <dt class="col-4 text-black-50">Situação</dt>
+                                        <dd class="col-8">@formacao.Situacao</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        }
+
+                        @if (experiencias.Count > 0)
+                        {
+                            <h4 class="mt-5">Experiência profissional</h4>
+                        }
+                        
+                        @foreach (var experiencia in experiencias)
+                        {
+                            <div class="row mt-3">
+                                <div class="col mx-3 border">
+                                    <div class="row">
+                                        <h2 class="title-details pt-3">@experiencia.Nome</h2>
+                                    </div>
+                                    <dl class="row pt-3">
+                                        <dt class="col-4 text-black-50">Instituição</dt>
+                                        <dd class="col-8">@experiencia.Instituicao</dd>
+                                        <dt class="col-4 text-black-50">Cargo</dt>
+                                        <dd class="col-8">@experiencia.Cargo</dd>
+                                        <dt class="col-4 text-black-50">Descrição</dt>
+                                        <dd class="col-8">@experiencia.Descricao</dd>
+                                        <dt class="col-4 text-black-50">Início</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", experiencia.Inicio)</dd>
+                                        <dt class="col-4 text-black-50">Término</dt>
+                                        <dd class="col-8">@String.Format("{0:dd/MM/yyyy}", experiencia.Fim)</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        }
                     </div> 
                 </div>
-            }
+            }  
         }
     </div>
 </div>

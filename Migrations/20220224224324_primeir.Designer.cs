@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Andor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220216000803_primeira")]
-    partial class primeira
+    [Migration("20220224224324_primeir")]
+    partial class primeir
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -236,7 +236,7 @@ namespace Andor.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("nvarchar(15)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Sexo")
                         .HasColumnType("nvarchar(1)");
