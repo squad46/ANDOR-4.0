@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Andor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220224042407_primeir")]
+    [Migration("20220224224324_primeir")]
     partial class primeir
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
