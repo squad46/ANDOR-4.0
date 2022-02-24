@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Andor.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Andor.Controllers
 {
@@ -62,6 +64,12 @@ namespace Andor.Controllers
         {
             return View();
         }
+        
+        // converte a senha com hash sha-1
+        public static string GetHash(string input)
+        {
+            return string.Join("", (new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input))).Select(x => x.ToString("X2")).ToArray()).ToString();
+        }
 
         //  Pessoa/Create
         [HttpPost]
@@ -79,6 +87,8 @@ namespace Andor.Controllers
             IFormFile imagemEnviada = arquivos.FirstOrDefault();
             if (imagemEnviada != null && ModelState.IsValid) // verifica se os campos de email, senha e imagem foram preenchidos
             {
+
+                pessoa.Senha = GetHash(pessoa.Senha);
 
                 _context.Add(pessoa);
                 await _context.SaveChangesAsync();
@@ -234,7 +244,6 @@ namespace Andor.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             // deleta moradias anunciadas
-  
             var moradia = _context.Moradias.Where(p => p.Id_pessoa == id).ToList();
             foreach (var _moradia in moradia)
             {
@@ -264,7 +273,6 @@ namespace Andor.Controllers
                 await _context.SaveChangesAsync();
             }
 
-
             // deleta o perfil
             var pessoa = await _context.Pessoas.FindAsync(id);
             _context.Pessoas.Remove(pessoa);
@@ -279,7 +287,7 @@ namespace Andor.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet] // exibicao do perfil publico
         public IActionResult PerfilPublico(int id)
         {
             var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
@@ -292,6 +300,23 @@ namespace Andor.Controllers
             return NotFound();
            
         }
+        
+        [HttpGet] // exibicao do perfil profissional  
+        public IActionResult PerfilProfissional(int id)
+        {
+            var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
+            if (pessoa != null)
+            {
+                ViewData["temAvatar"]   = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil").Count();
+                ViewData["perfil"]      = pessoa;
+                ViewData["formacao"] = _context.Formacoes.Where(p => p.Id_pessoa == id).ToList(); // faz lista de formacao profissional 
+                ViewData["experiencia"] = _context.Experiencias.Where(p => p.Id_pessoa == id).ToList(); // faz lista com experiencia profissional 
+                return View(pessoa);
+            }
+            return NotFound();
+
+        }
+
 
         //---------------------------- inicio controles de formacao --------------------------------------------------------------------
         // GET: Formacao/Create

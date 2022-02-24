@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Andor.Controllers
 {
@@ -19,11 +23,18 @@ namespace Andor.Controllers
             return View();
         }
 
+        // converte a senha com hash sha-1
+        public static string GetHash(string input)
+        {
+            return string.Join("", (new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input))).Select(x => x.ToString("X2")).ToArray()).ToString();
+        }
+
         [HttpPost]
         public IActionResult Logar(string email, string senha)
         {
-            ViewData["email"] = email;
-            ViewData["password"] = senha;
+            senha = GetHash(senha); //hash sha-1
+            //ViewData["email"] = email;
+            //ViewData["password"] = senha;
             var verificaLogin = _context.Pessoas.Where(p => p.Email == email && p.Senha == senha).ToList();
 
             if (verificaLogin.Count == 1)
@@ -80,6 +91,10 @@ namespace Andor.Controllers
         [HttpPost]
         public IActionResult EditarSenha(int id, string senha, string nSenha, string rSenha)
         {
+            senha  = GetHash(senha);  // hash sha-1
+            nSenha = GetHash(nSenha); // hash sha-1
+            rSenha = GetHash(rSenha); // hash sha-1
+
             var pessoa = _context.Pessoas.Find(id);
             if (nSenha == rSenha)
             {
@@ -102,6 +117,32 @@ namespace Andor.Controllers
             }
             return View(pessoa);
         }
+
+        // view recuperar senha
+        public IActionResult RecuperarSenha() 
+        {
+            return View();
+        }
+
+        // manda email para recuperacao da senha
+        public IActionResult RedefinirSenha()
+        {
+
+            using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("squad46recode@gmail.com", "recodepro"),
+                EnableSsl = true
+            })
+            {
+                var destinatario = "eliferretti14@gmail.com";
+                var titulo       = "ANDOR - Redefineção de senha.";
+                var mensagem     = "mensagem para redefinição de senha.";
+
+                client.Send("squad46recode@gmail.com", destinatario, titulo, mensagem);
+            }
+            return View("Index");
+        }
+
 
         //---------------  Refêrencias -----------------
 

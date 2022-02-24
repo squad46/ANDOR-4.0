@@ -234,7 +234,7 @@ namespace Andor.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("nvarchar(15)");
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Sexo")
                         .HasColumnType("nvarchar(1)");

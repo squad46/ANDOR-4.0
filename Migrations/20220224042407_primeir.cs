@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Andor.Migrations
 {
-    public partial class primeira : Migration
+    public partial class primeir : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,7 @@ namespace Andor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(40)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(40)", nullable: false),
-                    Senha = table.Column<string>(type: "nvarchar(15)", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(60)", nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(13)", nullable: true),
                     CRNM = table.Column<string>(type: "nvarchar(15)", nullable: true),
                     CPF = table.Column<string>(type: "nvarchar(11)", nullable: true),

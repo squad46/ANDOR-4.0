@@ -54,7 +54,7 @@
                 foreach (var profissional in profissionais)
                 {
                     <div class="pt-3 px-3 mb-2 forms-details-full">
-                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@profissional.PessoaId">@profissional.Nome</a></strong></h1>
+                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Pessoa" asp-action="PerfilProfissional" asp-route-id="@profissional.PessoaId">@profissional.Nome</a></strong></h1>
                         <dl class="row">
                             <dt class="col-3">Instituição</dt>
                             <dd class="col-9">@profissional.Instituicao</dd>
