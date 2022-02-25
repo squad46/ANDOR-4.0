@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["title"] = "Redefinir senha";
+    var mensagem = ViewData["mensagem"];
+}
+<div  class="container-fluid pt-0 mb-5 pb-5 modal-dialog-scrollable bg-light justify-content-center">
+    <div  class="container ">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                <div class="border bg-white p-5 arredondar shadow">
+                    <form asp-controller="Login" asp-action="RedefinirSenha" method="post" class="mt-3">
+                        <h4 class="border-bottom">Redefinir senha</h4>
+                        <p class="text-justify">
+                            O código de segurança foi enviado para seu email e expira em 5 minutos. <br />
+                            Por favor verifique na pasta Spam caso não encontre na caixa de entrada.
+                        </p>
+                        <div class="">
+                            <div class="">
+                                <label class="control-label">Código de segurança</label>
+                                <input class="form-control" name="vChave" type="text" />
+                            </div>
+                            <div class="">
+                                <label class="control-label">Nova senha</label>
+                                <input class="form-control" name="nSenha" type="password" />
+                            </div>
+                            <div class="">
+                                <label class="control-label">Repetir senha</label>
+                                <input class="form-control" name="rSenha" type="password" />
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            @{
+                                if (mensagem != null)
+                                {
+                                    <span class="text-warning">@mensagem</span>
+                                    <br />
+                                }
+                            }
+                            
+                            <button class="btnn mt-3" >Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
