@@ -29,29 +29,20 @@ a {
     transition: 250ms;
 }
 
-/*footer {
-    background: #ffffff;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 30px;
-    z-index: 0;
-    border-top: 6px solid #f7687961;
-    font-size: 0.8rem;
-    font-weight: bold;
-    
-    width: 100%;
-    position: fixed;
-    margin-top: 95vh;
-    background: #fffffff2;
-    padding: 0.7rem;
-    border-top: 6px px solid #f7687961;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #333333a1;
-    margin-bottom: 0px;
-}*/
+li {
+    text-decoration: none;
+}
+
+ul {
+    text-decoration: none;
+}
+
+footer {
+    background: #000;
+    color: #fff;
+}
+
+/*
 textarea:focus, input:focus, select:focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
@@ -61,11 +52,10 @@ textarea:focus, input:focus, select:focus {
 li {
     list-style-type: none;
 }
-
+*/
 
 .container-fluid {
     padding-top: 70px;
-    /*position: fixed;*/
 }
 
 /* Menu do topo fixo */
