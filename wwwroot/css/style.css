@@ -630,6 +630,15 @@ footer {
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    min-width: 300px;
+}
+
+.card-simple {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    height: 100%;
 }
 
 .forms-details-full {
@@ -684,6 +693,7 @@ footer {
     align-items: center;
     flex-direction: column;
 }
+
 
 .forms-details-detalhes {
     flex: 0 0 55%;
