@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace Andor.Controllers
 {
@@ -21,7 +23,6 @@ namespace Andor.Controllers
         {
             _context = context;
         }
-
 
         // GET: Pessoa
         public async Task<IActionResult> Index()
@@ -119,38 +120,6 @@ namespace Andor.Controllers
                 return View("../Login/Index");
             }
         }
-
-
-        // modelo antigo -- este código será removido após testes da nova versão
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,Telefone,CPF,Endereco,Numero,CEP,Sexo,DataNascimento,Nacionalidade,DataCadastro")] Pessoa pessoa)
-        {
-            //verifica se email já foi cadastrado e retorna mensagem se sim
-            var verificaEmail = _context.Pessoas.Where(p => p.Email == pessoa.Email).ToList();
-            if (verificaEmail.Count > 0) 
-            {
-                ViewData["mensagem"]="Este email já foi cadastrado!";
-                return View();
-            }
-
-            if (ModelState.IsValid)
-            {
-
-                _context.Add(pessoa);
-                await _context.SaveChangesAsync();
-
-
-                ViewData["mensagem"] = "Usuário cadastrado com sucesso!";
-
-
-                return View();
-            }
-            return View(pessoa);
-        }
-        */
-
 
         // GET: Pessoa/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -290,6 +259,10 @@ namespace Andor.Controllers
         [HttpGet] // exibicao do perfil publico
         public IActionResult PerfilPublico(int id)
         {
+            if (Request.Cookies["Id"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
             if (pessoa != null) 
             {
@@ -304,6 +277,11 @@ namespace Andor.Controllers
         [HttpGet] // exibicao do perfil profissional  
         public IActionResult PerfilProfissional(int id)
         {
+            if (Request.Cookies["Id"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
             if (pessoa != null)
             {
@@ -317,11 +295,18 @@ namespace Andor.Controllers
 
         }
 
-
         //---------------------------- inicio controles de formacao --------------------------------------------------------------------
         // GET: Formacao/Create
         public IActionResult formacaoCreate(int? Id_pessoa)
         {
+
+            Pessoa pessoa = _context.Pessoas.Find(Id_pessoa);
+            var verificaCampos = pessoa.VerificaCadastroCompleto(pessoa);
+            if (verificaCampos != null)
+            {
+                TempData["verificaCampos"] = verificaCampos;
+                return RedirectToRoute(new { controller = "Pessoa", action = "Details", id = Id_pessoa });
+            }
             ViewData["Id_pessoa"] = Id_pessoa;
             return View();
         }
@@ -359,6 +344,13 @@ namespace Andor.Controllers
         // GET: Experiencia/Create
         public IActionResult experienciaCreate(int? Id_pessoa)
         {
+            Pessoa pessoa = _context.Pessoas.Find(Id_pessoa);
+            var verificaCampos = pessoa.VerificaCadastroCompleto(pessoa);
+            if (verificaCampos != null)
+            {
+                TempData["verificaCampos"] = verificaCampos;
+                return RedirectToRoute(new { controller = "Pessoa", action = "Details", id = Id_pessoa });
+            }
             ViewData["Id_pessoa"] = Id_pessoa;
             return View();
         }
@@ -395,6 +387,13 @@ namespace Andor.Controllers
         // GET: Trabalho/Create
         public IActionResult trabalhoCreate(int? Id_pessoa)
         {
+            Pessoa pessoa = _context.Pessoas.Find(Id_pessoa);
+            var verificaCampos = pessoa.VerificaCadastroCompleto(pessoa);
+            if (verificaCampos != null)
+            {
+                TempData["verificaCampos"] = verificaCampos;
+                return RedirectToRoute(new { controller = "Pessoa", action = "Details", id = Id_pessoa });
+            }
             ViewData["Id_pessoa"] = Id_pessoa;
             return View();
         }
@@ -421,55 +420,6 @@ namespace Andor.Controllers
             return Redirect("~/Pessoa/Details/" + idPessoa);
         }
         //------------------------ fim controles de trabalho --------------------------------------------------------------------------
-
-
-        //------------------------------- inicio controles de moradia -------------------------------------------------------------
-
-        // GET: Moradia/Create
-        /*
-        public IActionResult moradiaCreate(int? Id_pessoa)
-        {
-            ViewData["Id_pessoa"] = Id_pessoa;
-            return View();
-        }
-
-        // Adiciona moradia no perfil 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> moradiaCreate([Bind("Id,Id_pessoa,Name,Descricao,Tipo,Preco,Endereco,Numero,CEP,UF,Cidade,NomeContato,TelefoneContato,EmailContato,DataCadastro")] Moradia moradia)
-        {
-            var idPessoa = moradia.Id_pessoa;
-            _context.Add(moradia);
-            await _context.SaveChangesAsync();
-            return Redirect("~/Pessoa/Details/" + idPessoa);
-        }
-        */
-
-
-        /*
-       [HttpPost]// Exclui moradia e retorna para o perfil
-
-
-       public IActionResult deletarMoradia(Moradia moradia)
-       {
-           var moradiaDelete = _context.Moradias.Find(moradia.Id);
-           var imagemMoradia = _context.Imagens.Where(p => p.Id_tipo == moradia.Id && p.Tipo == "moradia").ToList();
-           var idPessoa = moradiaDelete.Id_pessoa;
-           _context.Remove(moradiaDelete);
-           _context.SaveChanges();
-
-           foreach (var imagem in imagemMoradia) // exclui imagens de moradia
-           {
-               _context.Imagens.Remove(imagem);
-               _context.SaveChanges();
-           }
-
-           return Redirect("~/Pessoa/Details/" + idPessoa);
-       }
-
-       */
-
-        // ------------------- fim moradia controles -----------------------
 
         private bool PessoaExists(int id)
         {
