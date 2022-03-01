@@ -38,6 +38,10 @@ namespace Andor.Controllers
         [HttpGet]
         public IActionResult Detalhes(int id, int pessoaId)
         {
+            if (Request.Cookies["Id"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var trabalho = _context.Trabalhos.Where(p => p.Id == id).ToList();
             var pessoa   = _context.Pessoas.Where(p => p.Id == pessoaId).ToList();
             ViewData["_trabalhos"] = trabalho;

@@ -1,6 +1,7 @@
 ﻿using Andor.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace Andor.Controllers
         [HttpGet] // detalhes de moradia
         public IActionResult Detalhes(int id, int pessoaId)
         {
+            if (Request.Cookies["Id"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var moradia = _context.Moradias.Where(p => p.Id == id).ToList();
             var pessoa  = _context.Pessoas.Where(p => p.Id == pessoaId).ToList();
             var imagens = _context.Imagens.Where(p => p.Id_tipo == id && p.Tipo == "moradia").ToList();
@@ -51,13 +57,21 @@ namespace Andor.Controllers
             return View();
         }
 
-        public IActionResult Novo(int? id)
+        public IActionResult Novo(int id)
         {
             if (Request.Cookies["Id"] == null) // 404 caso usuario não esteja logado
             {
                 return NotFound();
             }
-            
+            id = Int32.Parse(Request.Cookies["Id"]);
+            Pessoa pessoa = _context.Pessoas.Find(id);
+            var verificaCampos = pessoa.VerificaCadastroCompleto(pessoa);
+            if (verificaCampos != null)
+            {
+                TempData["verificaCampos"] = verificaCampos;
+                return RedirectToRoute(new { controller = "Pessoa", action = "Details", id = id });
+            }
+
             ViewData["Id_pessoa"] = Request.Cookies["Id"];
             return View();
         }

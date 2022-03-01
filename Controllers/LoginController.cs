@@ -23,7 +23,7 @@ namespace Andor.Controllers
             return View();
         }
 
-        // converte a senha com hash sha-1
+        // funcao converte a senha com hash sha-1
         public static string GetHash(string input)
         {
             return string.Join("", (new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input))).Select(x => x.ToString("X2")).ToArray()).ToString();
@@ -33,8 +33,7 @@ namespace Andor.Controllers
         public IActionResult Logar(string email, string senha)
         {
             senha = GetHash(senha); //hash sha-1
-            //ViewData["email"] = email;
-            //ViewData["password"] = senha;
+
             var verificaLogin = _context.Pessoas.Where(p => p.Email == email && p.Senha == senha).ToList();
 
             if (verificaLogin.Count == 1)
@@ -137,9 +136,10 @@ namespace Andor.Controllers
                 Random randNum = new Random();
                 var chave = randNum.Next(100000, 999999).ToString();
 
-                using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                //using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                using (SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587)
                 {
-                    Credentials = new NetworkCredential("squad46recode@gmail.com", "recodepro"),
+                    Credentials = new NetworkCredential("andor.refugiados@outlook.com", "Recodepro"),
                     EnableSsl = true
                 })
                 {
@@ -149,12 +149,11 @@ namespace Andor.Controllers
                                    "\n\nAtenciosamente, " +
                                    "\nEquipe ANDOR";
 
-                    client.Send("squad46recode@gmail.com", destinatario, titulo, mensagem);
+                    client.Send("andor.refugiados@outlook.com", destinatario, titulo, mensagem);
                 }
                 HttpContext.Session.SetString("destinatario", destinatario); // cria sessao com o email do usuario
                 HttpContext.Session.SetString("chave", chave); // cria sessao com o a chave enviada por email
             }
-            
             return View("FormRedefinirSenha");
         }
 

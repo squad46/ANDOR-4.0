@@ -19,15 +19,12 @@ namespace Andor.Models
             // conexao azure ferretti
             // optionsBuilder.UseSqlServer(connectionString: @"Data Source = andorserver.database.windows.net; Initial Catalog = BETE_DBANDOR; User ID = squad46; Password =#RecodePro;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
-
             // conexao azure bruna
-            optionsBuilder.UseSqlServer(connectionString: @"Data Source = dbandor.database.windows.net; Initial Catalog = DBANDOR; User ID = squad46; Password =#RecodePro;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             
+            optionsBuilder.UseSqlServer(connectionString: @"Data Source = dbandor.database.windows.net; Initial Catalog = DBANDOR; User ID = squad46; Password =#RecodePro;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");            
 
             // conexao somee.com
             // optionsBuilder.UseSqlServer(connectionString: @"workstation id = DBANDOR.mssql.somee.com; packet size = 4096; user id = Ferretti_SQLLogin_1; pwd = khoi5d5m8w; data source = DBANDOR.mssql.somee.com; persist security info = False; initial catalog = DBANDOR");
-
-
 
         }
     }        
