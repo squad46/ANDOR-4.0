@@ -344,12 +344,12 @@ footer {
 }
 
 .cards-infos-desc {
-    /*background: linear-gradient( 90deg, rgb(52 57 135) 0%, rgb(18 79 206) 100%);*/
     margin: 14px;
     border-radius: 10px;
-    /*height: 50%;*/
     padding: 1.3rem;
     border: 2px dotted #242164;
+    z-index: 900;
+    background: #08133361;
 }
 
     .cards-infos-desc a {
@@ -639,6 +639,12 @@ footer {
     border-radius: 15px;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
     height: 100%;
+}
+
+.text-long {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .forms-details-full {
