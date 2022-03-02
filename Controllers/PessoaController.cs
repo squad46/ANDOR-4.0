@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Collections;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace Andor.Controllers
 {
@@ -72,32 +73,68 @@ namespace Andor.Controllers
             return string.Join("", (new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input))).Select(x => x.ToString("X2")).ToArray()).ToString();
         }
 
-        //  Pessoa/Create
+        //  Pessoa/Create - cadastro novo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,DataCadastro")] Pessoa pessoa, IList<IFormFile> arquivos)
         {
-            //verifica se email já foi cadastrado e retorna mensagem se sim
-            var verificaEmail = _context.Pessoas.Where(p => p.Email == pessoa.Email).ToList();
-            if (verificaEmail.Count > 0)
+            //verifica se nome tem minimo de 3 digitos
+            if (pessoa.Nome == null || pessoa.Nome.Length < 3)
             {
-                ViewData["mensagem"] = "Este email já foi cadastrado!";
-                return View("../Login/Index");
+                ViewData["mensagem"] = "Nome deve ter no mínimo 3 dígitos.";
+                return View("../Pessoa/Create");
+            }
+            
+            // verifica se email é null
+            if (pessoa.Email == null)
+            {
+                ViewData["mensagem"] = "Por favor, informe seu email";
+                return View("../Pessoa/Create");
+            }
+            else if (new EmailAddressAttribute().IsValid(pessoa.Email) == false) // verifica se email é válido
+            {
+                ViewData["mensagem"] = "Por favor, informe um email válido.";
+                return View("../Pessoa/Create");
+            }
+            else 
+            {
+                //verifica se email já foi cadastrado e retorna mensagem se sim
+                var verificaEmail = _context.Pessoas.Where(p => p.Email == pessoa.Email).ToList();
+                if (verificaEmail.Count > 0)
+                {
+                    ViewData["mensagem"] = "Este email já foi cadastrado!";
+                    return View("../Login/Index");
+                }
+            }
+
+            // verifica se senha possui minimo de 6 digitos
+            if (pessoa.Senha == null || pessoa.Senha.Length < 6)
+            {
+                ViewData["mensagem"] = "Senha deve ter no mínimo 6 dígitos.";
+                return View("../Pessoa/Create");
             }
 
             IFormFile imagemEnviada = arquivos.FirstOrDefault();
             if (imagemEnviada != null && ModelState.IsValid) // verifica se os campos de email, senha e imagem foram preenchidos
             {
-
+                /*
                 pessoa.Senha = GetHash(pessoa.Senha);
 
                 _context.Add(pessoa);
                 await _context.SaveChangesAsync();
-
+                */
                 imagemEnviada.ContentType.ToLower().StartsWith("image/");
                 if (imagemEnviada.ContentType == "image/jpeg" || imagemEnviada.ContentType == "image/png") // confirma se o formato da imagem é png ou jpg para continuar
                 {
-                    MemoryStream ms = new MemoryStream(); // salva imagem do perfil
+                    // hash senha
+                    pessoa.Senha = GetHash(pessoa.Senha);
+
+                    // salva cad pessoa
+                    _context.Add(pessoa);
+                    await _context.SaveChangesAsync();
+                    
+                    // salva imagem do perfil
+                    MemoryStream ms = new MemoryStream(); 
                     imagemEnviada.OpenReadStream().CopyTo(ms);
                     Imagem imagemEntity = new Imagem()
                     {
@@ -110,14 +147,19 @@ namespace Andor.Controllers
                     _context.Imagens.Add(imagemEntity);
                     _context.SaveChanges();
                 }
+                else 
+                {
+                    ViewData["mensagem"] = "Selecione uma imagem válida.";
+                    return View("../Pessoa/Create");
+                }
 
                 ViewData["mensagem"] = "Usuário cadastrado com sucesso!";
-                return View();
+                return View("../Login/Index");
             }
             else
             {
                 ViewData["mensagem"] = "Todos os campos devem ser preenchidos.";
-                return View("../Login/Index");
+                return View("../Pessoa/Create");
             }
         }
 
