@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="">
-                        <dl class="row mt-3">
+                        <dl class="row my-3">
                             <dt class="col-4">@Html.DisplayNameFor(model => model.Nome)</dt>
                             <dd class="col-8">@Html.DisplayFor(model => model.Nome)</dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.Email)</dt>
@@ -56,25 +56,25 @@
                             */
                             } 
                             <dt class="col-4">@Html.DisplayNameFor(model => model.Telefone)</dt>
-                            <dd class="col-8">@Convert.ToInt64(Model.Telefone).ToString("(00) 00000-0000")</dd>
+                            <dd class="col-8">@if (Model.Telefone != null) { @Convert.ToInt64(Model.Telefone).ToString("(00) 00000-0000"); }</dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.CRNM)</dt>
                             <dd class="col-8">@Model.CRNM</dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.CPF)</dt>
-                            <dd class="col-8">@Convert.ToInt64(Model.CPF).ToString(@"000\.000\.000\-00")</dd>
+                            <dd class="col-8">@if (Model.CPF != null) { @Convert.ToInt64(Model.CPF).ToString(@"000\.000\.000\-00"); }</dd>
                             <dt class="col-4">Endereço</dt>
                             <dd class="col-8">@Html.DisplayFor(model => model.Endereco)</dd>
                             <dt class="col-4">Número</dt>
-                            <dd class="col-8">@Html.DisplayFor(model => model.Numero)</dd>
+                            <dd class="col-8">@if (Model.Numero != 0) { @Html.DisplayFor(model => model.Numero);  }</dd>
                             <dt class="col-4">Bairro</dt>
                             <dd class="col-8">@Html.DisplayFor(model => model.Bairro)</dd>
                             <dt class="col-4">UF</dt>
-                            <dd class="col-8">@Html.DisplayFor(model => model.UF)</dd>
+                            <dd class="col-8">@if(Model.UF != "-"){ @Html.DisplayFor(model => model.UF); }</dd>
                             <dt class="col-4">Cidade</dt>
                             <dd class="col-8">@Html.DisplayFor(model => model.Cidade)</dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.CEP)</dt>
-                            <dd class="col-8">@Model.CEP.ToString("#####-###")</dd>
+                            <dd class="col-8">@if (Model.CEP != 0) { @Model.CEP.ToString("#####-###"); }</dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.Sexo)</dt>
-                            <dd class="col-8">@Html.DisplayFor(model => model.Sexo)</dd>
+                            <dd class="col-8">@if (Model.Sexo != "-") { @Html.DisplayFor(model => model.Sexo); }</dd>
                             <dt class="col-4">Data de nascimento</dt>
                             <dd class="col-8">@String.Format("{0:dd/MM/yyyy}",Model.DataNascimento) </dd>
                             <dt class="col-4">@Html.DisplayNameFor(model => model.Nacionalidade)</dt>
