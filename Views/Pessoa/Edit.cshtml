@@ -5,75 +5,80 @@
     var mensagem = ViewData["mensagem"];
 }
 
-<div  class="container-fluid pt-0 mb-5 pb-5 modal-dialog-scrollable bg-light">
-    <div  class="container">
-        <div class="row justify-content-center pt-2"  style="padding-bottom:150px;">
+<div class="container-fluid pt-0 mb-5 pb-5 modal-dialog-scrollable bg-light">
+    <div class="container">
+        <div class="row justify-content-center pt-2" style="padding-bottom:150px;">
             <!-- coluna da esquerda -->
             <div class="perfil-menu mb-3 p-3">
                 @{
-                    <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem do perfil"/>
+                        <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem do perfil" />
                 }
             </div>
             <!-- Forms -->
-            <div class="forms-details bg-white text-black-50"> <!-- coluna da direita -->
-                <div id="perfil" >
+            <div class="forms-details bg-white text-black-50">
+                <!-- coluna da direita -->
+                <div id="perfil">
                     <h4 class="pt-3 border-bottom text-right">Editar / Completar cadastro</h4>
-            
-                    <form action="/Imagem/UploadImagem" enctype="multipart/form-data" method="post"> <!-- Adicionar imagem ao perfil -->
-                        <div >
+
+                    <form action="/Imagem/UploadImagem" enctype="multipart/form-data" method="post">
+                        <!-- Adicionar imagem ao perfil -->
+                        <div>
                             <label class="control-label">Avatar</label>
-                            <input class="form-control" type="file" name="arquivos" accept=".jpg, .jpeg, .png"/>
+                            <input class="form-control" type="file" name="arquivos" accept=".jpg, .jpeg, .png" />
                             <input type="hidden" asp-for="Id" name="id_pessoa" />
                         </div>
-                        <div class="text-right">             
+                        <div class="text-right">
                             <button class="btnn mt-3">Enviar Imagem</button>
                         </div>
                     </form>
-                    
-                    <form asp-action="Edit">
+
+                    <form asp-action="Edit" class="needs-validation" novalidate>
                         <input type="hidden" asp-for="Id" />
                         <div class="row">
                             <div class="col">
                                 <label asp-for="Nome" class="control-label"></label>
-                                <input asp-for="Nome" class="form-control" />
+                                <input asp-for="Nome" type="text" class="form-control" maxlength="40" required />
+                                <div class="invalid-feedback"> Seu nome deve ser informado. </div>
                             </div>
                             <div class="col-6">
                                 <label asp-for="Email" class="control-label"></label>
-                                <input asp-for="Email" class="form-control" />
+                                <input asp-for="Email" type="email" class="form-control" maxlength="40" required />
+                                <div class="invalid-feedback"> Seu e-mail deve ser informado. </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label asp-for="Senha" class="control-label"></label>
-                                <input type="hidden" asp-for="Senha" class="form-control" />
-                                <label class="form-control"><a asp-controller="Login" asp-action="EditarSenha" asp-route-id="@Model.Id" class="text-dark">Alterar senha</a></label>   
-                            </div>  
+                                <input type="hidden" asp-for="Senha" class="form-control" required />
+                                <label class="form-control"><a asp-controller="Login" asp-action="EditarSenha" asp-route-id="@Model.Id" class="text-dark">Alterar senha</a></label>
+                                <div class="invalid-feedback"> É necessário ter uma senha válida. </div>
+                            </div>
                             <div class="col-6">
                                 <label asp-for="Telefone" class="control-label"></label>
-                                <input asp-for="Telefone" class="form-control" />
+                                <input asp-for="Telefone" type="tel" class="form-control" maxlength="13" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             </div>
                             <div class="col-6">
                                 <label asp-for="CRNM" class="control-label"></label>
-                                <input asp-for="CRNM" class="form-control" />
+                                <input asp-for="CRNM" type="text" class="form-control" maxlength="15" />
                             </div>
                             <div class="col-6">
                                 <label asp-for="CPF" class="control-label"></label>
-                                <input asp-for="CPF" class="form-control" />
+                                <input asp-for="CPF" type="number" class="form-control" maxlength="11" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                 <span asp-validation-for="CPF" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <label class="control-label">Endereço</label>
-                                <input asp-for="Endereco" class="form-control" />
+                                <input asp-for="Endereco" type="text" class="form-control" maxlength="60" />
                             </div>
                             <div class="col-12">
                                 <label class="control-label">Bairro</label>
-                                <input asp-for="Bairro" class="form-control" />
+                                <input asp-for="Bairro" type="text" class="form-control" maxlength="20" />
                             </div>
                             <div class="col-12">
                                 <label class="control-label">UF</label>
-                      
+
                                 <select asp-for="UF" class="custom-select">
                                     <option selected>-</option>
                                     <option>AC</option>
@@ -108,15 +113,15 @@
                             </div>
                             <div class="col-12">
                                 <label class="control-label">Cidade</label>
-                                <input asp-for="Cidade" class="form-control" />
+                                <input asp-for="Cidade" type="text" class="form-control" maxlength="20" />
                             </div>
                             <div class="col-3">
                                 <label asp-for="Numero" class="control-label"></label>
-                                <input asp-for="Numero" class="form-control" />
+                                <input asp-for="Numero" type="number" class="form-control" required maxlength="5" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             </div>
                             <div class="col-9">
                                 <label asp-for="CEP" class="control-label"></label>
-                                <input asp-for="CEP" class="form-control" />
+                                <input asp-for="CEP" type="number" class="form-control" required maxlength="8" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                             </div>
                         </div>
                         <div class="row">
@@ -130,11 +135,11 @@
                             </div>
                             <div class="col">
                                 <label asp-for="Nacionalidade" class="control-label"></label>
-                                <input asp-for="Nacionalidade" class="form-control" />
+                                <input asp-for="Nacionalidade" type="text" class="form-control" maxlength="20" />
                             </div>
                             <div class="col">
                                 <label asp-for="DataNascimento" class="control-label"></label>
-                                <input asp-for="DataNascimento" class="form-control" />
+                                <input asp-for="DataNascimento" type="date" class="form-control" />
                             </div>
                         </div>
                         <div style="display:none;">
@@ -142,13 +147,34 @@
                             <input asp-for="DataCadastro" class="form-control" />
                         </div>
                         <div class="form-group d-flex mt-4 justify-content-end">
-                            
+
                             <input type="submit" value="Salvar" class="btnn btn-editar" style="width:auto" />
                             <a asp-controller="Pessoa" asp-action="Details" asp-route-id="@Model.Id" class="btnn btn-editar ml-3">Voltar</a>
                         </div>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // desativa comportamento padrão do html5 se houver campos inválidos.
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+        var forms = document.getElementsByClassName('needs-validation');
+        // Faz um loop neles e evita o envio caso não esteja validado
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>

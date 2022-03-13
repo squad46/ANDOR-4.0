@@ -77,10 +77,73 @@ namespace Andor.Controllers
         }
 
         [HttpPost] // Adiciona anuncio de moradia
+
         public IActionResult Novo([Bind("Id,Id_pessoa,Name,Descricao,Tipo,Preco,Endereco,Bairro,Numero,CEP,UF,Cidade,NomeContato,TelefoneContato,EmailContato,DataCadastro")] Moradia moradia,
             IList<IFormFile> img1, IList<IFormFile> img2, IList<IFormFile> img3, IList<IFormFile> img4)
         {
-      
+           /* Validação
+            * 
+            * if (moradia.Name == null || moradia.Name.Length < 5)
+            {
+                ViewData["mensagem"] = "O Título da Oferta deve ter no mínimo 5 caracteres.";
+                return View("../Moradia/Novo");
+            }
+            
+            if (moradia.Descricao == null || moradia.Name.Length < 10 || moradia.Name.Length > 200)
+            {
+                ViewData["mensagem"] = "A Descrição da oferta deve ter entre 10 e 200 caracteres.";
+                return View("../Moradia/Novo");
+            }
+            
+            if (moradia.Tipo == "-")
+            {
+                ViewData["mensagem"] = "Escolha uma das opções listadas.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.Endereco == null || moradia.Endereco.Length > 60)
+            {
+                ViewData["mensagem"] = "Deve conter até 60 caracteres.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.Bairro == null || moradia.Bairro.Length > 20)
+            {
+                ViewData["mensagem"] = "Deve conter até 20 caracteres.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.UF == null || moradia.UF.Length != 2)
+            {
+                ViewData["mensagem"] = "Deve conter 2 caracteres, referentes ao seu Estado.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.Cidade == null ||  moradia.Cidade.Length > 20)
+            {
+                ViewData["mensagem"] = "Deve conter até 20 caracteres.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.NomeContato == null || moradia.NomeContato.Length > 40)
+            {
+                ViewData["mensagem"] = "Deve conter até 40 caracteres.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.TelefoneContato == null || moradia.TelefoneContato.Length > 13)
+            {
+                ViewData["mensagem"] = "Deve conter até 13 caracteres.";
+                return View("../Moradia/Novo");
+            }
+
+            if (moradia.EmailContato == null || moradia.EmailContato.Length > 40)
+            {
+                ViewData["mensagem"] = "Deve conter até 40 caracteres.";
+                return View("../Moradia/Novo");
+            } */
+
+
             var idPessoa = moradia.Id_pessoa;
             IFormFile imagemEnviada = img1.FirstOrDefault();
             if (imagemEnviada != null)
