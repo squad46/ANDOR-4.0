@@ -5,7 +5,7 @@
 }
 <div class="container-fluid pt-0 bg-light">
     <div class="container text-black-50 p-3">
-        
+
         <div class="row justify-content-center">
             <!-- coluna da esquerda -->
             <!--
@@ -17,33 +17,39 @@
             <div class="col-11 bg-cards-1">
                 <h4 class="text-right">Experiência profissional</h4>
                 <hr />
-                <form asp-action="experienciaCreate">
+                <form asp-action="experienciaCreate" class="needs-validation" novalidate>
                     <div class="form-group" style="display:none">
                         <input type="text" value="@ViewData["Id_pessoa"]" asp-for="Id_pessoa" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Ramo</label>
-                        <input asp-for="Nome" class="form-control" />
+                        <label class="control-label">Ramo *</label>
+                        <input asp-for="Nome" class="form-control" required autofocus maxlength="40" />
+                        <div class="invalid-feedback"> Informe a área que trabalhava. </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Descrição</label>
-                        <input asp-for="Descricao" class="form-control" />
+                        <label class="control-label">Descrição *</label>
+                        <input asp-for="Descricao" class="form-control" required maxlength="200" />
+                        <div class="invalid-feedback"> Descreva brevemente o que fazia. </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Cargo" class="control-label"></label>
-                        <input asp-for="Cargo" class="form-control" />
+                        <label asp-for="Cargo" class="control-label"> Cargo *</label>
+                        <input asp-for="Cargo" class="form-control" required maxlength="20" />
+                        <div class="invalid-feedback"> Informe a função que exercia. </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Instituição</label>
-                        <input asp-for="Instituicao" class="form-control" />
+                        <label class="control-label">Instituição *</label>
+                        <input asp-for="Instituicao" class="form-control" required maxlength="20" />
+                        <div class="invalid-feedback"> Informe onde exercia essa função. </div>
                     </div>
                     <div class="form-group col-6">
-                        <label class="control-label">Início</label>
-                        <input asp-for="Inicio" class="form-control" />
+                        <label class="control-label">Início  *</label>
+                        <input asp-for="Inicio" type="date" class="form-control" required />
+                        <div class="invalid-feedback"> Informe a data de início. </div>
                     </div>
                     <div class="form-group col-6">
-                        <label class="control-label">Término</label>
-                        <input asp-for="Fim" class="form-control" />
+                        <label class="control-label">Término *</label>
+                        <input asp-for="Fim" type="date" class="form-control" required />
+                        <div class="invalid-feedback"> Informe a data de término. </div>
                     </div>
                     <div class="form-group d-flex mt-4 justify-content-end">
                         <hr />
@@ -53,9 +59,30 @@
                 </form>
             </div>
         </div>
-    <br />
-    <br />
-    <br />
-    <br />
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
 </div>
+
+<script>
+    // desativa comportamento padrão do html5 se houver campos inválidos.
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+        var forms = document.getElementsByClassName('needs-validation');
+        // Faz um loop neles e evita o envio caso não esteja validado
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>

@@ -107,12 +107,12 @@ namespace Andor.Controllers
                 }
                 else
                 {
-                    ViewData["mensagem"] = "Senha inválida!";
+                    ViewData["mensagem"] = "Senha atual inválida!";
                 }
             }
             else
             {
-                ViewData["mensagem"] = "Repita nova senha!";
+                ViewData["mensagem"] = "Senhas não conferem ou devem ter no mínimo 6 dígitos e ao menos 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais.";
             }
             return View(pessoa);
         }
@@ -177,7 +177,7 @@ namespace Andor.Controllers
             if (nSenha.Length < 6)
             {
                 MataSessao();
-                ViewData["mensagem"] = "Por favor digite uma senha com no mínimo 6 caracteres.";
+                ViewData["mensagem"] = "Por favor, digite uma senha com no mínimo 6 caracteres: 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais";
                 return View("FormRedefinirSenha");
             }
             
@@ -206,7 +206,7 @@ namespace Andor.Controllers
             else
             {
                 MataSessao();
-                ViewData["mensagem"] = "Repita nova senha!";
+                ViewData["mensagem"] = "As senhas devem ser iguais!";
                 return View("FormRedefinirSenha");
             }
  
