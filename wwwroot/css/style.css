@@ -1448,13 +1448,21 @@ footer {
     background-color: #f7f7f7;
     border-radius: 0.5rem;
     line-height: 1.5rem;
-} 
+}
 
 
 .ongs-parceiras-cards .card {
     margin-bottom: 1rem;
     border-radius: 15px;
+    height: 468px;
 }
+
+    .ongs-parceiras-cards .card .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
 .text-doação {
     font-weight: 400;
