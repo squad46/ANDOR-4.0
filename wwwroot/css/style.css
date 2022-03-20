@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap');
 
 :root {
     font-size: 14px;
@@ -531,32 +532,33 @@ footer {
     }
 
 /* Postagens - Feeds Únicos */
-.feed-unique {
+/*.feed-unique {
     background-color: #fff;
     border-radius: 15px;
     margin: 30px 10px 25px 10px;
     max-width: 600px;
-}
+}*/
 
 .avatar-profile {
-    margin-top: -40px;
+    margin-top: -30px;
+    position: absolute;
 }
 
     .avatar-profile img {
         border-radius: 50%;
-        border: 4px solid #fff;
+        border: 4px solid #081333;
         width: 65px;
         height: 65px;
         transition: all 0.3s ease-in-out;
-        object-fit:cover;
+        object-fit: cover;
     }
 
         .avatar-profile img:hover {
-            border: 4px solid #F76879;
+            border: 4px solid #081333;
             transition: all 0.2s ease-in-out;
         }
 
-.post-profile {
+/*.post-profile {
     position: relative;
     margin-top: 0px;
 }
@@ -571,15 +573,15 @@ footer {
             color: #1558E5;
             margin-left: 7px;
             font-weight: bold;
-        }
+        }*/
 
 .post-profile-cat {
     font-size: 0.7rem;
-    opacity: 0.5;
-    font-weight: bold;
+    opacity: 0.4;
+    color: #fff;
 }
 
-.description-profile {
+/*.description-profile {
     margin-top: 20px;
 }
 
@@ -594,14 +596,16 @@ footer {
     .description-profile a {
         font-size: 0.8rem;
         font-weight: bold;
-    }
+    }*/
 
 .edit-post {
     font-size: 0.6rem;
     font-weight: bold;
-    max-width: 60px;
     text-align: center;
     line-height: 0.7rem;
+    padding-left: 65%;
+    padding-top: 1rem;
+    position: relative;
 }
 
     .edit-post img {
@@ -725,31 +729,89 @@ footer {
     color: #666;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> d099eac36b5fc977a277698d1d6dc9b601011546
 /*Estilo da parte dos Feeds na Home - novo layout*/
-.card-feed {    
+.card-feed {
     border-radius: 15px;
-}
-<<<<<<< HEAD
-=======
-.text-right small { 
-    color: red;
+    position: relative;
+    line-height: 1.5rem;
 }
 
->>>>>>> 842c5a6aecbea2c52f7ce1eb71da2f71e87bb4f4
-=======
->>>>>>> d099eac36b5fc977a277698d1d6dc9b601011546
+    .card-feed p {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.7);
+        margin-bottom: 3rem;
+    }
+
+    .card-feed h2 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-feed h2 a{
+        color: #000;
+    }
+
+    .card-feed h3 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+        margin: 0px;
+    }
+
+    .card-feed a{
+        color: #fff;
+    }
+
+.card-btn {
+    position: absolute;
+    border-radius: 15px;
+    height: 40px;
+    width: 100%;
+    background: #E8E8E8;
+    bottom: 0;
+}
+
+    .card-btn a {
+        color: #333;
+    }
+
+    .card-btn:hover .card-btn-popup {
+        opacity: 1;
+        left: 15px;
+    }
+
+.card-btn-popup {
+    position: absolute;
+    border-radius: 15px;
+    height: 40px;
+    width: 100%;
+    background: #E8E8E8;
+    bottom: 0;
+    opacity: 0;
+    transition: ease-in-out 0.2s;
+}
+
+    .card-btn-popup img{
+        width: 25px;
+    }
+
+.card-icon {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
 .grad-blue {
     background: linear-gradient(180deg, #134FCE 0%, #1042AC 100%);
     mix-blend-mode: normal;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
-
 }
+
 .grad-green {
     background: linear-gradient(180deg, #24B200 0%, #124506 100%);
     mix-blend-mode: normal;
@@ -778,7 +840,7 @@ footer {
 
 
     @media screen and (max-width: 1100px) {
-        /*Feed*/
+        /*Feed
         .switch-field {
             flex-wrap: wrap;
         }
@@ -793,7 +855,7 @@ footer {
 
                 .switch-field label:last-of-type {
                     border-radius: 0px;
-                }
+                }*/
 
         .post-profile h4 span a {
             font-size: 0.5rem;
@@ -802,6 +864,13 @@ footer {
 
         .info-utels {
             min-width: 600px;
+        }
+
+        .col-5 {
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-left: 75px;
         }
     }
 
