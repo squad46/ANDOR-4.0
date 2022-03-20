@@ -119,34 +119,47 @@
     <div class="d-flex justify-content-center align-items-center flex-wrap">
 
         <!-- Novas Postagens-->
-        <div class="new-post p-3 d-flex flex-column  justify-content-center">
+        <div class="p-3 d-flex flex-column  justify-content-center">
 
+            <!-- Novas Postagens
             <h3>
                 <b>
                     "Escreva e compartilhe sobre assuntos que possa ajudar e contribuir
                     com sua comunidade, escolha uma categoria e comece!"
                 </b>
             </h3>
-
+        -->
             <!-- Radio de selecao da categoria da nova postagem -->
 
             <div class="switch-field px-3 py-0">
 
                 <input type="radio" id="radio-three" name="post-tema" value="yes" checked />
-                <label id="feed-moradias" for="radio-three"><img src="~/img/moradia-light.svg" width="20px" alt="postagens sobre moradias" srcset=""><br />Moradia</label>
+                <label id="feed-moradias" for="radio-three">
+                    <img src="~/img/moradia.svg" width="20px" alt="postagens sobre moradias" srcset="">
+                    Moradia
+                </label>
 
                 <input type="radio" id="radio-four" name="post-tema" value="maybe" />
-                <label id="feed-trabalhos" for="radio-four"><img src="~/img/empregos-light.svg" width="20px" alt="postagens sobre empregos" srcset=""><br />Emprego</label>
+                <label id="feed-trabalhos" for="radio-four">
+                    <img src="~/img/empregos.svg" width="20px" alt="postagens sobre empregos" srcset="">
+                    Emprego
+                </label>
 
                 <input type="radio" id="radio-five" name="post-tema" value="no" />
-                <label for="radio-five"><img src="~/img/info-uteis.svg" alt="postagens sobre  info úteis" srcset=""><br />Informações</label>
+                <label for="radio-five">
+                    <img src="~/img/info uteis.svg" alt="postagens sobre  info úteis" srcset="">
+                    Informações
+                </label>
 
                 <input type="radio" id="radio-six" name="post-tema" value="no" />
-                <label for="radio-six"><img src="~/img/ongs-parceiras.svg" alt="postagens sobre ongs" srcset=""><br />Ongs</label>
+                <label for="radio-six">
+                    <img src="~/img/ongs parceiras.svg" alt="postagens sobre ongs" srcset="">
+                    Ongs
+                </label>
 
             </div>
 
-            <!-- Botao e input de enviar nova postagem com ou sem imagem-->
+            <!-- Botao e input de enviar nova postagem com ou sem imagem
             <div class="d-flex flex-fill">
                 <input type="text" class="d-flex flex-fill" placeholder="Descreva Aqui!"
                        aria-label="Descreva Aqui!" aria-describedby="button-addon4">
@@ -156,14 +169,46 @@
                     <button type="submit"><img src="~/img/arrow-3.svg" width="15px" alt=""></button>
                 </div>
             </div>
+        -->
 
         </div>
+
         <!-- Postagem Única 1-->
 
+        <div class="row w-100">
+
+            <div class="col-sm-6 p-3">
+                <div class="card-feed grad-blue text-center">
+                    <div class="avatar-profile">
+                        <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="">
+                            <img src="~/img/avatar-profile-1.png" alt="imagem do perfil" />
+                        </a>
+                    </div>
+                    <img src="~/img/empregos.svg" width="78px" class="opacity-25 m-2" alt="postagens sobre empregos" srcset="">
+                    <div class="card-feed bg-light shadow">
+                        <h1>Empregos</h1>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-3">                
+                <div class="card-feed grad-green text-center">
+                    <img src="~/img/moradia.svg" width="64px" class="opacity-25 m-2" alt="postagens sobre moradias" srcset="">
+                    <div class="card-feed bg-light shadow">
+                        <h1>Moradia</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--
         <div id="trabalhos">
             @{
                 // Faz a lista oportunidade de trabalho se existir alguma.
-                if (trabalhos.Count > 0)
+            /*    if (trabalhos.Count > 0)
                 {
                     foreach (var trabalho in trabalhos)
                     {
@@ -205,12 +250,13 @@
                         </article>
 
                     }
-                }
+                }*/
             }
         </div>
+
         <div id="moradias" class="posts">
             @{ // Faz a lista moradias se existir alguma.
-                if (moradias.Count > 0)
+              /*  if (moradias.Count > 0)
                 {
                     foreach (var moradia in moradias)
                     {
@@ -249,9 +295,10 @@
                         </article>
 
                     }
-                }
+                }*/
             }
         </div>
+    -->
 
         <div id="pai"></div>
     </div>
