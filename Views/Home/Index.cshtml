@@ -173,129 +173,286 @@
 
         </div>
 
-        <!-- Postagem Única 1-->
+        <!-- Postagem Única 1-->     
 
         <div class="row w-100">
 
-            <div class="col-sm-6 p-3">
-                <div class="card-feed grad-blue text-center">
-                    
-                    <img src="~/img/empregos.svg" width="78px" class="opacity-25 m-2" alt="postagens sobre empregos" srcset="">
-                    <div class="card-feed bg-light shadow">
-                        <h1>Empregos</h1>
-                        <p></p>
-                    </div>
-                </div>
+            <!--Feeds dos Empregos-->
+            <div class="col-sm-6 p-3" id="trabalhos">
+                @{
+                    // Faz a lista oportunidade de trabalho se existir alguma.
+                    if (trabalhos.Count > 0)
+                    {
+                        foreach (var trabalho in trabalhos)
+                        {
+
+                            <div class="card-feed grad-blue mb-5 text-center">
+                                <!-- Avatar -->
+                                <div class="avatar-profile w-100 d-flex justify-content-center">
+                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
+                                        <img src="~/Imagem/VerImagem/@trabalho.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                    </a>
+                                </div>
+
+                                <!-- boato ver detalhes do post -->
+                                <div class="edit-post w-100 d-flex flex-column align-items-center">
+                                    <img src="~/img/points-edit.svg" class="opacity-50" alt="editar postagem" width="15px">
+                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Detalhes</a>
+                                </div>
+
+                                <!-- Nome profile e data post -->
+                                <div class="d-flex text-left pl-3 flex-column">
+                                    <h3><a href="">@trabalho.NomeContato</a></h3>
+                                    <div class="post-profile-cat">
+                                        <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro) - Oferta de Emprego</span>
+                                    </div>
+                                </div>
+
+                                <!-- icon post -->
+                                <img src="~/img/empregos.svg" width="78px" class="opacity-25 card-icon" alt="postagens sobre empregos" srcset="">
+
+                                <!-- titulo e descricao do post -->
+                                <div class="card-feed bg-light shadow p-4 text-left">
+                                    <h2><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">@trabalho.Nome - @trabalho.Instituicao</a></h2>
+                                    <p>
+                                        @trabalho.Atividade
+                                    </p>
+                                </div>
+
+                                <!--Botao Compartilhar-->
+                                <div class="card-btn d-flex justify-content-center align-items-center">
+
+                                    <a href="#">
+                                        <img src="~/img/icon-compartilhar-1.svg" class="opacity-50" alt="compartilhar no Whatsapp" width="15px">
+                                        <b>Compartilhar</b>
+                                    </a>
+
+                                    <div class="card-btn-popup d-flex px-5 justify-content-center align-items-center row">
+
+                                        <div class="col-3">
+                                            <a href=""><img src="~/img/icon-whatsapp.svg" class="opacity-50" alt="compartilhar no Whatsapp"></a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-facebook.svg" class="opacity-50" alt="compartilhar no Facebook">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-twitter.svg" class="opacity-50" alt="compartilhar no Twitter">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-email.svg" class="opacity-50" alt="compartilhar por E-mail">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        }
+                    }
+                }
             </div>
 
-            <div class="col-sm-6 p-3">                
-                <div class="card-feed grad-green text-center">
-                    <img src="~/img/moradia.svg" width="64px" class="opacity-25 m-2" alt="postagens sobre moradias" srcset="">
-                    <div class="card-feed bg-light shadow">
-                        <h1>Moradia</h1>
-                    </div>
-                </div>
+            <!--Feeds da Moradia-->
+
+            <div class="col-sm-6 p-3" id="moradias">
+                @{ // Faz a lista moradias se existir alguma.
+                    if (moradias.Count > 0)
+                    {
+                        foreach (var moradia in moradias)
+                        {
+                            <div class="card-feed  mb-5 grad-green text-center">
+                                <!-- Avatar -->
+                                <div class="avatar-profile w-100 d-flex justify-content-center">
+                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
+                                        <img src="~/Imagem/VerImagem/@moradia.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                    </a>
+                                </div>
+
+                                <!-- boato ver detalhes do post -->
+                                <div class="edit-post w-100 d-flex flex-column align-items-center">
+                                    <img src="~/img/points-edit.svg" class="opacity-50" alt="editar postagem" width="15px">
+                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Detalhes</a>
+                                </div>
+
+                                <!-- Nome profile e data post -->
+                                <div class="d-flex text-left pl-3 flex-column">
+                                    <h3><a href="">@moradia.NomeContato</a></h3>
+                                    <div class="post-profile-cat">
+                                        <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro) - Oferta de Emprego</span>
+                                    </div>
+                                </div>
+
+                                <!-- icon post -->
+                                <img src="~/img/moradia.svg" width="78px" class="opacity-25 card-icon" alt="postagem sobre moradias" srcset="">
+
+                                <!-- titulo e descricao do post -->
+                                <div class="card-feed bg-light shadow p-4 text-left">
+                                    <h2>
+                                        <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">
+                                            @moradia.Name - R$ @moradia.Preco.ToString("#,###,###.00")
+                                        </a>
+                                    </h2>
+                                    <p>
+                                        @moradia.Descricao
+                                    </p>
+                                </div>
+
+                                <!--Botao Compartilhar-->
+                                <div class="card-btn d-flex justify-content-center align-items-center">
+
+                                    <a href="#">
+                                        <img src="~/img/icon-compartilhar-1.svg" class="opacity-50" alt="compartilhar no Whatsapp" width="15px">
+                                        <b>Compartilhar</b>
+                                    </a>
+
+                                    <div class="card-btn-popup d-flex px-5 justify-content-center align-items-center row">
+
+                                        <div class="col-3">
+                                            <a href=""><img src="~/img/icon-whatsapp.svg" class="opacity-50" alt="compartilhar no Whatsapp"></a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-facebook.svg" class="opacity-50" alt="compartilhar no Facebook">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-twitter.svg" class="opacity-50" alt="compartilhar no Twitter">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <a href="">
+                                                <img src="~/img/icon-email.svg" class="opacity-50" alt="compartilhar por E-mail">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        }
+                    }
+                }
+
+            </div>
+                
+
             </div>
 
-        </div>
 
 
-        <!--
+            <!--
         <div id="trabalhos">
             @{
                 // Faz a lista oportunidade de trabalho se existir alguma.
-            /*    if (trabalhos.Count > 0)
-                {
-                    foreach (var trabalho in trabalhos)
+                /*    if (trabalhos.Count > 0)
                     {
+                        foreach (var trabalho in trabalhos)
+                        {
 
-                        <article class="feed-unique p-3 d-flex flex-column">
+                            <article class="feed-unique p-3 d-flex flex-column">
 
-                            <div class="post-profile d-flex flex-fill justify-content-between">
-                                <div class="avatar-profile">
-                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
-                                        <img src="/Imagem/VerImagem/@trabalho.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
-                                    </a>
+                                <div class="post-profile d-flex flex-fill justify-content-between">
+                                    <div class="avatar-profile">
+                                        <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
+                                            <img src="/Imagem/VerImagem/@trabalho.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                        </a>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h4><a href="">@trabalho.NomeContato</a></h4>
+                                        <div class="post-profile-cat">
+                                            <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</span><br />
+                                            <span>Oferta de Emprego</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="edit-post d-flex flex-column align-items-center">
+                                        <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
+                                        <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Ver detalhes</a>
+                                    </div>
+
                                 </div>
-                                <div class="d-flex flex-column">
-                                    <h4><a href="">@trabalho.NomeContato</a></h4>
-                                    <div class="post-profile-cat">
-                                        <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</span><br />
-                                        <span>Oferta de Emprego</span>
+
+                                <div class="description-profile">
+                                    <h3>@trabalho.Nome</h3>
+                                    <p>
+                                        @trabalho.Atividade
+                                    </p>
+
+                                    <div class="post-img d-flex flex-fill mb-3 align-items-center">
+                                        <img src="~/img/post-imag-1.jpg" width="100%" alt="">
+                                    </div>
+                                    <div class="d-flex justify-content-evenly">
+                                        <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
+                                        <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
                                     </div>
                                 </div>
-                                <div class="edit-post d-flex flex-column align-items-center">
-                                    <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
-                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Ver detalhes</a>
-                                </div>
-                            </div>
-                            <div class="description-profile">
-                                <h3>@trabalho.Nome</h3>
-                                <p>
-                                    @trabalho.Atividade
-                                </p>
+                            </article>
 
-                                <div class="post-img d-flex flex-fill mb-3 align-items-center">
-                                    <img src="~/img/post-imag-1.jpg" width="100%" alt="">
-                                </div>
-                                <div class="d-flex justify-content-evenly">
-                                    <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
-                                    <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
-                                </div>
-                            </div>
-                        </article>
-
-                    }
-                }*/
+                        }
+                    }*/
             }
         </div>
 
         <div id="moradias" class="posts">
             @{ // Faz a lista moradias se existir alguma.
-              /*  if (moradias.Count > 0)
-                {
-                    foreach (var moradia in moradias)
-                    {
-                        <article class="feed-unique p-3 d-flex flex-column">
+                /*  if (moradias.Count > 0)
+                  {
+                      foreach (var moradia in moradias)
+                      {
+                          <article class="feed-unique p-3 d-flex flex-column">
 
-                            <div class="post-profile d-flex flex-fill justify-content-between">
-                                <div class="avatar-profile">
-                                    <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
-                                        <img src="/Imagem/VerImagem/@moradia.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
-                                    </a>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h4><a href="">@moradia.NomeContato</a></h4>
-                                    <div class="post-profile-cat">
-                                        <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro)</span><br />
-                                        <span>Oferta de Moradia</span>
-                                    </div>
-                                </div>
-                                <div class="edit-post d-flex flex-column align-items-center">
-                                    <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
-                                    <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Ver detalhes</a>
-                                </div>
-                            </div>
-                            <div class="description-profile">
-                                <h3>@moradia.Name</h3>
-                                <p>@moradia.Descricao</p>
+                              <div class="post-profile d-flex flex-fill justify-content-between">
+                                  <div class="avatar-profile">
+                                      <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
+                                          <img src="/Imagem/VerImagem/@moradia.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
+                                      </a>
+                                  </div>
+                                  <div class="d-flex flex-column">
+                                      <h4><a href="">@moradia.NomeContato</a></h4>
+                                      <div class="post-profile-cat">
+                                          <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro)</span><br />
+                                          <span>Oferta de Moradia</span>
+                                      </div>
+                                  </div>
+                                  <div class="edit-post d-flex flex-column align-items-center">
+                                      <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
+                                      <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Ver detalhes</a>
+                                  </div>
+                              </div>
+                              <div class="description-profile">
+                                  <h3>@moradia.Name</h3>
+                                  <p>@moradia.Descricao</p>
 
-                                <div class="post-img d-flex flex-fill mb-3 align-items-center">
-                                    <img src="~/img/moradia.jpg" width="100%" alt="">
-                                </div>
-                                <div class="d-flex justify-content-evenly">
-                                    <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
-                                    <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
-                                </div>
-                            </div>
-                        </article>
+                                  <div class="post-img d-flex flex-fill mb-3 align-items-center">
+                                      <img src="~/img/moradia.jpg" width="100%" alt="">
+                                  </div>
+                                  <div class="d-flex justify-content-evenly">
+                                      <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
+                                      <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
+                                  </div>
+                              </div>
+                          </article>
 
-                    }
-                }*/
+                      }
+                  }*/
             }
         </div>
     -->
 
-        <div id="pai"></div>
-    </div>
+            <div id="pai"></div>
+        </div>
 </section>
