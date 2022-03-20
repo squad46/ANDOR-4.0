@@ -36,7 +36,6 @@
   <ItemGroup>
     <Folder Include="Views\Andor\" />
     <Folder Include="Views\Feed\" />
-    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Emergencia\" />
     <Folder Include="Views\Ong\" />
     <Folder Include="Views\Contato\" />
