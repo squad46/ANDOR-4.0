@@ -1,27 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Contato";
+    var mensagem = TempData["mensagem"];
 }
 <div class="container-fluid pt-0">
     <div class="container mt-3">
         <div class="forms-details-full bg-white text-black-50">
-
+            @if (mensagem != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>@mensagem</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
             <h2 class="pt-3 border-bottom">Contato</h2>
 
-            <form class="needs-validation" novalidate>
+            <form asp-controller="Contato" asp-action="Contato" class="needs-validation" novalidate>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"></label>
-                        <input type="text" class="form-control" id="validationTooltip01" placeholder="Nome" required maxlength="15" autofocus>
+                        <input type="text" name="nome" class="form-control" id="validationTooltip01" placeholder="Nome" required maxlength="15" autofocus>
                          <div class="invalid-feedback">Informe seu nome. </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip02"></label>
-                        <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" required maxlength="20">
+                        <input type="text" name="sobrenome" class="form-control" id="validationTooltip02" placeholder="Sobrenome" required maxlength="20">
                         <div class="invalid-feedback">Informe seu sobrenome. </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip03"></label>
-                        <input type="tel" class="form-control" id="validationTooltip03" placeholder="Whatsapp" required maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}">
+                        <input type="tel" name="telefone" class="form-control" id="validationTooltip03" placeholder="Whatsapp" required maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}">
                         <div class="invalid-feedback">Informe seu Whatsapp, no padrão (XX) 99999-9999 </div>
                     </div>
                 </div>
@@ -29,12 +38,12 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="validationTooltip04"></label>
-                        <input type="email" class="form-control" id="validationTooltip04" placeholder="E-mail" required>
+                        <input type="email" name="email" class="form-control" id="validationTooltip04" placeholder="E-mail" required>
                         <div class="invalid-feedback">Informe seu e-mail. </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputState"></label>
-                        <select id="inputState" class="form-control" required>
+                        <select id="inputState" name="sobre" class="form-control" required>
                             <option selected disabled value="">Dúvida sobre...</option>
                             <option>Postagem</option>
                             <option>Notícia</option>
@@ -49,7 +58,7 @@
 
                 <div class="mb-3">
                     <label for="validationTextarea"></label>
-                    <textarea class="form-control" id="validationTextarea" placeholder="Descreva aqui sua Dúvida" required maxlength="600"></textarea>
+                    <textarea name="duvida" class="form-control" id="validationTextarea" placeholder="Descreva aqui sua Dúvida" required maxlength="600"></textarea>
                     <div class="invalid-feedback"> Deve conter até 600 caracteres. </div>
                 </div>
 
