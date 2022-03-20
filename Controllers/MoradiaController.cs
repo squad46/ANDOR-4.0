@@ -77,30 +77,41 @@ namespace Andor.Controllers
         }
 
         [HttpPost] // Adiciona anuncio de moradia
+
         public IActionResult Novo([Bind("Id,Id_pessoa,Name,Descricao,Tipo,Preco,Endereco,Bairro,Numero,CEP,UF,Cidade,NomeContato,TelefoneContato,EmailContato,DataCadastro")] Moradia moradia,
             IList<IFormFile> img1, IList<IFormFile> img2, IList<IFormFile> img3, IList<IFormFile> img4)
         {
-      
-            var idPessoa = moradia.Id_pessoa;
-            IFormFile imagemEnviada = img1.FirstOrDefault();
-            if (imagemEnviada != null)
-            {
-                _context.Add(moradia);
-                _context.SaveChanges();
-            }
-            else
-            {
-                var msg = "Imagem de capa deve ser escolhida";
-                ViewData["Id_pessoa"] = Request.Cookies["id"];
-                ViewBag.mensagem = msg;
-                return View();
-            }
-            SalvaImagens(img1, moradia.Id);
-            SalvaImagens(img2, moradia.Id);
-            SalvaImagens(img3, moradia.Id);
-            SalvaImagens(img4, moradia.Id);
 
-            return Redirect("~/Pessoa/Details/" + Request.Cookies["id"]);
+            if (ModelState.IsValid)
+            {
+                var idPessoa = moradia.Id_pessoa;
+                IFormFile imagemEnviada = img1.FirstOrDefault();
+                if (imagemEnviada != null)
+                {
+                    _context.Add(moradia);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    var msg = "Imagem de capa deve ser escolhida";
+                    ViewData["Id_pessoa"] = Request.Cookies["id"];
+                    TempData["mensagem"] = msg;
+                    return View();
+                }
+                SalvaImagens(img1, moradia.Id);
+                SalvaImagens(img2, moradia.Id);
+                SalvaImagens(img3, moradia.Id);
+                SalvaImagens(img4, moradia.Id);
+
+                return Redirect("~/Pessoa/Details/" + Request.Cookies["id"]);
+
+            }
+            else 
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Moradia", action = "Novo", Id_pessoa = moradia.Id_pessoa });
+            }
+            
         }
 
         public void SalvaImagens(IList<IFormFile> img, int moradia) // Salva imagens

@@ -1,80 +1,82 @@
 ﻿@model Andor.Models.Pessoa
-@{ 
-    ViewData["Title"]= ViewData["usuario"];
+@{
+    ViewData["Title"] = ViewData["usuario"];
 }
 
-    <!--Inicio Aréa Login-->    
- 
-        <div class="container-fluid pt-0 bg-light">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center align-self-center py-5">
-                    <div class="section pb-5 pt-5 pt-sm-2 text-center login">
-                        <span class="mb-0 pb-3 Login">Login </span>
-                        <span class="mb-0 pb-3 Cadastro">Cadastrar</span>
-                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-                            <label for="reg-log" ></label>
-                        <div class="card-3d-wrap mx-auto">
-                            <div class="card-3d-wrapper">
-                                <div class="card-front">
-                                    <div class="center-wrap">
-                                        <div class="section text-center">
-                                            <form asp-controller="Login" asp-action="Logar" method="post">
-                                                <h4 class="mb-4 pb-3">Login</h4>
-                                                <div class="form-group">
-                                                    <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                    @{
-                                                        if (ViewData["mensagem"] != null)
-                                                        {  
-                                                            <span class="text-warning">@ViewData["mensagem"]</span>
-                                                        }
-                                                    }
-                                                <div class="form-group">
-                                                    <input type="submit" value="Entrar" class="btn mt-4"/>
-                                                </div>
-                                                <p class="mb-0 mt-4 text-center"><a asp-controller="Login" asp-action="RecuperarSenha" class="link">Esqueceu sua senha?</a></p>
-                                            </form>
+<!--Inicio Aréa Login/Cadastro-->
+<!-- Login -->
+<div class="container-fluid pt-0 bg-light">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center login">
+                <span class="mb-0 pb-3 Login">Login </span>
+                <span class="mb-0 pb-3 Cadastro">Cadastrar</span>
+                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                <label for="reg-log"></label>
+                <div class="card-3d-wrap mx-auto">
+                    <div class="card-3d-wrapper">
+                        <div class="card-front">
+                            <div class="center-wrap">
+                                <div class="section text-center">
+                                    <form asp-controller="Login" asp-action="Logar" method="post" class="needs-validation" novalidate>
+                                        <h4 class="mb-4 pb-3">Login</h4>
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off" required autofocus>
+                                            <i class="input-icon uil uil-at"></i>
+                                            <div class="invalid-feedback">Informe seu e-mail cadastrado. </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off" required>
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                            <div class="invalid-feedback">Informe sua senha. </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Entrar" class="btn mt-4" />
+                                        </div>
+                                        <p class="mb-0 mt-4 text-center"><a asp-controller="Login" asp-action="RecuperarSenha" class="link">Esqueceu sua senha?</a></p>
+                                    </form>
                                 </div>
-                                <div class="card-back">
-                                    <div class="center-wrap">
-                                        <div class="section text-center">
-                                            <h4 class="mb-4 pb-3">Cadastro</h4>
-                                            <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <input asp-for="Nome" class="form-style" placeholder="Seu Nome completo" id="logname" autocomplete="off">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    <input type="email" asp-for="Email" class="form-style" placeholder="Seu E-mail" id="logemail" autocomplete="off">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    <input type="password" asp-for="Senha" class="form-style" placeholder="Sua senha" id="logpass" autocomplete="off">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                <div class="form-group mt-2">
-                                                    <label class="form-style text-left" for='logavatar'>Selecionar uma foto para o perfil</label>
-                                                    <input type="file" class="form-style" placeholder="Avatar" id="logavatar" name="arquivos" autocomplete="off" style="display:none;">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>
-                                                <div class="form-group" style="display:none;">
-                                                    @{DateTime thisDay = DateTime.Today;}
-                                                    <label asp-for="DataCadastro" class="control-label"></label>
-                                                    <input type="datetime" value="@{@thisDay.Date.ToString();}" asp-for="DataCadastro" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="submit" value="Cadastrar" class="btn mt-4" />
-                                                </div>
-                                            </form>
+                            </div>
+                        </div>
+
+                        <!-- Cadastro -->
+                        <div class="card-back">
+                            <div class="center-wrap">
+                                <div class="section text-center">
+                                    <h4 class="mb-4 pb-3">Cadastro</h4>
+                                    <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                        <div class="form-group">
+                                            <input asp-for="Nome" class="form-style" placeholder="Seu Nome completo" id="logname" autocomplete="off" required minlength="3" maxlength="40" autofocus>
+                                            <i class="input-icon uil uil-user"></i>
+                                            <div class="invalid-feedback">Deve conter no mínimo 3 caracteres. </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group mt-2">
+                                            <input type="email" asp-for="Email" class="form-style" placeholder="Seu E-mail" id="logemail" autocomplete="off" required>
+                                            <i class="input-icon uil uil-at"></i>
+                                            <div class="invalid-feedback"> Informe seu e-mail. </div>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" asp-for="Senha" class="form-style" placeholder="Sua senha" id="logpass" autocomplete="off" required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                            <div class="invalid-feedback">Deve ter no mínimo 6 dígitos e ao menos 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais.  </div>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label class="form-style text-left" for='logavatar'>Selecionar uma foto para o perfil</label>
+                                            <input type="file" class="form-style" placeholder="Avatar" id="logavatar" name="arquivos" autocomplete="off" style="display:none;" required>
+                                            <i class="input-icon uil uil-at"></i>
+                                            <div class="invalid-feedback">Adicione uma foto para seu perfil. </div>
+                                        </div>
+                                        <div class="form-group" style="display:none;">
+                                            @{
+                                                DateTime thisDay = DateTime.Today;
+                                            }
+                                            <label asp-for="DataCadastro" class="control-label"></label>
+                                            <input type="datetime" value="@{@thisDay.Date.ToString()}" asp-for="DataCadastro" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Cadastrar" class="btn mt-4" />
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -82,4 +84,27 @@
                 </div>
             </div>
         </div>
-    <!--Fim Aréa Login-->
+    </div>
+</div>
+<!--Fim Aréa Login-->
+
+<script>
+    // desativa comportamento padrão do html5 se houver campos inválidos.
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+        var forms = document.getElementsByClassName('needs-validation');
+        // Faz um loop neles e evita o envio caso não esteja validado
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>

@@ -725,6 +725,7 @@ footer {
     color: #666;
 }
 
+
 /*Estilo da parte dos Feeds na Home - novo layout*/
 .card-feed {    
     border-radius: 15px;
@@ -740,6 +741,11 @@ footer {
     background: linear-gradient(180deg, #24B200 0%, #124506 100%);
     mix-blend-mode: normal;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+}
+/*-----------------------------------------------*/
+
+.text-right small { 
+    color: red;
 }
 
 
@@ -1103,7 +1109,7 @@ footer {
 
 .card-front, .card-back {
     width: 100%;
-    height: 90%;
+    height: 105%;
     background-color: #fff;
     position: absolute;
     border-radius: 15px;
