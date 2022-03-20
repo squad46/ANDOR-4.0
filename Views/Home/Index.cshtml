@@ -280,7 +280,7 @@
                                 <!-- boato ver detalhes do post -->
                                 <div class="edit-post w-100 d-flex flex-column align-items-center">
                                     <img src="~/img/points-edit.svg" class="opacity-50" alt="editar postagem" width="15px">
-                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Detalhes</a>
+                                    <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Detalhes</a>
                                 </div>
 
                                 <!-- Nome profile e data post -->
@@ -297,7 +297,7 @@
                                 <!-- titulo e descricao do post -->
                                 <div class="card-feed bg-light shadow p-4 text-left">
                                     <h2>
-                                        <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">
+                                        <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">
                                             @moradia.Name - R$ @moradia.Preco.ToString("#,###,###.00")
                                         </a>
                                     </h2>
