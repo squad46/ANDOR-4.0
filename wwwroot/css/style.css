@@ -725,11 +725,24 @@ footer {
     color: #666;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> d099eac36b5fc977a277698d1d6dc9b601011546
 /*Estilo da parte dos Feeds na Home - novo layout*/
 .card-feed {    
     border-radius: 15px;
 }
+<<<<<<< HEAD
+=======
+.text-right small { 
+    color: red;
+}
+
+>>>>>>> 842c5a6aecbea2c52f7ce1eb71da2f71e87bb4f4
+=======
+>>>>>>> d099eac36b5fc977a277698d1d6dc9b601011546
 
 .grad-blue {
     background: linear-gradient(180deg, #134FCE 0%, #1042AC 100%);
