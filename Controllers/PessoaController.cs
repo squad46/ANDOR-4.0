@@ -47,11 +47,11 @@ namespace Andor.Controllers
 
             var pessoa = await _context.Pessoas.FirstOrDefaultAsync(m => m.Id == id);
 
-            ViewData["temAvatar"]    = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil" ).Count(); // verifica se tem avatar
-            ViewData["formacoes"]    = _context.Formacoes.Where(p => p.Id_pessoa == id).ToList();    // cria lista de formacoes da pessoa
+            ViewData["temAvatar"] = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil").Count(); // verifica se tem avatar
+            ViewData["formacoes"] = _context.Formacoes.Where(p => p.Id_pessoa == id).ToList();    // cria lista de formacoes da pessoa
             ViewData["experiencias"] = _context.Experiencias.Where(p => p.Id_pessoa == id).ToList(); // cria lista de experiencias da pessoa
-            ViewData["trabalhos"]    = _context.Trabalhos.Where(p => p.Id_pessoa == id).ToList();    // cria lista de trabalhos publicados pela pessoa
-            ViewData["moradias"]     = _context.Moradias.Where(p => p.Id_pessoa == id).ToList();     // cria lista de Moradias publicados pela pessoa
+            ViewData["trabalhos"] = _context.Trabalhos.Where(p => p.Id_pessoa == id).ToList();    // cria lista de trabalhos publicados pela pessoa
+            ViewData["moradias"] = _context.Moradias.Where(p => p.Id_pessoa == id).ToList();     // cria lista de Moradias publicados pela pessoa
 
             if (pessoa == null)
             {
@@ -66,7 +66,7 @@ namespace Andor.Controllers
         {
             return View();
         }
-        
+
         // converte a senha com hash sha-1
         public static string GetHash(string input)
         {
@@ -84,7 +84,7 @@ namespace Andor.Controllers
                 ViewData["mensagem"] = "Nome deve ter no mínimo 3 dígitos.";
                 return View("../Pessoa/Create");
             }
-            
+
             // verifica se email é null
             if (pessoa.Email == null)
             {
@@ -96,7 +96,7 @@ namespace Andor.Controllers
                 ViewData["mensagem"] = "Por favor, informe um email válido.";
                 return View("../Pessoa/Create");
             }
-            else 
+            else
             {
                 //verifica se email já foi cadastrado e retorna mensagem se sim
                 var verificaEmail = _context.Pessoas.Where(p => p.Email == pessoa.Email).ToList();
@@ -110,7 +110,7 @@ namespace Andor.Controllers
             // verifica se senha possui minimo de 6 digitos
             if (pessoa.Senha == null || pessoa.Senha.Length < 6)
             {
-                ViewData["mensagem"] = "Senha deve ter no mínimo 6 dígitos.";
+                ViewData["mensagem"] = "Senha deve ter no mínimo 6 dígitos e ao menos 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais.";
                 return View("../Pessoa/Create");
             }
 
@@ -132,9 +132,9 @@ namespace Andor.Controllers
                     // salva cad pessoa
                     _context.Add(pessoa);
                     await _context.SaveChangesAsync();
-                    
+
                     // salva imagem do perfil
-                    MemoryStream ms = new MemoryStream(); 
+                    MemoryStream ms = new MemoryStream();
                     imagemEnviada.OpenReadStream().CopyTo(ms);
                     Imagem imagemEntity = new Imagem()
                     {
@@ -147,7 +147,7 @@ namespace Andor.Controllers
                     _context.Imagens.Add(imagemEntity);
                     _context.SaveChanges();
                 }
-                else 
+                else
                 {
                     ViewData["mensagem"] = "Selecione uma imagem válida.";
                     return View("../Pessoa/Create");
@@ -166,12 +166,12 @@ namespace Andor.Controllers
         // GET: Pessoa/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-       
+
             if (id == null)
             {
                 return NotFound();
             }
-            
+
             if (id.ToString() != Request.Cookies["Id"].ToString())  // Compara se parametro id é diferente de id passado no cookie 
             {
                 return NotFound();
@@ -192,7 +192,7 @@ namespace Andor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Senha,Telefone,CRNM,CPF,Endereco,Bairro,UF,Cidade,Numero,CEP,Sexo,DataNascimento,Nacionalidade,DataCadastro")] Pessoa pessoa)
         {
-            
+
             if (id != pessoa.Id)
             {
                 return NotFound();
@@ -216,15 +216,15 @@ namespace Andor.Controllers
                         throw;
                     }
                 }
-  
+
                 return Redirect("~/Pessoa/Details/" + id);
-         
+
             }
-           
+
             return Redirect("~/Pessoa/Details/" + id);
 
         }
- 
+
         // GET: Pessoa/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -237,7 +237,7 @@ namespace Andor.Controllers
             {
                 return NotFound();
             }
-            
+
             ViewData["temAvatar"] = _context.Imagens.Where(m => m.Id_tipo == id).Count();
             var pessoa = await _context.Pessoas.FirstOrDefaultAsync(m => m.Id == id);
 
@@ -259,8 +259,8 @@ namespace Andor.Controllers
             foreach (var _moradia in moradia)
             {
                 var imagemMoradia = _context.Imagens.Where(p => p.Id_tipo == _moradia.Id && p.Tipo == "moradia").ToList();
-                foreach(var imagem in imagemMoradia)
-                { 
+                foreach (var imagem in imagemMoradia)
+                {
                     _context.Imagens.Remove(imagem);
                     _context.SaveChanges();
                 }
@@ -287,7 +287,7 @@ namespace Andor.Controllers
             // deleta o perfil
             var pessoa = await _context.Pessoas.FindAsync(id);
             _context.Pessoas.Remove(pessoa);
-            await _context.SaveChangesAsync();  
+            await _context.SaveChangesAsync();
 
             //cookies excluidos para que seja feito logoff
             Response.Cookies.Delete("Id");
@@ -306,16 +306,16 @@ namespace Andor.Controllers
                 return RedirectToAction("Index", "Login");
             }
             var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
-            if (pessoa != null) 
+            if (pessoa != null)
             {
                 ViewData["temAvatar"] = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil").Count();
                 ViewData["perfil"] = pessoa;
-                return View(pessoa); 
+                return View(pessoa);
             }
             return NotFound();
-           
+
         }
-        
+
         [HttpGet] // exibicao do perfil profissional  
         public IActionResult PerfilProfissional(int id)
         {
@@ -327,8 +327,8 @@ namespace Andor.Controllers
             var pessoa = _context.Pessoas.Where(p => p.Id == id).ToList();
             if (pessoa != null)
             {
-                ViewData["temAvatar"]   = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil").Count();
-                ViewData["perfil"]      = pessoa;
+                ViewData["temAvatar"] = _context.Imagens.Where(m => m.Id_tipo == id && m.Tipo == "perfil").Count();
+                ViewData["perfil"] = pessoa;
                 ViewData["formacao"] = _context.Formacoes.Where(p => p.Id_pessoa == id).ToList(); // faz lista de formacao profissional 
                 ViewData["experiencia"] = _context.Experiencias.Where(p => p.Id_pessoa == id).ToList(); // faz lista com experiencia profissional 
                 return View(pessoa);
@@ -365,7 +365,12 @@ namespace Andor.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("~/Pessoa/Details/" + idPessoa);
             }
-            return Redirect("~/Pessoa");
+            else 
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "formacaoCreate", Id_pessoa = formacao.Id_pessoa });
+            }
+           // return Redirect("~/Pessoa");
         }
 
 
@@ -409,7 +414,12 @@ namespace Andor.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("~/Pessoa/Details/" + idPessoa);
             }
-            return Redirect("~/Pessoa");
+            else
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "formacaoCreate", Id_pessoa = experiencia.Id_pessoa });
+            }
+            //return Redirect("~/Pessoa");
         }
 
 
@@ -445,10 +455,18 @@ namespace Andor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> trabalhoCreate([Bind("Id,Id_pessoa,Instituicao,Nome,Atividade,Tipo,Salario,Endereco,Numero,Bairro,CEP,UF,Cidade,NomeContato,TelefoneContato,EmailContato,DataCadastro")] Trabalho trabalho)
         {
-            var idPessoa = trabalho.Id_pessoa;
-            _context.Add(trabalho);
-            await _context.SaveChangesAsync();
-            return Redirect("~/Pessoa/Details/" + idPessoa);
+            if (ModelState.IsValid)
+            {
+                var idPessoa = trabalho.Id_pessoa;
+                _context.Add(trabalho);
+                await _context.SaveChangesAsync();
+                return Redirect("~/Pessoa/Details/" + idPessoa);
+            }
+            else 
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "trabalhoCreate", Id_pessoa = trabalho.Id_pessoa });
+            }
         }
 
 

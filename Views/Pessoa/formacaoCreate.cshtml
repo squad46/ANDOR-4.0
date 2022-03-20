@@ -2,10 +2,11 @@
 @{
     ViewData["Title"] = "Create";
     var id_pessoa = ViewData["Id_pessoa"];
+    var mensagem = TempData["mensagem"];
 }
 <div class="container-fluid pt-0 bg-light">
 <div class="container text-black-50 p-3">
-    
+
     <div class="row justify-content-center">
         <!-- coluna esquerda -->
         <!--
@@ -15,39 +16,53 @@
         -->
         <!-- coluna direita -->
         <div class="col-11 bg-cards-1">
+            @if (mensagem != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>@mensagem</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
             <h4 class="text-right">Formação profissional</h4>
             <hr />
-            <form asp-action="formacaoCreate">
+            <form asp-action="formacaoCreate" class="needs-validation" novalidate>
                 <div class="form-group" style="display:none">
                     <input type="text" value="@ViewData["Id_pessoa"]" asp-for="Id_pessoa" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Curso / Graduação</label>
-                    <input asp-for="Nome" class="form-control" />
+                    <label class="control-label">Curso / Graduação *</label>
+                    <input asp-for="Nome" type="text" class="form-control" required minlength="3" maxlength="40" autofocus />
+                    <div class="invalid-feedback"> Informe sua formação. </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Descrição</label>
-                    <textarea asp-for="Descricao" class="form-control"></textarea>
+                    <label class="control-label">Descrição *</label>
+                    <textarea asp-for="Descricao" type="text" class="form-control" required minlength="5" maxlength="200"></textarea>
+                    <div class="invalid-feedback"> Informe uma breve descrição sobre sua formação. </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Instituição</label>
-                    <input asp-for="Instituicao" class="form-control" />
+                    <label class="control-label">Instituição *</label>
+                    <input asp-for="Instituicao" type="text" class="form-control" required minlength="2" maxlength="20"/>
+                    <div class="invalid-feedback"> Informe a Instituição de ensino. </div>
                 </div>
                 <div class="form-group col-6">
-                    <label class="control-label">Data de início</label>
-                    <input asp-for="Inicio" class="form-control" />
+                    <label class="control-label">Data de início *</label>
+                    <input asp-for="Inicio" type="date" class="form-control" required min="1948-01-01" max="2030-12-31"/>
+                    <div class="invalid-feedback"> Informe a data de início da formação. </div>
                 </div>
                 <div class="form-group col-6">
                     <label class="control-label">Data de conclusão</label>
-                    <input asp-for="Fim" class="form-control" />
+                    <input asp-for="Fim" type="date" class="form-control" min="1948-01-01" max="2030-12-31"/>
                 </div>
                 <div class="form-group col-6">
-                    <label class="control-label">Situação</label>
-                    <select class="custom-select" asp-for="Situacao">
-                        <option selected>-</option>
+                    <label class="control-label">Situação *</label>
+                    <select class="custom-select" asp-for="Situacao" required>
+                        <option selected disabled value="">-</option>
                         <option>Completo</option>
                         <option>Incompleto</option>
                     </select>
+                    <div class="invalid-feedback"> Selecione uma opção. </div>
                 </div>
                 <div class="form-group d-flex mt-4 justify-content-end">
                     <hr />
@@ -63,3 +78,24 @@
     <br />
 </div>
 </div>
+
+<script>
+    // desativa comportamento padrão do html5 se houver campos inválidos.
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+        var forms = document.getElementsByClassName('needs-validation');
+        // Faz um loop neles e evita o envio caso não esteja validado
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>

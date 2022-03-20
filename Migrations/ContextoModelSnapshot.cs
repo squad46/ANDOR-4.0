@@ -27,9 +27,13 @@ namespace Andor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime?>("Fim")
@@ -39,12 +43,17 @@ namespace Andor.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Inicio")
+                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<string>("Instituicao")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int?>("PessoaId")
@@ -65,6 +74,8 @@ namespace Andor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime?>("Fim")
@@ -74,18 +85,25 @@ namespace Andor.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Inicio")
+                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<string>("Instituicao")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int?>("PessoaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Situacao")
+                        .IsRequired()
+                        .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
@@ -130,33 +148,47 @@ namespace Andor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("CEP")
                         .HasColumnType("int");
 
                     b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("EmailContato")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("Id_pessoa")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("NomeContato")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("Numero")
@@ -169,12 +201,18 @@ namespace Andor.Migrations
                         .HasColumnType("money");
 
                     b.Property<string>("TelefoneContato")
+                        .IsRequired()
+                        .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("UF")
+                        .IsRequired()
+                        .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
                     b.HasKey("Id");
@@ -258,36 +296,52 @@ namespace Andor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Atividade")
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("CEP")
                         .HasColumnType("int");
 
                     b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
                     b.Property<string>("EmailContato")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("Id_pessoa")
                         .HasColumnType("int");
 
                     b.Property<string>("Instituicao")
+                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("NomeContato")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("Numero")
@@ -300,12 +354,18 @@ namespace Andor.Migrations
                         .HasColumnType("money");
 
                     b.Property<string>("TelefoneContato")
+                        .IsRequired()
+                        .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("UF")
+                        .IsRequired()
+                        .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
                     b.HasKey("Id");
