@@ -365,7 +365,12 @@ namespace Andor.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("~/Pessoa/Details/" + idPessoa);
             }
-            return Redirect("~/Pessoa");
+            else 
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "formacaoCreate", Id_pessoa = formacao.Id_pessoa });
+            }
+           // return Redirect("~/Pessoa");
         }
 
 
@@ -409,7 +414,12 @@ namespace Andor.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("~/Pessoa/Details/" + idPessoa);
             }
-            return Redirect("~/Pessoa");
+            else
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "formacaoCreate", Id_pessoa = experiencia.Id_pessoa });
+            }
+            //return Redirect("~/Pessoa");
         }
 
 
@@ -445,66 +455,18 @@ namespace Andor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> trabalhoCreate([Bind("Id,Id_pessoa,Instituicao,Nome,Atividade,Tipo,Salario,Endereco,Numero,Bairro,CEP,UF,Cidade,NomeContato,TelefoneContato,EmailContato,DataCadastro")] Trabalho trabalho)
         {
-         /*   if (trabalho.Instituicao == null || trabalho.Instituicao.Length > 20)
+            if (ModelState.IsValid)
             {
-                return View("../Pessoa/trabalhoCreate");
+                var idPessoa = trabalho.Id_pessoa;
+                _context.Add(trabalho);
+                await _context.SaveChangesAsync();
+                return Redirect("~/Pessoa/Details/" + idPessoa);
             }
-
-            if (trabalho.Nome == null || trabalho.Nome.Length > 40)
+            else 
             {
-                return View("../Pessoa/trabalhoCreate");
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "trabalhoCreate", Id_pessoa = trabalho.Id_pessoa });
             }
-
-            if (trabalho.Atividade == null || trabalho.Atividade.Length > 200)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.Tipo == "-")
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.Endereco == null || trabalho.Endereco.Length > 60)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.Bairro == null || trabalho.Instituicao.Length > 20)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.UF == "-" )
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.Cidade == null || trabalho.Cidade.Length > 20)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.NomeContato == null || trabalho.NomeContato.Length > 40)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.TelefoneContato == null || trabalho.TelefoneContato.Length > 13)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            }
-
-            if (trabalho.EmailContato == null || trabalho.EmailContato.Length > 40)
-            {
-                return View("../Pessoa/trabalhoCreate");
-            } */
-
-
-            var idPessoa = trabalho.Id_pessoa;
-            _context.Add(trabalho);
-            await _context.SaveChangesAsync();
-            return Redirect("~/Pessoa/Details/" + idPessoa);
         }
 
 
