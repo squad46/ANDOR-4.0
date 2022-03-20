@@ -220,8 +220,13 @@ namespace Andor.Controllers
                 return Redirect("~/Pessoa/Details/" + id);
 
             }
+            else 
+            {
+                TempData["mensagem"] = "Ops! Algo deu errado.";
+                return RedirectToRoute(new { controller = "Pessoa", action = "Edit", Id_pessoa = pessoa.Id });
+            }
 
-            return Redirect("~/Pessoa/Details/" + id);
+            //return Redirect("~/Pessoa/Details/" + id);
 
         }
 
