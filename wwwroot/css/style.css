@@ -32,9 +32,17 @@ li {
 
 
 footer {
-    background: #000;
-    color: #fff;
+    color: #ffffffe8;
+    background: #1558E5;
+    border-top: 4px solid #08133380;
 }
+
+    footer h3 {
+        color: #000000b3;
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
 
 .container {
     min-height: 89.5vh;
@@ -764,9 +772,22 @@ footer {
         margin: 0px;
     }
 
-    .card-feed a{
+    .card-feed a {
         color: #fff;
+        z-index: 999;
+        text-decoration: none;
     }
+
+.feed-cat {
+    border-radius: 15px;
+    border: 1px solid #1558E5;
+    margin: 70px 0 40px 0;
+}
+    .feed-cat a {
+        color: #fff;
+        text-decoration: none;
+    }
+
 
 .card-btn {
     position: absolute;
@@ -779,6 +800,7 @@ footer {
 
     .card-btn a {
         color: #333;
+        font-size: 0.8rem;
     }
 
     .card-btn:hover .card-btn-popup {
@@ -795,6 +817,7 @@ footer {
     bottom: 0;
     opacity: 0;
     transition: ease-in-out 0.2s;
+    z-index: 999;
 }
 
     .card-btn-popup img{
@@ -802,8 +825,8 @@ footer {
     }
 
 .card-icon {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .grad-blue {
