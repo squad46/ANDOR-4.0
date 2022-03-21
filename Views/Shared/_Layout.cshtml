@@ -80,10 +80,14 @@
 
                     </ul>
                 </div>
+
+                <!--Campo Pesquisar
                 <div class="space-search flex-fill">
                     <label for="search"><img src="~/img/search.svg" alt=""></label>
                     <input type="text" id="search" placeholder="PESQUISAR...">
                 </div>
+                -->
+
             </div>
 
             <div class="col d-flex align-items-center justify-content-center">
@@ -92,8 +96,9 @@
                 </div>
             </div>
 
-            <div class="col p-0 d-flex align-items-center">
+            <div class="col p-0 d-flex align-items-center justify-content-end">
 
+                <!--Leinguage
                 <div class="flex-fill text-end">
                     <div class="linguage">
                         Idioma: <br>
@@ -105,79 +110,152 @@
                         <img src="~/img/Lenguages.svg" alt="linguage">
                     </div>
                 </div>
+                -->
+
+                <!--Login-->
                 <div id="off" class="login-register text-end">
                     <a asp-area="" asp-controller="Login" asp-action="Index">LOGIN</a>-<a asp-controller="Pessoa" asp-action="Create">CADASTRAR</a>
                     <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
                 </div>
+
                 <div id="on" class="login-register text-end">
                     <a id="usuario"></a>
                     <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
                     <a asp-controller="Login" asp-action="Logout">Logout</a>
                 </div>
+
             </div>
         </nav>
     </header>
     <!-- Container Geral -->
-    <div class="container-fluid">
-        <main class="row">
-            <!-- Menu Lateral fixo -->
-            <nav class="menu-right">
-                <div class="button-bg one"><a asp-area="" asp-controller="Blog" asp-action="index"><img src="~/img/info uteis.svg"></a></div>
-                <div class="button-bg two"><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos"><img src="~/img/empregos.svg"></a></div>
-                <div class="button-bg three"><a asp-area="" asp-controller="Moradia" asp-action="index"><img src="~/img/moradia.svg"></a></div>
-                <div class="button-bg four"><a asp-area="" asp-controller="Ong" asp-action="index"><img src="~/img/ongs parceiras.svg"></a></div>
-                <div class="button-bg five"><a asp-area="" asp-controller="Doacao" asp-action="index"><img src="~/img/doacao.svg"></a></div>
-                <div class="button-bg six"><a asp-area="" asp-controller="Emergencia" asp-action="index"><img src="~/img/Vector.svg"></a></div>
-                <ul class="d-flex flex-column justify-content-around">
-                    <li><a asp-area="" asp-controller="Blog" asp-action="index">Notícias</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos">Empregos e Serviços</a></li>
-                    <li><a asp-area="" asp-controller="Moradia" asp-action="index">Moradia</a></li>
-                    <li><a asp-area="" asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
-                    <li><a asp-area="" asp-controller="Doacao" asp-action="index">Doação</a></li>
-                    <li><a asp-area="" asp-controller="Emergencia" asp-action="index">Emergência</a></li>
-                </ul>
-            </nav>
-            @RenderBody()
-        </main>
-    </div>
-    <!-- Rodapé da página -->
+                <div class="container-fluid">
+                    <main class="row">
+                        <!-- Menu Lateral fixo -->
+                        <nav class="menu-right">
+                            <div class="button-bg one"><a asp-area="" asp-controller="Blog" asp-action="index"><img src="~/img/info uteis.svg"></a></div>
+                            <div class="button-bg two"><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos"><img src="~/img/empregos.svg"></a></div>
+                            <div class="button-bg three"><a asp-area="" asp-controller="Moradia" asp-action="index"><img src="~/img/moradia.svg"></a></div>
+                            <div class="button-bg four"><a asp-area="" asp-controller="Ong" asp-action="index"><img src="~/img/ongs parceiras.svg"></a></div>
+                            <div class="button-bg five"><a asp-area="" asp-controller="Doacao" asp-action="index"><img src="~/img/doacao.svg"></a></div>
+                            <div class="button-bg six"><a asp-area="" asp-controller="Emergencia" asp-action="index"><img src="~/img/Vector.svg"></a></div>
+                            <ul class="d-flex flex-column justify-content-around">
+                                <li><a asp-area="" asp-controller="Blog" asp-action="index">Notícias</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos">Empregos e Serviços</a></li>
+                                <li><a asp-area="" asp-controller="Moradia" asp-action="index">Moradia</a></li>
+                                <li><a asp-area="" asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
+                                <li><a asp-area="" asp-controller="Doacao" asp-action="index">Doação</a></li>
+                                <li><a asp-area="" asp-controller="Emergencia" asp-action="index">Emergência</a></li>
+                            </ul>
+                        </nav>
+                        @RenderBody()
+                    </main>
+                </div>
+                <!-- Inicio Rodapé da página -->
 
-    <footer class="text-center ">Andor - Todos os Direitos reservados 2022</footer>
+                <footer>
+                    <div class="row w-75 p-4 mx-auto text-left">
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script _src="~/js/site.js" asp-append-version="true"></script>
+                        <div class="col-sm-12 text-center">
+                            <h3>Recode & <img src="/img/logotipo-new.svg" width="160px" alt="Logotipo Andor"></h3>
+                            <p>Uma pessoa não se torna refugiado por que é reconhecida como tal, mas é reconhecida como tal porque é um refugiado</p>
+                        </div>
+                        <hr />
+                        <div class="col-sm-2">
+                            <ul>
+                                <h3>Início</h3>
+                                <li>À Andor</li>
+                                <li>Moradias</li>
+                                <li>Empregos</li>
+                                <li>Login</li>
+                                <li>Cadastro</li>
+                                <li>Contato</li>
+                            </ul>
+                        </div>
 
-    <script>
-        const id = Cookies.get('Id');
-                const user = Cookies.get('Usuario');
-                if (typeof id !== 'undefined') {
-                    $('#on').show();
-                    $('#off').hide();
-                    var nome = user.split(' ').shift();
-                    $('#usuario').text(nome);
-                    var link = "/Pessoa/Details/" + id;
-                    $('#usuario').attr('href', link);
-                }
-                else {
-                    $('#on').hide();
-                    $('#off').show();
-                }
+                        <div class="col-sm-2">
+                            <ul>
+                                <h3>Infos</h3>
+                                <li>Informações Úteis</li>
+                                <li>Cadastro</li>
+                                <li>Emergência</li>
+                                <li>Revalicações</li>
+                                <li>Primeiros Passos</li>
+                                <li>Dúvidas Frequentes</li>
+                            </ul>
+                        </div>
 
-                $("#feed-trabalhos").click(function () {
-                    $("#trabalhos").show();
-                    $("#moradias").hide();
-                    $("#informacoes").hide();
-                    $("#ongs").hide();
-                });
-                $("#feed-moradias").click(function () {
-                    $("#trabalhos").hide();
-                    $("#moradias").show();
-                    $("#informacoes").hide();
-                    $("#ongs").hide();
-                });
-                // https://github.com/js-cookie/js-cookie</script>
-    @await RenderSectionAsync("Scripts", required: false)
+                        <div class="col-sm-2">
+                            <ul>
+                                <h3>Ongs</h3>
+                                <li>ACNUR</li>
+                                <li>Abraço Cultural</li>
+                                <li>GADE</li>
+                                <li>Cáritas</li>
+                                <li>Trampolim</li>
+                                <li>Recode</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <ul>
+                                <h3>Colabs</h3>
+                                <li>Bruna Lorem</li>
+                                <li>Cristhian Silva</li>
+                                <li>Eli Ferreti</li>
+                                <li>Thiago Almeida</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-4">
+                            <ul>
+                                <h3>Doação</h3>
+                                <p>"Ajude a Andor a manter sua operações, constantemente fazemos ações de acolhimento de refugiados."</p>
+                                <span><img src="/img/qrCode.png" width="100px" alt="Doações para Refugiados"></span>
+                            </ul>
+                        </div>
+                        <hr />
+                        <div class="col-12 text-center">
+                            <span>Andor - Refuciados Todos os direitos reservados 2023</span>
+                        </div>
+
+                    </div>
+                </footer>
+
+                <!-- Fim Rodapé da página -->
+
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script _src="~/js/site.js" asp-append-version="true"></script>
+
+                <script>const id = Cookies.get('Id');
+                    const user = Cookies.get('Usuario');
+                    if (typeof id !== 'undefined') {
+                        $('#on').show();
+                        $('#off').hide();
+                        var nome = user.split(' ').shift();
+                        $('#usuario').text(nome);
+                        var link = "/Pessoa/Details/" + id;
+                        $('#usuario').attr('href', link);
+                    }
+                    else {
+                        $('#on').hide();
+                        $('#off').show();
+                    }
+
+                    $("#feed-trabalhos").click(function () {
+                        $("#trabalhos").show();
+                        $("#moradias").hide();
+                        $("#informacoes").hide();
+                        $("#ongs").hide();
+                    });
+                    $("#feed-moradias").click(function () {
+                        $("#trabalhos").hide();
+                        $("#moradias").show();
+                        $("#informacoes").hide();
+                        $("#ongs").hide();
+                    });
+                    // https://github.com/js-cookie/js-cookie</script>
+                @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
