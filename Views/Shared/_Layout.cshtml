@@ -11,9 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-            crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -110,7 +108,6 @@
                     </div>
                 </div>
                 -->
-
                 <!--Login-->
                 <div id="off" class="login-register text-end">
                     <a asp-area="" asp-controller="Login" asp-action="Index">LOGIN</a>-<a asp-controller="Pessoa" asp-action="Create">CADASTRAR</a>
@@ -127,145 +124,147 @@
         </nav>
     </header>
     <!-- Container Geral -->
-                <div class="container-fluid">
-                    <main class="row">
-                        <!-- Menu Lateral fixo -->
-                        <nav class="menu-right">
-                            <div class="button-bg one"><a asp-area="" asp-controller="Blog" asp-action="index"><img src="~/img/info uteis.svg"></a></div>
-                            <div class="button-bg two"><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos"><img src="~/img/empregos.svg"></a></div>
-                            <div class="button-bg three"><a asp-area="" asp-controller="Moradia" asp-action="index"><img src="~/img/moradia.svg"></a></div>
-                            <div class="button-bg four"><a asp-area="" asp-controller="Ong" asp-action="index"><img src="~/img/ongs parceiras.svg"></a></div>
-                            <div class="button-bg five"><a asp-area="" asp-controller="Doacao" asp-action="index"><img src="~/img/doacao.svg"></a></div>
-                            <div class="button-bg six"><a asp-area="" asp-controller="Emergencia" asp-action="index"><img src="~/img/Vector.svg"></a></div>
-                            <ul class="d-flex flex-column justify-content-around">
-                                <li><a asp-area="" asp-controller="Blog" asp-action="index">Notícias</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos">Empregos e Serviços</a></li>
-                                <li><a asp-area="" asp-controller="Moradia" asp-action="index">Moradia</a></li>
-                                <li><a asp-area="" asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
-                                <li><a asp-area="" asp-controller="Doacao" asp-action="index">Doação</a></li>
-                                <li><a asp-area="" asp-controller="Emergencia" asp-action="index">Emergência</a></li>
-                            </ul>
-                        </nav>
-                        @RenderBody()
-                    </main>
-                </div>
-                <!-- Inicio Rodapé da página -->
+    <div class="container-fluid">
+        <main class="row">
+            <!-- Menu Lateral fixo -->
+            <nav class="menu-right">
+                <div class="button-bg one"><a asp-area="" asp-controller="Blog" asp-action="index"><img src="~/img/info uteis.svg"></a></div>
+                <div class="button-bg two"><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos"><img src="~/img/empregos.svg"></a></div>
+                <div class="button-bg three"><a asp-area="" asp-controller="Moradia" asp-action="index"><img src="~/img/moradia.svg"></a></div>
+                <div class="button-bg four"><a asp-area="" asp-controller="Ong" asp-action="index"><img src="~/img/ongs parceiras.svg"></a></div>
+                <div class="button-bg five"><a asp-area="" asp-controller="Doacao" asp-action="index"><img src="~/img/doacao.svg"></a></div>
+                <div class="button-bg six"><a asp-area="" asp-controller="Emergencia" asp-action="index"><img src="~/img/Vector.svg"></a></div>
+                <ul class="d-flex flex-column justify-content-around">
+                    <li><a asp-area="" asp-controller="Blog" asp-action="index">Notícias</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="EmpregosServicos">Empregos e Serviços</a></li>
+                    <li><a asp-area="" asp-controller="Moradia" asp-action="index">Moradia</a></li>
+                    <li><a asp-area="" asp-controller="Ong" asp-action="index">Ongs Parceiras</a></li>
+                    <li><a asp-area="" asp-controller="Doacao" asp-action="index">Doação</a></li>
+                    <li><a asp-area="" asp-controller="Emergencia" asp-action="index">Emergência</a></li>
+                </ul>
+            </nav>
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Inicio Rodapé da página -->
 
-                <footer>
-                    <div class="row w-75 p-4 mx-auto text-left">
+    <footer>
+        <div class="row w-75 p-4 mx-auto text-left">
 
-                        <div class="col-sm-12 text-center">
-                            <h1>Recode & <img src="/img/logotipo-new-dark.svg" width="160px" alt="Logotipo Andor"></h1>
-                            <p>Uma pessoa não se torna refugiado por que é reconhecida como tal, mas é reconhecida como tal porque é um refugiado</p>
-                        </div>
-                        <hr />
-                        <div class="col-sm-2">
-                            <ul>
-                                <h3>Início</h3>
-                                <li><a asp-controller="Andor" asp-action="index">À Andor</a></li>
-                                <li><a asp-controller="Moradia" asp-action="index">Moradias</a></li>
-                                <li><a asp-controller="Trabalho" asp-action="index">Empregos</a></li>
-                                <li><a asp-controller="Login" asp-action="index">Login</a></li>
-                                <li><a asp-controller="Pessoa" asp-action="Create">Cadastro</a></li>
-                                <li><a asp-controller="Contato" asp-action="index">Contato</a></li>
-                            </ul>
-                        </div>
+            <div class="col-sm-12 text-center">
+                <h1>Recode & <img src="/img/logotipo-new-dark.svg" width="160px" alt="Logotipo Andor"></h1>
+                <p>Uma pessoa não se torna refugiado por que é reconhecida como tal, mas é reconhecida como tal porque é um refugiado</p>
+            </div>
+            <hr />
+            <div class="col-sm-2">
+                <ul>
+                    <h3>Início</h3>
+                    <li><a asp-controller="Andor" asp-action="index">À Andor</a></li>
+                    <li><a asp-controller="Moradia" asp-action="index">Moradias</a></li>
+                    <li><a asp-controller="Trabalho" asp-action="index">Empregos</a></li>
+                    <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                    <li><a asp-controller="Pessoa" asp-action="Create">Cadastro</a></li>
+                    <li><a asp-controller="Contato" asp-action="index">Contato</a></li>
+                </ul>
+            </div>
 
-                        <div class="col-sm-2">
-                            <ul>
-                                <h3>Infos</h3>
-                                <li><a asp-controller="Andor" asp-action="index">Informações Úteis</a></li>
-                                <li><a asp-controller="Ong" asp-action="index">Ongs</a></li>
-                                <li><a asp-controller="Emergencia" asp-action="index">Emergência</a></li>
-                                <li><a asp-controller="Revalidacao" asp-action="index">Revalicações</a></li>
-                                <li><a asp-controller="Blog" asp-action="index">Primeiros Passos</a></li>
-                                <li><a asp-controller="Ajuda" asp-action="index">Dúvidas Frequentes</a></li>
-                            </ul>
-                        </div>
+            <div class="col-sm-2">
+                <ul>
+                    <h3>Infos</h3>
+                    <li><a asp-controller="Andor" asp-action="index">Informações Úteis</a></li>
+                    <li><a asp-controller="Ong" asp-action="index">Ongs</a></li>
+                    <li><a asp-controller="Emergencia" asp-action="index">Emergência</a></li>
+                    <li><a asp-controller="Revalidacao" asp-action="index">Revalicações</a></li>
+                    <li><a asp-controller="Blog" asp-action="index">Primeiros Passos</a></li>
+                    <li><a asp-controller="Ajuda" asp-action="index">Dúvidas Frequentes</a></li>
+                </ul>
+            </div>
 
-                        <div class="col-sm-2">
-                            <ul>
-                                <h3>Ongs</h3>
-                                <li><a href="https://www.acnur.org/portugues/acnur-no-brasil/?utm_campaign=BR_PS_PT_general_UNHCR_CoreBrand&gclid=Cj0KCQiA0p2QBhDvARIsAACSOOOcpGQBm5N-o23y_ajLnxsyrYWk1T1JyM2i48U5WPYJ1kKIqbpcQuMaAprJEALw_wcB&gclsrc=aw.ds" target="_blank">ACNUR</a></li>
-                                <li><a href="https://www.facebook.com/abcultural/" target="_blank">Abraço Cultural</a></li>
-                                <li><a href="https://www.instagram.com/gade_haiti/" target="_blank">GADE</a></li>
-                                <li><a href="https://caritas.org.br/" target="_blank">Cáritas</a></li>
-                                <li><a href="https://www.facebook.com/institutotrampolimouropreto/" target="_blank">Trampolim</a></li>
-                                <li><a href="https://recodepro.org.br/" target="_blank">Recode</a></li>
-                            </ul>
-                        </div>
+            <div class="col-sm-2">
+                <ul>
+                    <h3>Ongs</h3>
+                    <li><a href="https://www.acnur.org/portugues/acnur-no-brasil/?utm_campaign=BR_PS_PT_general_UNHCR_CoreBrand&gclid=Cj0KCQiA0p2QBhDvARIsAACSOOOcpGQBm5N-o23y_ajLnxsyrYWk1T1JyM2i48U5WPYJ1kKIqbpcQuMaAprJEALw_wcB&gclsrc=aw.ds" target="_blank">ACNUR</a></li>
+                    <li><a href="https://www.facebook.com/abcultural/" target="_blank">Abraço Cultural</a></li>
+                    <li><a href="https://www.instagram.com/gade_haiti/" target="_blank">GADE</a></li>
+                    <li><a href="https://caritas.org.br/" target="_blank">Cáritas</a></li>
+                    <li><a href="https://www.facebook.com/institutotrampolimouropreto/" target="_blank">Trampolim</a></li>
+                    <li><a href="https://recodepro.org.br/" target="_blank">Recode</a></li>
+                </ul>
+            </div>
 
-                        <div class="col-sm-2">
-                            <ul>
-                                <h3>Colabs</h3>
-                                <li><a href="https://www.linkedin.com/in/brulins/" target="_blank">Bruna Lins</a></li>
-                                <li><a href="https://www.linkedin.com/mwlite/in/christian-silva-83172621a" target="_blank">Christian Silva</a></li>
-                                <li><a href="https://www.linkedin.com/in/eli-ferretti-245322218/" target="_blank">Eli Ferretti</a></li>
-                                <li><a href="https://www.linkedin.com/in/thiago-almeida-76b72b142/" target="_blank">Thiago Almeida</a></li>
-                            </ul>
-                        </div>
+            <div class="col-sm-2">
+                <ul>
+                    <h3>Colabs</h3>
+                    <li><a href="https://www.linkedin.com/in/brulins/" target="_blank">Bruna Lins</a></li>
+                    <li><a href="https://www.linkedin.com/mwlite/in/christian-silva-83172621a" target="_blank">Christian Silva</a></li>
+                    <li><a href="https://www.linkedin.com/in/eli-ferretti-245322218/" target="_blank">Eli Ferretti</a></li>
+                    <li><a href="https://www.linkedin.com/in/thiago-almeida-76b72b142/" target="_blank">Thiago Almeida</a></li>
+                </ul>
+            </div>
 
-                        <div class="col-4">
-                            <ul>
-                                <h3>Doação</h3>
-                                <p>"Ajude a Andor a manter sua operações, constantemente fazemos ações de acolhimento de refugiados."</p>
-                                <span><img src="/img/qrCode.png" width="100px" alt="Doações para Refugiados"></span>
-                            </ul>
-                        </div>
-                        <hr />
-                        <div class="col-12 text-center">
-                            <span>Andor - Refuciados Todos os direitos reservados 2023</span>
-                        </div>
+            <div class="col-4">
+                <ul>
+                    <h3>Doação</h3>
+                    <p>"Ajude a Andor a manter sua operações, constantemente fazemos ações de acolhimento de refugiados."</p>
+                    <span><img src="/img/qrCode.png" width="100px" alt="Doações para Refugiados"></span>
+                </ul>
+            </div>
+            <hr />
+            <div class="col-12 text-center">
+                <span>Andor - Refuciados Todos os direitos reservados 2023</span>
+            </div>
 
-                    </div>
-                </footer>
+        </div>
+    </footer>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
 
-                <!-- Fim Rodapé da página -->
+    <!-- Fim Rodapé da página -->
 
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script _src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script _src="~/js/site.js" asp-append-version="true"></script>
 
-                <script>const id = Cookies.get('Id');
-                    const user = Cookies.get('Usuario');
-                    if (typeof id !== 'undefined') {
-                        $('#on').show();
-                        $('#off').hide();
-                        var nome = user.split(' ').shift();
-                        $('#usuario').text(nome);
-                        var link = "/Pessoa/Details/" + id;
-                        $('#usuario').attr('href', link);
-                    }
-                    else {
-                        $('#on').hide();
-                        $('#off').show();
-                    }
+    <script>const id = Cookies.get('Id');
+        const user = Cookies.get('Usuario');
+        if (typeof id !== 'undefined') {
+            $('#on').show();
+            $('#off').hide();
+            var nome = user.split(' ').shift();
+            $('#usuario').text(nome);
+            var link = "/Pessoa/Details/" + id;
+            $('#usuario').attr('href', link);
+        }
+        else {
+            $('#on').hide();
+            $('#off').show();
+        }
 
-                    $("#feed-trabalhos").click(function () {
-                        $("#trabalhos").show();
-                        $("#moradias").hide();
-                        $("#informacoes").hide();
-                        $("#ongs").hide();
-                    });
-                    $("#feed-moradias").click(function () {
-                        $("#trabalhos").hide();
-                        $("#moradias").show();
-                        $("#informacoes").hide();
-                        $("#ongs").hide();
-                    });
-                    // https://github.com/js-cookie/js-cookie</script>
-                @await RenderSectionAsync("Scripts", required: false)
+        $("#feed-trabalhos").click(function () {
+            $("#trabalhos").show();
+            $("#moradias").hide();
+            $("#informacoes").hide();
+            $("#ongs").hide();
+        });
+        $("#feed-moradias").click(function () {
+            $("#trabalhos").hide();
+            $("#moradias").show();
+            $("#informacoes").hide();
+            $("#ongs").hide();
+        });
+        // https://github.com/js-cookie/js-cookie</script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
-<script>
-    $("#senha").mousedown(function () {
-            $("#s-senha").show();
+<script>$("#senha").mousedown(function () {
+        $("#s-senha").show();
     });
     $("#senha").mouseup(function () {
-            $("#s-senha").hide();
-    });
-</script>
+        $("#s-senha").hide();
+    });</script>
 
 
 <script src="~/js/jq.js"></script>
