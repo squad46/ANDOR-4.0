@@ -54,7 +54,7 @@ footer {
 
 
 .container {
-    min-height: 89.5vh;
+   /*min-height: 89.5vh;*/
 }
 
 .container-fluid {
@@ -764,7 +764,7 @@ footer {
 
     .card-feed h2 {
         font-weight: 800;
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         margin-bottom: 1rem;
     }
 
@@ -819,7 +819,7 @@ footer {
     position: absolute;
     border-radius: 15px;
     height: 40px;
-    width: 100%;
+    width: 98%;
     background: #E8E8E8;
     bottom: 0;
     opacity: 0;
@@ -832,8 +832,7 @@ footer {
     }
 
 .card-icon {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin:1rem auto;
 }
 
 .grad-blue {
@@ -1504,7 +1503,6 @@ footer {
 }
 
 .blog {
-    width: 35rem;
     color: #242424;
 }
 
@@ -1599,8 +1597,8 @@ footer {
         justify-content: center;
     }
 
-.text-doação {
-    font-weight: 400;
+.text-doacao {
+    font-weight: 500;
     font-size: 1.1rem;
 }
 

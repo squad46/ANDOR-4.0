@@ -3,13 +3,13 @@
     var trabalhos = ViewData["trabalhos"] as List<Trabalho>;
 }
 <div class="container-fluid pt-0 bg-light">
-    <div class="container text-black-50 p-3">
+    <div class="container text-black-50 py-3">
         <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
             <div class="row">
                 <div class="col">
                     <h3>Trabalho / Emprego</h3>
                 </div>
-                <div class="col text-right">
+                <div class="col d-flex justify-content-end align-items-center">
                     <form asp-controller="Trabalho" asp-action="Filtrar" method="post">
                         <select name="uf" class="select-uf">
                             <option selected>UF</option>
@@ -40,37 +40,43 @@
                             <option>SP</option>
                             <option>SE</option>
                             <option>TO</option>
-                        </select>                     
+                        </select>
                         <input type="submit" value="Filtrar" class="btn btn-principal" />
                     </form>
                 </div>
             </div>
         </div>
-        @{  // Faz a lista oportunidade de trabalho se existir alguma.
-            if (trabalhos.Count > 0)
-            {
-                foreach (var trabalho in trabalhos)
+        <div class="d-flex flex-wrap">
+            @{ // Faz a lista oportunidade de trabalho se existir alguma.
+
+                if (trabalhos.Count > 0)
                 {
-                    <div class="pt-3 px-3 mb-2 forms-details-full">
-                        <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">@trabalho.Nome</a></strong></h1>
-                        <dl class="row">
-                            <dt class="col-3">Instituição</dt>
-                            <dd class="col-9">@trabalho.Instituicao</dd>
-                            <dt class="col-3">Descrição</dt>
-                            <dd class="col-9">@trabalho.Atividade</dd>
-                            
-                            <dt class="col-3">Salário</dt>
-                            <dd class="col-9">R$@trabalho.Salario.ToString("#,###,###.00")</dd>
-                            
-                            <dt class="col-3">Publicação</dt>
-                            <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</dd>
-                        </dl>
-                    </div>
+                    foreach (var trabalho in trabalhos)
+                    {
+                        <div class="col-md-6 p-2">
+                            <div class="card-simple">
+                                <h1 class="title-details pb-2 border-bottom"><strong><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">@trabalho.Nome</a></strong></h1>
+                                <dl class="row">
+                                    <dt class="col-3">Instituição</dt>
+                                    <dd class="col-9">@trabalho.Instituicao</dd>
+                                    <dt class="col-3">Descrição</dt>
+                                    <dd class="col-9">@trabalho.Atividade</dd>
+
+                                    <dt class="col-3">Salário</dt>
+                                    <dd class="col-9">R$@trabalho.Salario.ToString("#,###,###.00")</dd>
+
+                                    <dt class="col-3">Publicação</dt>
+                                    <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                    }
                 }
             }
-        }      
-        <br />
-        <br />
-        <br />
-    </div>
+        </div>
+            <br />
+            <br />
+            <br />
+        </div>
 </div>

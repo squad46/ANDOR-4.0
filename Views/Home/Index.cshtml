@@ -145,37 +145,7 @@
                     <img src="~/img/ongs parceiras.svg" width="20px" alt="postagens sobre ongs" srcset="">
                     Ongs
                 </a>
-            </div>
-
-            <!-- Radio de selecao da categoria da nova postagem
-            <div class="switch-field px-3 py-0">
-
-                <input type="radio" id="radio-three" name="post-tema" value="yes" checked />
-                <label id="feed-moradias" for="radio-three">
-                    <img src="~/img/moradia.svg" width="20px" alt="postagens sobre moradias" srcset="">
-                    Moradia
-                </label>
-
-                <input type="radio" id="radio-four" name="post-tema" value="maybe" />
-                <label id="feed-trabalhos" for="radio-four">
-                    <img src="~/img/empregos.svg" width="20px" alt="postagens sobre empregos" srcset="">
-                    Emprego
-                </label>
-
-                <input type="radio" id="radio-five" name="post-tema" value="no" />
-                <label for="radio-five">
-                    <img src="~/img/info uteis.svg" alt="postagens sobre  info úteis" srcset="">
-                    Informações
-                </label>
-
-                <input type="radio" id="radio-six" name="post-tema" value="no" />
-                <label for="radio-six">
-                    <img src="~/img/ongs parceiras.svg" alt="postagens sobre ongs" srcset="">
-                    Ongs
-                </label>
-
-            </div>
-            -->
+            </div>           
 
         </div>
 
@@ -192,7 +162,7 @@
                         foreach (var trabalho in trabalhos)
                         {
 
-                            <div class="card-feed grad-blue mb-5 text-center">
+                            <div class="card-feed grad-blue mb-5">
                                 <!-- Avatar -->
                                 <div class="avatar-profile w-100 d-flex justify-content-center">
                                     <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
@@ -209,7 +179,7 @@
                                 </div>
 
                                 <!-- Nome profile e data post -->
-                                <div class="d-flex text-left pl-3 flex-column">
+                                <div class="d-flex px-3 align-items-start flex-column">
                                     <h3><a href="">@trabalho.NomeContato</a></h3>
                                     <div class="post-profile-cat">
                                         <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro) - Oferta de Emprego</span>
@@ -217,7 +187,7 @@
                                 </div>
 
                                 <!-- icon post -->
-                                <img src="~/img/empregos.svg" width="78px" class="opacity-25 card-icon" alt="postagens sobre empregos" srcset="">
+                                <img src="~/img/empregos.svg" width="78px" class="opacity-25 d-flex card-icon" alt="postagens sobre empregos" srcset="">
 
                                 <!-- titulo e descricao do post -->
                                 <div class="card-feed bg-light shadow p-4 text-left">
@@ -281,7 +251,7 @@
                     {
                         foreach (var moradia in moradias)
                         {
-                            <div class="card-feed  mb-5 grad-green text-center">
+                            <div class="card-feed  mb-5 grad-green">
                                 <!-- Avatar -->
                                 <div class="avatar-profile w-100 d-flex justify-content-center">
                                     <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
@@ -296,7 +266,7 @@
                                 </div>
 
                                 <!-- Nome profile e data post -->
-                                <div class="d-flex text-left pl-3 flex-column">
+                                <div class="d-flex align-items-start px-3 flex-column">
                                     <h3><a href="">@moradia.NomeContato</a></h3>
                                     <div class="post-profile-cat">
                                         <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro) - Oferta de Emprego</span>
@@ -304,7 +274,7 @@
                                 </div>
 
                                 <!-- icon post -->
-                                <img src="~/img/moradia.svg" width="70px" class="opacity-25 card-icon" alt="postagem sobre moradias" srcset="">
+                                <img src="~/img/moradia.svg" width="70px" class="opacity-25 d-flex card-icon" alt="postagem sobre moradias" srcset="">
 
                                 <!-- titulo e descricao do post -->
                                 <div class="card-feed bg-light shadow p-4 text-left">

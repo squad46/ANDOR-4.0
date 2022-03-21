@@ -1,51 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Doação";
 }
-<div class="container-fluid pt-0 card-simple">
-    <div class="container">
-        <h2 class="pag_title">Doação</h2>
+<div class="container-fluid p-0">
+    <div class="container my-4">
+        <div class="card-simple">
+            <h2 class="pag_title">Doação</h2>
+            <hr />
+            <div class="row">
 
-        <section>
-            <div>
-                <div>
-                    <div>
-                        <p class="text-doação">Para fazer uma doação para o projeto Andor usando o Pix basta acessar sua conta e inserir a chave:</p>
-                        <p class="chave-pix-doação">euapoio@andor.com</p>
-                        <p class="text-doação">Ou ler o QR Code diretamente do aplicativo do seu banco:</p>
-                        <figure> <img src="~/img/qrCode.png" alt="euapoio@andor.com" style="width:265px"></figure>
-                        <p class="text-doação">Esse novo meio de pagamento instantâneo pode ser usado para transferências bancárias, pagamentos e também é uma ótima alternativa para quem quer fazer doações.</p>
-                        <p class="text-doação">Pessoas físicas e jurídicas podem fazer transações de valores em até 10 segundos, 24h por dia, todos os dias da semana.</p>
-                        <p class="text-doação">O Pix dispensa o processo de informar todos os dados bancários e pessoais para fazer e receber uma transferência ou pagamento, o que simplifica as doações para instituições e projetos como o Andor</p>
-                        <p class="text-doação">O PIX agiliza o processo de ajudar refugiados em sua nova casa. Vamos juntos construir um futuro melhor para todos.</p>
-                    </div>   
-                </div>
-            </div>
-</section>
-@{/*
-        <div class="tradutor">
-            <div id="google_translate_element">
-                <div class="skiptranslate goog-te-gadget" dir="ltr" style="">
-                    <div id=":0.targetLanguage">
-                        <select class="goog-te-combo" aria-label="Widget de tradução de idiomas">
-                            <option value="">Selecione o idioma</option>
-                            <option value="af">Africâner</option>
-                            <option value="sq">Albanês</option>
-                            <option value="de">Alemão</option>
-                            <option value="am">Amárico</option>
-                            <option value="ar">Árabe</option>
-                        </select>
+                <div class="text-doacao row">
+                    <div class="col-sm-6 d-flex justify-content-center">
+                        <img src="~/img/banner-doacao.svg" alt="Banner para Doação" width="300px">
                     </div>
-                    Powered by
-                    <span style="white-space:nowrap">
-                        <a class="goog-logo-link" href="https://translate.google.com" target="_blank">
-                            <img src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png" width="37px" height="14px" style="padding-right: 3px" alt="Google Tradutor">
-                            Tradutor
-                        </a>
-                    </span>
+                    <div class="col-sm-6">
+                        <p>Para fazer uma doação para o projeto Andor usando o Pix basta acessar sua conta e inserir a chave:</p>
+                        <h1>euapoio@andor.com</h1>
+                        <p>Ou ler o QR Code diretamente do aplicativo do seu banco:</p>
+                        <p>
+                            Esse novo meio de pagamento instantâneo pode ser usado para transferências bancárias,
+                            pagamentos e também é uma ótima alternativa para quem quer fazer doações.
+                        </p>
+                    </div>
+
                 </div>
+
+                <div class="col-sm-6 d-flex flex-column justify-content-center text-doacao">
+                    <p>Pessoas físicas e jurídicas podem fazer transações de valores em até 10 segundos, 24h por dia, todos os dias da semana.</p>
+                    <p>O Pix dispensa o processo de informar todos os dados bancários e pessoais para fazer e receber uma transferência ou pagamento, o que simplifica as doações para instituições e projetos como o Andor</p>
+                    <p>O PIX agiliza o processo de ajudar refugiados em sua nova casa. Vamos juntos construir um futuro melhor para todos.</p>
+                </div>
+
+                <div class="col-sm-6 d-flex justify-content-center">
+                    <img src="~/img/qrCode.png" alt="euapoio@andor.com" width="265px">
+                </div>
+
             </div>
+
+            <hr />
         </div>
-        */
-}
     </div>
 </div>
