@@ -284,7 +284,7 @@
                                                 <dt class="col-4">Locador</dt>
                                                 <dd class="col-8">@moradia.NomeContato </dd>
                                                 <dt class="col-4">Telefone</dt>
-                                                <dd class="col-8">@moradia.TelefoneContato </dd>
+                                                <dd class="col-8">@Convert.ToInt64(moradia.TelefoneContato).ToString("(00) 00000-0000") </dd>
                                                 <dt class="col-4">Email</dt>
                                                 <dd class="col-8">@moradia.EmailContato </dd>
                                             </dl>

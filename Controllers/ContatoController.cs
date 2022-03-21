@@ -15,6 +15,7 @@ namespace Andor.Controllers
 
         public IActionResult Contato(string nome, string sobrenome, string telefone, string email, string sobre, string duvida)
         {
+
             if (nome == null || sobrenome == null || telefone == null || email == null || sobre == null || duvida == null) 
             {
                 TempData["mensagem"] = "Todos os campos devem ser peenchidos.";
