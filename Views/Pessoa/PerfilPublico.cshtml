@@ -6,14 +6,16 @@
             foreach (var pessoa in pessoas)
             {
                 <div class="row container-perfil-details p-2">
-                    <div class="perfil-menu mt-2 p-3"><!-- coluna da esquerda -->
+                    <div class="perfil-menu mt-2 p-3">
+                        <!-- coluna da esquerda -->
                         @{
-                            <img src="/Imagem/VerImagem/@pessoa.Id?tipo=perfil" alt="imagem do perfil"/>
+                            <img src="/Imagem/VerImagem/@pessoa.Id?tipo=perfil" alt="imagem do perfil" />
                         }
-                    </div>   
-                
-                    <div class="forms-details mt-2"><!-- coluna da direita -->
-                    
+                    </div>
+
+                    <div class="forms-details mt-2">
+                        <!-- coluna da direita -->
+
                         <h4 class="text-black-50 pt-3 ">@pessoa.Nome</h4>
                         <hr />
                         <div class="row">
@@ -38,16 +40,18 @@
                                     {
                                         <p>&nbsp;</p>
                                     }
-                                }   
+                                }
                                 <p>@pessoa.Sexo &nbsp;</p>
-                                <p>@String.Format("{0:dd/MM/yyyy}",pessoa.DataNascimento) &nbsp;</p>
+                                <p>@String.Format("{0:dd/MM/yyyy}", pessoa.DataNascimento) &nbsp;</p>
                                 <p>@pessoa.Nacionalidade &nbsp;</p>
-                                <p>@String.Format("{0:dd/MM/yyyy}",pessoa.DataCadastro) &nbsp;</p>
+                                <p>@String.Format("{0:dd/MM/yyyy}", pessoa.DataCadastro) &nbsp;</p>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             }
         }
     </div>
+    <br />
+    <br />
 </div>
