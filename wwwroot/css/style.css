@@ -32,9 +32,21 @@ li {
 
 
 footer {
-    background: #000;
-    color: #fff;
+    color: #ffffffe8;
+    background: #1558E5;
+    border-top: 4px solid #08133380;
 }
+
+    footer h3 {
+        color: #000000b3;
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+    footer h1 {
+        color: rgb(8, 19, 51);
+        font-weight: 800;
+    }
+
 
 .container {
     min-height: 89.5vh;
@@ -738,7 +750,6 @@ footer {
 }
 
     .card-feed p {
-        font-family: 'Open Sans', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
@@ -747,7 +758,6 @@ footer {
     }
 
     .card-feed h2 {
-        font-family: 'Open Sans', sans-serif;
         font-weight: 800;
         font-size: 1.6rem;
         margin-bottom: 1rem;
@@ -764,9 +774,22 @@ footer {
         margin: 0px;
     }
 
-    .card-feed a{
+    .card-feed a {
         color: #fff;
+        z-index: 999;
+        text-decoration: none;
     }
+
+.feed-cat {
+    border-radius: 15px;
+    border: 1px solid #1558E5;
+    margin: 70px 0 40px 0;
+}
+    .feed-cat a {
+        color: #fff;
+        text-decoration: none;
+    }
+
 
 .card-btn {
     position: absolute;
@@ -779,6 +802,7 @@ footer {
 
     .card-btn a {
         color: #333;
+        font-size: 0.8rem;
     }
 
     .card-btn:hover .card-btn-popup {
@@ -795,6 +819,7 @@ footer {
     bottom: 0;
     opacity: 0;
     transition: ease-in-out 0.2s;
+    z-index: 999;
 }
 
     .card-btn-popup img{
@@ -802,8 +827,8 @@ footer {
     }
 
 .card-icon {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .grad-blue {
@@ -1553,13 +1578,21 @@ footer {
     background-color: #f7f7f7;
     border-radius: 0.5rem;
     line-height: 1.5rem;
-} 
+}
 
 
 .ongs-parceiras-cards .card {
     margin-bottom: 1rem;
     border-radius: 15px;
+    height: 468px;
 }
+
+    .ongs-parceiras-cards .card .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
 .text-doação {
     font-weight: 400;

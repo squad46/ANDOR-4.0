@@ -119,18 +119,34 @@
     <div class="d-flex justify-content-center align-items-center flex-wrap">
 
         <!-- Novas Postagens-->
-        <div class="p-3 d-flex flex-column  justify-content-center">
+        <div class="p-3 feed-cat d-flex text-white bold justify-content-center bg-">
 
-            <!-- Novas Postagens
-            <h3>
-                <b>
-                    "Escreva e compartilhe sobre assuntos que possa ajudar e contribuir
-                    com sua comunidade, escolha uma categoria e comece!"
-                </b>
-            </h3>
-        -->
-            <!-- Radio de selecao da categoria da nova postagem -->
+            <div class="btn-cat px-3 h-100">
+                <a asp-controller="Moradia" asp-action="index">
+                    <img src="~/img/moradia.svg" width="20px" alt="postagens sobre moradias" srcset="">
+                    Moradias
+                </a>
+            </div>
+            <div class="btn-cat px-3 h-100">
+                <a asp-controller="Trabalho" asp-action="index">
+                    <img src="~/img/empregos.svg" width="20px" alt="postagens sobre empregos" srcset="">
+                    Emprego
+                </a>
+            </div>
+            <div class="btn-cat px-3 h-100">
+                <a asp-controller="Blog" asp-action="index">
+                    <img src="~/img/info uteis.svg" width="20px" alt="postagens sobre  info úteis" srcset="">
+                    Informações
+                </a>
+            </div>
+            <div class="btn-cat px-3 h-100">
+                <a asp-controller="Ong" asp-action="index">
+                    <img src="~/img/ongs parceiras.svg" width="20px" alt="postagens sobre ongs" srcset="">
+                    Ongs
+                </a>
+            </div>
 
+            <!-- Radio de selecao da categoria da nova postagem
             <div class="switch-field px-3 py-0">
 
                 <input type="radio" id="radio-three" name="post-tema" value="yes" checked />
@@ -158,22 +174,11 @@
                 </label>
 
             </div>
-
-            <!-- Botao e input de enviar nova postagem com ou sem imagem
-            <div class="d-flex flex-fill">
-                <input type="text" class="d-flex flex-fill" placeholder="Descreva Aqui!"
-                       aria-label="Descreva Aqui!" aria-describedby="button-addon4">
-                <div class="d-flex btn-up align-items-center">
-                    <label for="upload-post"><img src="~/img/src-image.svg" alt=""></label>
-                    <input type="file" name="upload-post" id="upload-post">
-                    <button type="submit"><img src="~/img/arrow-3.svg" width="15px" alt=""></button>
-                </div>
-            </div>
-        -->
+            -->
 
         </div>
 
-        <!-- Postagem Única 1-->     
+        <!-- Postagem Única 1-->
 
         <div class="row w-100">
 
@@ -197,7 +202,9 @@
                                 <!-- boato ver detalhes do post -->
                                 <div class="edit-post w-100 d-flex flex-column align-items-center">
                                     <img src="~/img/points-edit.svg" class="opacity-50" alt="editar postagem" width="15px">
-                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Detalhes</a>
+                                    <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">
+                                        Detalhes
+                                    </a>
                                 </div>
 
                                 <!-- Nome profile e data post -->
@@ -213,7 +220,11 @@
 
                                 <!-- titulo e descricao do post -->
                                 <div class="card-feed bg-light shadow p-4 text-left">
-                                    <h2><a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">@trabalho.Nome - @trabalho.Instituicao</a></h2>
+                                    <h2>
+                                        <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">
+                                            @trabalho.Nome - @trabalho.Instituicao
+                                        </a>
+                                    </h2>
                                     <p>
                                         @trabalho.Atividade
                                     </p>
@@ -292,7 +303,7 @@
                                 </div>
 
                                 <!-- icon post -->
-                                <img src="~/img/moradia.svg" width="78px" class="opacity-25 card-icon" alt="postagem sobre moradias" srcset="">
+                                <img src="~/img/moradia.svg" width="70px" class="opacity-25 card-icon" alt="postagem sobre moradias" srcset="">
 
                                 <!-- titulo e descricao do post -->
                                 <div class="card-feed bg-light shadow p-4 text-left">
@@ -348,111 +359,9 @@
                 }
 
             </div>
-                
-
-            </div>
-
-
-
-            <!--
-        <div id="trabalhos">
-            @{
-                // Faz a lista oportunidade de trabalho se existir alguma.
-                /*    if (trabalhos.Count > 0)
-                    {
-                        foreach (var trabalho in trabalhos)
-                        {
-
-                            <article class="feed-unique p-3 d-flex flex-column">
-
-                                <div class="post-profile d-flex flex-fill justify-content-between">
-                                    <div class="avatar-profile">
-                                        <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@trabalho.Id_pessoa">
-                                            <img src="/Imagem/VerImagem/@trabalho.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
-                                        </a>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <h4><a href="">@trabalho.NomeContato</a></h4>
-                                        <div class="post-profile-cat">
-                                            <span>@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</span><br />
-                                            <span>Oferta de Emprego</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="edit-post d-flex flex-column align-items-center">
-                                        <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
-                                        <a asp-controller="Trabalho" asp-action="Detalhes" asp-route-id="@trabalho.Id" asp-route-pessoaId="@trabalho.Id_pessoa">Ver detalhes</a>
-                                    </div>
-
-                                </div>
-
-                                <div class="description-profile">
-                                    <h3>@trabalho.Nome</h3>
-                                    <p>
-                                        @trabalho.Atividade
-                                    </p>
-
-                                    <div class="post-img d-flex flex-fill mb-3 align-items-center">
-                                        <img src="~/img/post-imag-1.jpg" width="100%" alt="">
-                                    </div>
-                                    <div class="d-flex justify-content-evenly">
-                                        <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
-                                        <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
-                                    </div>
-                                </div>
-                            </article>
-
-                        }
-                    }*/
-            }
         </div>
 
-        <div id="moradias" class="posts">
-            @{ // Faz a lista moradias se existir alguma.
-                /*  if (moradias.Count > 0)
-                  {
-                      foreach (var moradia in moradias)
-                      {
-                          <article class="feed-unique p-3 d-flex flex-column">
+        <div id="pai"></div>
 
-                              <div class="post-profile d-flex flex-fill justify-content-between">
-                                  <div class="avatar-profile">
-                                      <a asp-controller="Pessoa" asp-action="PerfilPublico" asp-route-id="@moradia.Id_pessoa">
-                                          <img src="/Imagem/VerImagem/@moradia.Id_pessoa?tipo=perfil" alt="imagem do perfil" />
-                                      </a>
-                                  </div>
-                                  <div class="d-flex flex-column">
-                                      <h4><a href="">@moradia.NomeContato</a></h4>
-                                      <div class="post-profile-cat">
-                                          <span>@String.Format("{0:dd/MM/yyyy}", moradia.DataCadastro)</span><br />
-                                          <span>Oferta de Moradia</span>
-                                      </div>
-                                  </div>
-                                  <div class="edit-post d-flex flex-column align-items-center">
-                                      <img src="~/img/points-edit.svg" alt="editar postagem" width="18px">
-                                      <a asp-controller="Moradia" asp-action="Detalhes" asp-route-id="@moradia.Id" asp-route-pessoaId="@moradia.Id_pessoa">Ver detalhes</a>
-                                  </div>
-                              </div>
-                              <div class="description-profile">
-                                  <h3>@moradia.Name</h3>
-                                  <p>@moradia.Descricao</p>
-
-                                  <div class="post-img d-flex flex-fill mb-3 align-items-center">
-                                      <img src="~/img/moradia.jpg" width="100%" alt="">
-                                  </div>
-                                  <div class="d-flex justify-content-evenly">
-                                      <span><a href=""><img src="~/img/icon-comment.svg" alt=""> Comentar</a></span>
-                                      <span><a href=""><img src="~/img/icon-whatsapp.svg" alt=""> Compartilhar</a></span>
-                                  </div>
-                              </div>
-                          </article>
-
-                      }
-                  }*/
-            }
-        </div>
-    -->
-
-            <div id="pai"></div>
-        </div>
+    </div>
 </section>
