@@ -926,6 +926,10 @@ footer {
             max-width: 100%;
             padding-left: 75px;
         }
+        #scrollbar {
+            height: auto;
+            overflow: hidden;
+        }
     }
 
     @media screen and (max-width: 768px) {
