@@ -32,19 +32,24 @@ li {
 
 
 footer {
-    color: #ffffffe8;
-    background: #1558E5;
-    border-top: 4px solid #08133380;
+    color: #ffffffc4;
+    background: rgb(8, 19, 51);
+    border-top: 4px solid #1558E5;
 }
 
     footer h3 {
-        color: #000000b3;
+        color: #f8f9fa42;
         font-weight: 700;
         font-size: 1.5rem;
     }
+
     footer h1 {
-        color: rgb(8, 19, 51);
+        color: #ffffffc4;
         font-weight: 800;
+    }
+
+    footer a {
+        color: #fff;
     }
 
 
@@ -92,7 +97,7 @@ footer {
     padding: 2rem;
     overflow: auto;
     transition: ease-in-out 2s;
-    z-index: 1;
+    z-index: 2;
 }
 
 .button-menu h4 {
