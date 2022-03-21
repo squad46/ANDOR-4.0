@@ -120,7 +120,7 @@
 
                 <div id="on" class="login-register text-end">
                     <a id="usuario"></a>
-                    <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
+                    <span><img id="avatar" src="~/img/usuario.svg" style="width:40px; height:40px;" alt="login ou registrar"></span>
                     <a asp-controller="Login" asp-action="Logout">Logout</a>
                 </div>
 
@@ -236,6 +236,8 @@
                         $('#usuario').text(nome);
                         var link = "/Pessoa/Details/" + id;
                         $('#usuario').attr('href', link);
+                        var avatar = "/Imagem/VerImagem/" + id + "?tipo=perfil";
+                        $('#avatar').attr('src', avatar);
                     }
                     else {
                         $('#on').hide();

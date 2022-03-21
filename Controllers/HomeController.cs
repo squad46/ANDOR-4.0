@@ -21,6 +21,7 @@ namespace Andor.Controllers
 
         public IActionResult Index()
         {
+            //ViewData["id"] = Request.Cookies["Id"];
             ViewData["trabalhos"] = _context.Trabalhos.OrderByDescending(x => x.DataCadastro).ToList();    // cria lista de trabalhos
             ViewData["moradias"]  = _context.Moradias.OrderByDescending(x => x.DataCadastro).ToList();     // cria lista de moradias 
             return View();
