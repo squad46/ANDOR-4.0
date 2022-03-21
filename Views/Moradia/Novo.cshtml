@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="form-group col-6 px-3">
                             <label class="control-label">Tipo *</label>
-                            <select class="custom-select" asp-for="Tipo" pattern="[a-zA-Z]" required >
+                            <select class="custom-select form-control" asp-for="Tipo" pattern="[a-zA-Z]" required >
                                 <option selected disabled value="">-</option>
                                 <option>Apartamento</option>
                                 <option>Casa</option>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-group col-4 px-3">
                             <label asp-for="UF" class="control-label">UF *</label>
-                            <select asp-for="UF" class="custom-select" required>
+                            <select asp-for="UF" class="custom-select form-control" required>
                                 <option selected disabled value="">-</option>
                                 <option>AC</option>
                                 <option>AL</option>

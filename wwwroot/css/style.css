@@ -140,6 +140,8 @@ footer {
     .login-register img {
         margin-left: 5px;
         margin-right: 5px;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
 .linguage {
@@ -297,6 +299,22 @@ footer {
     border-radius: 0px 0px 15px 0;
     background: #0d4accf5;
     display: none;
+}
+
+.btn-close-details {
+    border: 0;
+    background: none;
+}
+    .btn-close-details span {
+        background: none;
+        color: #f66879;
+        font-size: 1.6rem;
+    }
+
+.alert-warning {
+    color: #00000099;
+    background-color: #f768793b;
+    border-color: #f76879
 }
 
 
@@ -721,6 +739,7 @@ footer {
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
+    padding: 1rem;
 }
 
 .perfil-detalhes {
@@ -819,14 +838,13 @@ footer {
 
     .card-btn:hover .card-btn-popup {
         opacity: 1;
-        left: 15px;
     }
 
 .card-btn-popup {
     position: absolute;
     border-radius: 15px;
     height: 40px;
-    width: 98%;
+    width: 100%;
     background: #E8E8E8;
     bottom: 0;
     opacity: 0;
@@ -1036,6 +1054,7 @@ footer {
 
             .login-register img {
                 margin-top: 5px;
+                margin-bottom: 5px;
             }
 
 
