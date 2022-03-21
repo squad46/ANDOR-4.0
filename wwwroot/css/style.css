@@ -592,6 +592,13 @@ footer {
             font-weight: bold;
         }*/
 
+.emp-serv img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .post-profile-cat {
     font-size: 0.7rem;
     opacity: 0.4;
