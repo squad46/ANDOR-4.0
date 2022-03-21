@@ -93,7 +93,7 @@
                             <div class="col-12">
                                 <label class="control-label">UF</label>
 
-                                <select asp-for="UF" class="custom-select">
+                                <select asp-for="UF" class="custom-select form-control">
                                     <option selected disabled value="">-</option>
                                     <option>AC</option>
                                     <option>AL</option>
@@ -144,7 +144,7 @@
                         <div class="row">
                             <div class="col-3">
                                 <label class="control-label">Sexo</label>
-                                <select class="custom-select" asp-for="Sexo">
+                                <select class="custom-select form-control" asp-for="Sexo">
                                     <option selected disabled value="">-</option>
                                     <option>M</option>
                                     <option>F</option>
@@ -166,8 +166,8 @@
                         </div>
                         <div class="form-group d-flex mt-4 justify-content-end">
 
-                            <input type="submit" value="Salvar" class="btnn btn-editar" style="width:auto" />
-                            <a asp-controller="Pessoa" asp-action="Details" asp-route-id="@Model.Id" class="btnn btn-editar ml-3">Voltar</a>
+                            <input type="submit" value="Salvar" class="btn m-1 btn-editar" style="width:auto" />
+                            <a asp-controller="Pessoa" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-editar m-1">Voltar</a>
                         </div>
                     </form>
                 </div>
