@@ -3,13 +3,13 @@
     var moradias = ViewData["moradias"] as List<Moradia>;
 }
 <div class="container-fluid pt-0 bg-light">
-    <div class="container text-black-50 p-3">
+    <div class="container text-black-50 py-3">
         <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
             <div class="row">
                 <div class="col">
                     <h3>Moradias</h3>
                 </div>
-                <div class="col text-right">
+                <div class="col d-flex align-items-center justify-content-end">
                     <form asp-controller="Moradia" asp-action="Filtrar" method="post">
                         <select name="uf" class="select-uf">
                             <option selected>UF</option>

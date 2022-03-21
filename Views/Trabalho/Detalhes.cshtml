@@ -2,16 +2,16 @@
     ViewData["Title"] = "Detalhes";
 }
 <div class="container-fluid pt-0 bg-light">
-    <div class="container text-black-50 p-3">
+    <div class="container text-black-50 py-3">
         <h4 class="text-right pr-3">Trabalho / Emprego</h4>
-        
+
         <div class="row justify-content-center pt-2">
             <!-- coluna da esquerda -->
-            <div class="perfil-detalhes forms-details-full mr-2">
-                <img width="100%" src="~/img/post-imag-1.jpg" />
+            <div class="col-sm-3 card-simple py-5 grad-blue m-2">
+                <img src="~/img/empregos.svg" width="78px" class="opacity-25 d-flex card-icon" alt="postagens sobre empregos" srcset="">
             </div>
             <!-- coluna da direita -->
-            <div class="forms-details-detalhes">
+            <div class="col-sm-8 card-simple">
                 @{
                     var trabalhos = ViewData["_trabalhos"] as List<Trabalho>;
                     var pessoas = ViewData["_pessoas"] as List<Pessoa>;
@@ -35,7 +35,7 @@
                                 <dt class="col-3">Contato</dt>
                                 <dd class="col-9">@trabalho.NomeContato - @trabalho.EmailContato Tel. @Convert.ToInt64(trabalho.TelefoneContato).ToString("(00) 00000-0000")</dd>
                                 <dt class="col-3">Publicação</dt>
-                                <dd class="col-9">@String.Format("{0:dd/MM/yyyy}",trabalho.DataCadastro)</dd>
+                                <dd class="col-9">@String.Format("{0:dd/MM/yyyy}", trabalho.DataCadastro)</dd>
                                 @{
                                     foreach (var pessoa in pessoas)
                                     {
@@ -54,6 +54,9 @@
             </div>
         </div>
     </div>
+    <br />
+    <br />
+    <br />
 </div>
 
 
