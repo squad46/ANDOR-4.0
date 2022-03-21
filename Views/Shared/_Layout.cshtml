@@ -119,7 +119,7 @@
 
                 <div id="on" class="login-register text-end">
                     <a id="usuario"></a>
-                    <span><img src="~/img/usuario.svg" alt="login ou registrar"></span>
+                    <span><img id="avatar" src="~/img/usuario.svg" style="width:40px; height:40px;" alt="login ou registrar"></span>
                     <a asp-controller="Login" asp-action="Logout">Logout</a>
                 </div>
 
@@ -217,43 +217,47 @@
                 <span>Andor - Refuciados Todos os direitos reservados 2023</span>
             </div>
 
-        </div>
-    </footer>  
-     <!-- Fim Rodapé da página -->
+                    </div>
+                </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script _src="~/js/site.js" asp-append-version="true"></script>
+                <!-- Fim Rodapé da página -->
 
-    <script>const id = Cookies.get('Id');
-        const user = Cookies.get('Usuario');
-        if (typeof id !== 'undefined') {
-            $('#on').show();
-            $('#off').hide();
-            var nome = user.split(' ').shift();
-            $('#usuario').text(nome);
-            var link = "/Pessoa/Details/" + id;
-            $('#usuario').attr('href', link);
-        }
-        else {
-            $('#on').hide();
-            $('#off').show();
-        }
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script _src="~/js/site.js" asp-append-version="true"></script>
 
-        $("#feed-trabalhos").click(function () {
-            $("#trabalhos").show();
-            $("#moradias").hide();
-            $("#informacoes").hide();
-            $("#ongs").hide();
-        });
-        $("#feed-moradias").click(function () {
-            $("#trabalhos").hide();
-            $("#moradias").show();
-            $("#informacoes").hide();
-            $("#ongs").hide();
-        });
-        // https://github.com/js-cookie/js-cookie</script>
-    @await RenderSectionAsync("Scripts", required: false)
+                <script>const id = Cookies.get('Id');
+                    const user = Cookies.get('Usuario');
+                    if (typeof id !== 'undefined') {
+                        $('#on').show();
+                        $('#off').hide();
+                        var nome = user.split(' ').shift();
+                        $('#usuario').text(nome);
+                        var link = "/Pessoa/Details/" + id;
+                        $('#usuario').attr('href', link);
+                        var avatar = "/Imagem/VerImagem/" + id + "?tipo=perfil";
+                        $('#avatar').attr('src', avatar);
+                    }
+                    else {
+                        $('#on').hide();
+                        $('#off').show();
+                    }
+
+                    $("#feed-trabalhos").click(function () {
+                        $("#trabalhos").show();
+                        $("#moradias").hide();
+                        $("#informacoes").hide();
+                        $("#ongs").hide();
+                    });
+                    $("#feed-moradias").click(function () {
+                        $("#trabalhos").hide();
+                        $("#moradias").show();
+                        $("#informacoes").hide();
+                        $("#ongs").hide();
+                    });
+                    // https://github.com/js-cookie/js-cookie</script>
+                @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 
 </html>
