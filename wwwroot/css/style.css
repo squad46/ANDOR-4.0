@@ -54,7 +54,7 @@ footer {
 
 
 .container {
-    min-height: 89.5vh;
+   /*min-height: 89.5vh;*/
 }
 
 .container-fluid {
@@ -819,7 +819,7 @@ footer {
     position: absolute;
     border-radius: 15px;
     height: 40px;
-    width: 100%;
+    width: 98%;
     background: #E8E8E8;
     bottom: 0;
     opacity: 0;
@@ -832,8 +832,7 @@ footer {
     }
 
 .card-icon {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin:1rem auto;
 }
 
 .grad-blue {
