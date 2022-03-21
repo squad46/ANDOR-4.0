@@ -2,35 +2,44 @@
     ViewData["Title"] = "Empregos e Serviços";
 }
 <div class="container-fluid pt-0 bg-light">
-    <div class="container text-black-50 py-3">
+    <div class="container py-3">
         <div class="px-3 pt-3 pb-2 mb-2 forms-details-full">
             <h4>Empregos e Serviços</h4>
-        </div>  
+        </div>
         <div class="d-flex justify-content-around flex-wrap ">
 
-              
-            <div class="col-sm-6"> 
-                <div class="mx-1 my-3 p-3 forms-details-full">
-                    <img src="" style="width:100%"/>
-                    <a asp-controller="Profissional" asp-action="Index"><h5>Estou a procura de profissional ou serviço</h5></a>
-                    <p>
-                        Encontre profissionais com as habilidades que você precisa.
-                    </p>
 
+            <div class="col-md-6 mt-3 text-center">
+
+                <div class="m-2 p-2 card-simple">
+                    <h5 class="font-weight-bold mt-2">Sou Recrutador</h5>
+                    <hr />
+                    <div class="emp-serv">
+                        <img src="/img/busco-profissional.svg"/>
+                    </div>
+
+                    <p class="my-3">Encontre profissionais com as habilidades que você precisa.</p>
+                    <a class="btn" asp-controller="Profissional" asp-action="Index">Pesquisar Profissionais</a>
                 </div>
 
             </div>
 
-            <div class="col-sm-6">  
-                <div class="mx-1 my-3 p-3 forms-details-full">
-                    <img src="" style="width:100%"/>
-                    <a asp-controller="Trabalho" asp-action="Index"><h5>Estou a procura de trabalho ou emprego</h5></a>
-                    <p>
-                         Encontre empregos que se encaixam em suas habilidades.
-                    </p>
+            <div class="col-md-6 mt-3 text-center">
+
+                <div class="m-2 p-2 card-simple">
+                    <h5 class="font-weight-bold mt-2">Sou Profissional</h5>
+                    <hr />
+                    <div class="emp-serv">
+                        <img src="/img/busco-emprego.svg"/>
+                    </div>
+
+                    <p class="my-3">Encontre empregos que se encaixam em suas habilidades.</p>
+                    <a class="btn" asp-controller="Trabalho" asp-action="Index">Pesquisar Vagas</a>
                 </div>
             </div>
 
         </div>
     </div>
+    <br />
+    <br />
 </div>
