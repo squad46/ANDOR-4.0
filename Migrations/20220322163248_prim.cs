@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Andor.Migrations
 {
-    public partial class primeir : Migration
+    public partial class prim : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,28 +25,44 @@ namespace Andor.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Ongs",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    Site = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Imagem = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ongs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pessoas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(40)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(40)", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(60)", nullable: false),
-                    Telefone = table.Column<string>(type: "nvarchar(13)", nullable: true),
-                    CRNM = table.Column<string>(type: "nvarchar(15)", nullable: true),
-                    CPF = table.Column<string>(type: "nvarchar(11)", nullable: true),
-                    Endereco = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    Bairro = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Telefone = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: true),
+                    CRNM = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    CPF = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
+                    Endereco = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
+                    Bairro = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Numero = table.Column<int>(type: "int", nullable: false),
                     CEP = table.Column<int>(type: "int", nullable: false),
-                    UF = table.Column<string>(type: "nvarchar(2)", nullable: true),
-                    Cidade = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    Sexo = table.Column<string>(type: "nvarchar(1)", nullable: true),
+                    UF = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: true),
+                    Cidade = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Sexo = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Nacionalidade = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Nacionalidade = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Classe = table.Column<string>(type: "nvarchar(10)", nullable: true)
+                    Classe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -208,6 +224,9 @@ namespace Andor.Migrations
 
             migrationBuilder.DropTable(
                 name: "Moradias");
+
+            migrationBuilder.DropTable(
+                name: "Ongs");
 
             migrationBuilder.DropTable(
                 name: "Trabalhos");
