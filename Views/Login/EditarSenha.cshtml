@@ -12,18 +12,18 @@
                     <input type="hidden" name="id" value="@Model.Id" />
                     <div class="">
                         <label class="control-label">Senha</label>
-                        <input class="form-control" id="senha" name="senha" type="password" required autofocus/>
-                        <div class="invalid-feedback"> Informe senha atual.</div>
+                        <input class="form-control" id="senha" name="senha" type="password" aria-required="true" required autofocus/>
+                        <div class="invalid-feedback" role="alert"> Informe senha atual.</div>
                     </div>
                     <div class="">
                         <label class="control-label">Nova senha</label>
-                        <input class="form-control" id="nSenha" name="nSenha" type="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$"/>
-                        <div class="invalid-feedback"> Deve conter um caractere especial, uma letra maiúscula e um numeral.</div>
+                        <input class="form-control" id="nSenha" name="nSenha" type="password" aria-required="true" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$"/>
+                        <div class="invalid-feedback" role="alert"> Deve conter um caractere especial, uma letra maiúscula e um numeral.</div>
                     </div>
                     <div class="">
                         <label class="control-label">Repetir nova senha</label>
-                        <input class="form-control" id="rSenha" name="rSenha" type="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$"/>
-                        <div class="invalid-feedback"> Precisa ser igual a nova senha.</div>
+                        <input class="form-control" id="rSenha" name="rSenha" type="password" aria-required="true" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$"/>
+                        <div class="invalid-feedback" role="alert"> Precisa ser igual a nova senha.</div>
                     </div>
                 </div>
                   <p id="mess"> </p>

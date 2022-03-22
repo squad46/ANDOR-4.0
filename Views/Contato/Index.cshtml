@@ -10,58 +10,59 @@
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>@mensagem</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             }
             <h2 class="pt-3 border-bottom">Contato</h2>
 
             <form asp-controller="Contato" asp-action="Contato" class="needs-validation" novalidate>
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip01"></label>
-                        <input type="text" name="nome" class="form-control" id="validationTooltip01" placeholder="Nome" required maxlength="15" autofocus>
-                         <div class="invalid-feedback">Informe seu nome. </div>
+                <fieldset>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationTooltip01"></label>
+                            <input type="text" name="nome" class="form-control" id="validationTooltip01" placeholder="Nome" aria-required="true" required maxlength="15" autofocus>
+                            <div class="invalid-feedback" role="alert">Informe seu nome. </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationTooltip02"></label>
+                            <input type="text" name="sobrenome" class="form-control" id="validationTooltip02" placeholder="Sobrenome" aria-required="true" required maxlength="20">
+                            <div class="invalid-feedback" role="alert">Informe seu sobrenome. </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationTooltip03"></label>
+                            <input type="tel" name="telefone" class="form-control" id="validationTooltip03" placeholder="Whatsapp" aria-required="true" required maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}">
+                            <div class="invalid-feedback" role="alert">Informe seu Whatsapp, no padrão (XX) 99999-9999 </div>
+                        </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip02"></label>
-                        <input type="text" name="sobrenome" class="form-control" id="validationTooltip02" placeholder="Sobrenome" required maxlength="20">
-                        <div class="invalid-feedback">Informe seu sobrenome. </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip03"></label>
-                        <input type="tel" name="telefone" class="form-control" id="validationTooltip03" placeholder="Whatsapp" required maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}">
-                        <div class="invalid-feedback">Informe seu Whatsapp, no padrão (XX) 99999-9999 </div>
-                    </div>
-                </div>
 
-                <div class="form-row">
-                    <div class="col-md-6 mb-3">
-                        <label for="validationTooltip04"></label>
-                        <input type="email" name="email" class="form-control" id="validationTooltip04" placeholder="E-mail" required>
-                        <div class="invalid-feedback">Informe seu e-mail. </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationTooltip04"></label>
+                            <input type="email" name="email" class="form-control" id="validationTooltip04" placeholder="E-mail" aria-required="true" required>
+                            <div class="invalid-feedback" role="alert">Informe seu e-mail. </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputState"></label>
+                            <select id="inputState" name="sobre" class="form-control" aria-required="true" required>
+                                <option selected disabled value="">Dúvida sobre...</option>
+                                <option>Postagem</option>
+                                <option>Notícia</option>
+                                <option>Moradia</option>
+                                <option>Emprego</option>
+                                <option>Funcionalidades</option>
+                                <option>Outros...</option>
+                            </select>
+                            <div class="invalid-feedback" role="alert">Escolha uma opção. </div>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputState"></label>
-                        <select id="inputState" name="sobre" class="form-control" required>
-                            <option selected disabled value="">Dúvida sobre...</option>
-                            <option>Postagem</option>
-                            <option>Notícia</option>
-                            <option>Moradia</option>
-                            <option>Emprego</option>
-                            <option>Funcionalidades</option>
-                            <option>Outros...</option>
-                        </select>
-                        <div class="invalid-feedback">Escolha uma opção. </div>
+
+                    <div class="mb-3">
+                        <label for="validationTextarea"></label>
+                        <textarea name="duvida" class="form-control" id="validationTextarea" placeholder="Descreva aqui sua Dúvida" aria-required="true" required maxlength="600"></textarea>
+                        <div class="invalid-feedback" role="alert"> Deve conter até 600 caracteres. </div>
                     </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="validationTextarea"></label>
-                    <textarea name="duvida" class="form-control" id="validationTextarea" placeholder="Descreva aqui sua Dúvida" required maxlength="600"></textarea>
-                    <div class="invalid-feedback"> Deve conter até 600 caracteres. </div>
-                </div>
-
+                </fieldset>
                 <button class="btn btn-primary" type="submit">Enviar</button>
             </form>
 
@@ -69,7 +70,8 @@
                 <div class="col-md-4 my-4">
                     <div class="">
                         <h4>Dúvidas Frequentes</h4>
-                        <ul class="p-0">"                            
+                        <ul class="p-0">
+                            "
                             <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Cadastrar</a></li>
                             <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Buscar Emprego</a></li>
                             <li><span>Como </span><a asp-controller="Ajuda" asp-action="index">Buscar Moradia</a></li>
@@ -136,22 +138,22 @@
 </div>
 
 <script>
-// Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
-    var forms = document.getElementsByClassName('needs-validation');
-    // Faz um loop neles e evita o envio
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
+    // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+        var forms = document.getElementsByClassName('needs-validation');
+        // Faz um loop neles e evita o envio
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
       }, false);
-    });
-  }, false);
-})();
+    })();
 </script>

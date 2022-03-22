@@ -12,7 +12,7 @@
             <!-- coluna da esquerda -->
             <div class="perfil-menu mb-3 p-3">
                 @{
-                        <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem do perfil" />
+                        <img src="/Imagem/VerImagem/@Model.Id?tipo=perfil" alt="imagem de perfil do usuário" />
                 }
             </div>
             <!-- Forms -->
@@ -47,48 +47,48 @@
                         <div class="row">
                             <div class="col">
                                 <label asp-for="Nome" class="control-label"></label>
-                                <input asp-for="Nome" type="text" class="form-control" minlength="3" maxlength="40" required />
-                                <div class="invalid-feedback"> Seu nome deve ser informado. </div>
+                                <input asp-for="Nome" type="text" class="form-control" minlength="3" maxlength="40" aria-required="true" required />
+                                <div class="invalid-feedback" role="alert"> Seu nome deve ser informado. </div>
                             </div>
                             <div class="col-6">
                                 <label asp-for="Email" class="control-label"></label>
-                                <input asp-for="Email" type="email" class="form-control" minlength="3" maxlength="40" required />
-                                <div class="invalid-feedback"> Seu e-mail deve ser informado. </div>
+                                <input asp-for="Email" type="email" class="form-control" minlength="3" maxlength="40" aria-required="true" required />
+                                <div class="invalid-feedback" role="alert"> Seu e-mail deve ser informado. </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label asp-for="Senha" class="control-label"></label>
-                                <input type="hidden" asp-for="Senha" class="form-control" required />
+                                <input type="hidden" asp-for="Senha" class="form-control" aria-required="true" required />
                                 <label class="form-control"><a asp-controller="Login" asp-action="EditarSenha" asp-route-id="@Model.Id" class="text-dark">Alterar senha</a></label>
-                                <div class="invalid-feedback"> É necessário ter uma senha válida. </div>
+                                <div class="invalid-feedback" role="alert"> É necessário ter uma senha válida. </div>
                             </div>
                             <div class="col-6">
                                 <label asp-for="Telefone" class="control-label"></label>
                                 <input asp-for="Telefone" type="tel" class="form-control" pattern="[0-9]+$" minlength="10" maxlength="13"  />
-                                <div class="invalid-feedback">Informe corretamente (somente números). </div>
+                                <div class="invalid-feedback" role="alert">Informe corretamente (somente números). </div>
                             </div>
                             <div class="col-6">
                                 <label asp-for="CRNM" class="control-label"></label>
                                 <input asp-for="CRNM" type="text" class="form-control" minlength="5" maxlength="15" />
-                                <div class="invalid-feedback">Informe corretamente, minimo 5 e máximo 15 caracteres. </div>
+                                <div class="invalid-feedback" role="alert">Informe corretamente, minimo 5 e máximo 15 caracteres. </div>
                             </div>
                             <div class="col-6">
                                 <label asp-for="CPF" class="control-label"></label>
                                 <input asp-for="CPF" type="text" class="form-control" minlength="11" maxlength="11" />
-                                <div class="invalid-feedback">Somente números, deve conter 11 dígitos.</div>
+                                <div class="invalid-feedback" role="alert">Somente números, deve conter 11 dígitos.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <label class="control-label">Endereço</label>
                                 <input asp-for="Endereco" type="text" class="form-control" minlength="3" maxlength="60" />
-                                <div class="invalid-feedback">Mínimo de 3 e máximo de 60 caracteres.</div>
+                                <div class="invalid-feedback" role="alert">Mínimo de 3 e máximo de 60 caracteres.</div>
                             </div>
                             <div class="col-12">
                                 <label class="control-label">Bairro</label>
                                 <input asp-for="Bairro" type="text" class="form-control" minlength="2" maxlength="20" />
-                                <div class="invalid-feedback">Mínimo de 2 e máximo de 20 caracteres.</div>
+                                <div class="invalid-feedback" role="alert">Mínimo de 2 e máximo de 20 caracteres.</div>
                             </div>
                             <div class="col-12">
                                 <label class="control-label">UF</label>
@@ -128,17 +128,17 @@
                             <div class="col-12">
                                 <label class="control-label">Cidade</label>
                                 <input asp-for="Cidade" type="text" class="form-control" minlength="3" maxlength="20" />
-                                <div class="invalid-feedback">Mínimo de 2 e máximo de 20 caracteres.</div>
+                                <div class="invalid-feedback" role="alert">Mínimo de 2 e máximo de 20 caracteres.</div>
                             </div>
                             <div class="col-3">
                                 <label asp-for="Numero" class="control-label"></label>
                                 <input asp-for="Numero" type="text" class="form-control" required pattern="[0-9]+$" maxlength="5" />
-                                <div class="invalid-feedback">Somente números.</div>
+                                <div class="invalid-feedback" role="alert">Somente números.</div>
                             </div>
                             <div class="col-9">
                                 <label asp-for="CEP" class="control-label"></label>
                                 <input asp-for="CEP" type="text" class="form-control" required pattern="[0-9]+$" minlength="8" maxlength="8"  />
-                                <div class="invalid-feedback">Somente números, deve conter 8 dígitos.</div>
+                                <div class="invalid-feedback" role="alert">Somente números, deve conter 8 dígitos.</div>
                             </div>
                         </div>
                         <div class="row">
@@ -153,7 +153,7 @@
                             <div class="col">
                                 <label asp-for="Nacionalidade" class="control-label"></label>
                                 <input asp-for="Nacionalidade" type="text" class="form-control" minlength="2" maxlength="20" />
-                                <div class="invalid-feedback">Mínimo 2 e máximo 20 caracteres.</div>
+                                <div class="invalid-feedback" role="alert">Mínimo 2 e máximo 20 caracteres.</div>
                             </div>
                             <div class="col">
                                 <label asp-for="DataNascimento" class="control-label"></label>

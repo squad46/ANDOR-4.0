@@ -21,14 +21,14 @@
                                     <form asp-controller="Login" asp-action="Logar" method="post" class="needs-validation" novalidate>
                                         <h4 class="mb-4 pb-3">Login</h4>
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off" required autofocus>
+                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off" aria-required="true" required autofocus>
                                             <i class="input-icon uil uil-at"></i>
-                                            <div class="invalid-feedback">Informe seu e-mail cadastrado. </div>
+                                            <div class="invalid-feedback" role="alert">Informe seu e-mail cadastrado. </div>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off" required>
+                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off" aria-required="true" required>
                                             <i class="input-icon uil uil-lock-alt"></i>
-                                            <div class="invalid-feedback">Informe sua senha. </div>
+                                            <div class="invalid-feedback" role="alert">Informe sua senha. </div>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Entrar" class="btn mt-4" />
