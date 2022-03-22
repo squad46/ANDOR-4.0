@@ -1,14 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Andor.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Andor.Controllers
 {
     public class OngController : Controller
     {
-        // GET: /<controller>/
+        private readonly Contexto _context;
+
+        public OngController(Contexto context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
+            ViewData["ongs"] = _context.Ongs.ToList();
             return View();
         }
     }

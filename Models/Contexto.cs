@@ -10,6 +10,7 @@ namespace Andor.Models
         public DbSet<Trabalho> Trabalhos { get; set; }
         public DbSet<Moradia> Moradias { get; set; }
         public DbSet<Imagem> Imagens { get; set; }
+        public DbSet<Ong> Ongs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

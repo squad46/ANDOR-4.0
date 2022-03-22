@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Ongs Parceiras";
+    var ongs = ViewData["ongs"] as List<Ong>;
 }
 
 <div class="container-fluid pt-0 ongs-parceiras-cards">
@@ -8,6 +9,27 @@
         <div class="ongs-parceiras-cards container mb-3">
             <h1 class="pag_title mb-3">Ongs Parceiras</h1>
             <div class="row">
+
+               @{
+                    if (ongs.Count > 0)
+                    {
+                        foreach (var ong in ongs)
+                        {
+                            <div class="col-sm-4">
+                                <div class="card align-items-center">
+                                    <img src="@ong.Imagem" alt="Logo UNHCR ACNUR La agencia de la ONU para los Refugiados">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@ong.Nome</h5>
+                                        <p class="card-text">@ong.Descricao</p>
+                                        <a href="@ong.Site" class="btn btn-primary">Saiba Mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+                @{/*
                 <div class="col-sm-4">
                     <div class="card align-items-center">
                         <img src="~/img/unhcr-logo-ES.png" alt="Logo UNHCR ACNUR La agencia de la ONU para los Refugiados">
@@ -69,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+                */}
             </div>
         </div>
     </div>
