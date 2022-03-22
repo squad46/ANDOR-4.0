@@ -177,6 +177,15 @@ footer {
     left: 49px;
 }
 
+.change-font {
+    margin-right: 5px;
+}
+
+.btn_access {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 
 /* Menu lateral fixo */
 .menu-right {
