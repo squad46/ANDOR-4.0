@@ -97,6 +97,12 @@
 
             <div class="col p-0 d-flex align-items-center justify-content-end">
 
+                <!-- tamanho da fonte -->
+                <div class="change-font">
+                    <button class="decrease btn_access" onclick="javascript:void(0)">A -</button>
+                    <button class="increase btn_access" onclick="javascript:void(0)">A +</button>
+                </div>
+
                 <!--Linguage
                 <div class="flex-fill text-end">
                     <div class="linguage">
@@ -110,7 +116,6 @@
                     </div>
                 </div>
                 -->
-
                 <!--Login-->
                 <div id="off" class="login-register text-end">
                     <a asp-area="" asp-controller="Login" asp-action="Index">LOGIN</a>-<a asp-controller="Pessoa" asp-action="Create">CADASTRAR</a>
@@ -119,7 +124,7 @@
 
                 <div id="on" class="login-register text-end">
                     <a id="usuario"></a>
-                    <span><img id="avatar" src="~/img/usuario.svg" width="25px" height="24px"  alt="login ou registrar"></span>
+                    <span><img id="avatar" src="~/img/usuario.svg" width="25px" height="24px" alt="login ou registrar"></span>
                     <a asp-controller="Login" asp-action="Logout">Logout</a>
                 </div>
 
@@ -217,56 +222,81 @@
                 <span>Andor - Refuciados Todos os direitos reservados 2023</span>
             </div>
 
-                    </div>
-                </footer>
+        </div>
+    </footer>
 
-                <!-- Fim Rodapé da página -->
+    <!-- Fim Rodapé da página -->
 
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script _src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script _src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script _src="~/js/site.js" asp-append-version="true"></script>
 
-                <script>const id = Cookies.get('Id');
-                    const user = Cookies.get('Usuario');
-                    if (typeof id !== 'undefined') {
-                        $('#on').show();
-                        $('#off').hide();
-                        var nome = user.split(' ').shift();
-                        $('#usuario').text(nome);
-                        var link = "/Pessoa/Details/" + id;
-                        $('#usuario').attr('href', link);
-                        var avatar = "/Imagem/VerImagem/" + id + "?tipo=perfil";
-                        $('#avatar').attr('src', avatar);
-                    }
-                    else {
-                        $('#on').hide();
-                        $('#off').show();
-                    }
+    <script>
+        const id = Cookies.get('Id');
+                            const user = Cookies.get('Usuario');
+                            if (typeof id !== 'undefined') {
+                                $('#on').show();
+                                $('#off').hide();
+                                var nome = user.split(' ').shift();
+                                $('#usuario').text(nome);
+                                var link = "/Pessoa/Details/" + id;
+                                $('#usuario').attr('href', link);
+                                var avatar = "/Imagem/VerImagem/" + id + "?tipo=perfil";
+                                $('#avatar').attr('src', avatar);
+                            }
+                            else {
+                                $('#on').hide();
+                                $('#off').show();
+                            }
 
-                    $("#feed-trabalhos").click(function () {
-                        $("#trabalhos").show();
-                        $("#moradias").hide();
-                        $("#informacoes").hide();
-                        $("#ongs").hide();
-                    });
-                    $("#feed-moradias").click(function () {
-                        $("#trabalhos").hide();
-                        $("#moradias").show();
-                        $("#informacoes").hide();
-                        $("#ongs").hide();
-                    });
-                    // https://github.com/js-cookie/js-cookie</script>
-                @await RenderSectionAsync("Scripts", required: false)
+                            $("#feed-trabalhos").click(function () {
+                                $("#trabalhos").show();
+                                $("#moradias").hide();
+                                $("#informacoes").hide();
+                                $("#ongs").hide();
+                            });
+                            $("#feed-moradias").click(function () {
+                                $("#trabalhos").hide();
+                                $("#moradias").show();
+                                $("#informacoes").hide();
+                                $("#ongs").hide();
+                            });
+                            // https://github.com/js-cookie/js-cookie</script>
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 
 </html>
-<script>$("#senha").mousedown(function () {
-        $("#s-senha").show();
-    });
-    $("#senha").mouseup(function () {
-        $("#s-senha").hide();
-    });</script>
+<script>
+    $("#senha").mousedown(function () {
+            $("#s-senha").show();
+        });
+        $("#senha").mouseup(function () {
+            $("#s-senha").hide();
+        });</script>
 
+
+<script>
+        $( ".decrease" ).on( "click", function() {
+      var count = $('html').css('font-size');
+      var fontVariable = parseInt(count);
+      fontVariable--;
+      if (fontVariable > 12) {
+        $('html').css('font-size', fontVariable);
+      }
+
+      console.log(fontVariable);
+    });
+
+    $( ".increase" ).on( "click", function() {
+      var count = $('html').css('font-size');
+      var fontVariable = parseInt(count);
+      fontVariable++;
+      if (fontVariable < 19) {
+        $('html').css('font-size', fontVariable);
+      }
+      console.log(fontVariable);
+    });
+</script>
 
 <script src="~/js/jq.js"></script>
