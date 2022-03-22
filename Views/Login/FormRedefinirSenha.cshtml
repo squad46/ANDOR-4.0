@@ -16,18 +16,18 @@
                         <div class="">
                             <div class="">
                                 <label class="control-label">Código de segurança</label>
-                                <input class="form-control" name="vChave" type="text" required autofocus minlength="6" maxlength="6" />
-                                <div class="invalid-feedback"> Informe o código.</div>
+                                <input class="form-control" name="vChave" type="text" aria-required="true" required autofocus minlength="6" maxlength="6" />
+                                <div class="invalid-feedback" role="alert"> Informe o código.</div>
                             </div>
                             <div class="">
                                 <label class="control-label">Nova senha</label>
-                                <input class="form-control" name="nSenha" type="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$" maxlength="15"/>
-                                <div class="invalid-feedback">Senha deve conter letras maiúsculas, minúsculas, numeais e caracteres especiais.</div>
+                                <input class="form-control" name="nSenha" type="password" aria-required="true" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$" maxlength="15"/>
+                                <div class="invalid-feedback" role="alert">Senha deve conter letras maiúsculas, minúsculas, numeais e caracteres especiais.</div>
                             </div>
                             <div class="">
                                 <label class="control-label">Repetir senha</label>
-                                <input class="form-control" name="rSenha" type="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$" maxlength="15" />
-                                <div class="invalid-feedback">Deve ser igual a nova senha.</div>
+                                <input class="form-control" name="rSenha" type="password" aria-required="true" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$" maxlength="15" />
+                                <div class="invalid-feedback" role="alert">Deve ser igual a nova senha.</div>
                             </div>
                         </div>
                         <div class="text-right">

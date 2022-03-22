@@ -19,14 +19,14 @@
                                     <form asp-controller="Login" asp-action="Logar" method="post" class="needs-validation" novalidate>
                                         <h4 class="mb-4 pb-3">Login</h4>
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off" required autofocus>
+                                            <input type="email" name="email" class="form-style" placeholder="Seu E-mail" id="email" autocomplete="off" aria-required="true" required autofocus>
                                             <i class="input-icon uil uil-at"></i>
-                                            <div class="invalid-feedback">Informe seu e-mail cadastrado. </div>
+                                            <div class="invalid-feedback" role="alert">Informe seu e-mail cadastrado. </div>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off" required>
+                                            <input type="password" name="senha" class="form-style" placeholder="Sua senha" id="senha" autocomplete="off" aria-required="true" required>
                                             <i class="input-icon uil uil-lock-alt"></i>
-                                            <div class="invalid-feedback">Informe sua senha. </div>
+                                            <div class="invalid-feedback" role="alert">Informe sua senha. </div>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Entrar" class="btn mt-4" />
@@ -44,25 +44,25 @@
                                     <h4 class="mb-4 pb-3">Cadastro</h4>
                                     <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
                                         <div class="form-group">
-                                            <input asp-for="Nome" class="form-style" placeholder="Seu Nome completo" id="logname" autocomplete="off" required minlength="3" maxlength="40" autofocus>
+                                            <input asp-for="Nome" class="form-style" placeholder="Seu Nome completo" id="logname" autocomplete="off" aria-required="true" required minlength="3" maxlength="40" autofocus>
                                             <i class="input-icon uil uil-user"></i>
-                                            <div class="invalid-feedback">Deve conter no mínimo 3 caracteres. </div>
+                                            <div class="invalid-feedback" role="alert">Deve conter no mínimo 3 caracteres. </div>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="email" asp-for="Email" class="form-style" placeholder="Seu E-mail" id="logemail" autocomplete="off" required>
+                                            <input type="email" asp-for="Email" class="form-style" placeholder="Seu E-mail" id="logemail" autocomplete="off" aria-required="true" required>
                                             <i class="input-icon uil uil-at"></i>
-                                            <div class="invalid-feedback"> Informe seu e-mail. </div>
+                                            <div class="invalid-feedback" role="alert"> Informe seu e-mail. </div>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" asp-for="Senha" class="form-style" placeholder="Sua senha" id="logpass" autocomplete="off" required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$">
+                                            <input type="password" asp-for="Senha" class="form-style" placeholder="Sua senha" id="logpass" autocomplete="off" aria-required="true" required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$">
                                             <i class="input-icon uil uil-lock-alt"></i>
-                                            <div class="invalid-feedback">Deve ter no mínimo 6 dígitos e ao menos 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais.  </div>
+                                            <div class="invalid-feedback" role="alert">Deve ter no mínimo 6 dígitos e ao menos 1 letra minúscula, 1 letra maiúscula, 1 número e pode conter caracteres especiais.  </div>
                                         </div>
                                         <div class="form-group mt-2">
                                             <label class="form-style text-left" for='logavatar'>Selecionar uma foto para o perfil</label>
-                                            <input type="file" class="form-style" placeholder="Avatar" id="logavatar" name="arquivos" autocomplete="off" style="display:none;" required>
+                                            <input type="file" class="form-style" placeholder="Avatar" id="logavatar" name="arquivos" autocomplete="off" style="display:none;" aria-required="true" required>
                                             <i class="input-icon uil uil-at"></i>
-                                            <div class="invalid-feedback">Adicione uma foto para seu perfil. </div>
+                                            <div class="invalid-feedback" role="alert">Adicione uma foto para seu perfil. </div>
                                         </div>
                                         <div class="form-group" style="display:none;">
                                             @{

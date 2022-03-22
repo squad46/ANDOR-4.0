@@ -33,23 +33,23 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Curso / Graduação *</label>
-                    <input asp-for="Nome" type="text" class="form-control" required minlength="3" maxlength="40" autofocus />
-                    <div class="invalid-feedback"> Informe sua formação. </div>
+                    <input asp-for="Nome" type="text" class="form-control" aria-required="true" required minlength="3" maxlength="40" autofocus />
+                    <div class="invalid-feedback" role="alert"> Informe sua formação. </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Descrição *</label>
-                    <textarea asp-for="Descricao" type="text" class="form-control" required minlength="5" maxlength="200"></textarea>
-                    <div class="invalid-feedback"> Informe uma breve descrição sobre sua formação. </div>
+                    <textarea asp-for="Descricao" type="text" class="form-control" aria-required="true" required minlength="5" maxlength="200"></textarea>
+                    <div class="invalid-feedback" role="alert"> Informe uma breve descrição sobre sua formação. </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Instituição *</label>
-                    <input asp-for="Instituicao" type="text" class="form-control" required minlength="2" maxlength="20"/>
-                    <div class="invalid-feedback"> Informe a Instituição de ensino. </div>
+                    <input asp-for="Instituicao" type="text" class="form-control" aria-required="true" required minlength="2" maxlength="20"/>
+                    <div class="invalid-feedback" role="alert"> Informe a Instituição de ensino. </div>
                 </div>
                 <div class="form-group col-6">
                     <label class="control-label">Data de início *</label>
-                    <input asp-for="Inicio" type="date" class="form-control" required min="1948-01-01" max="2030-12-31"/>
-                    <div class="invalid-feedback"> Informe a data de início da formação. </div>
+                    <input asp-for="Inicio" type="date" class="form-control" aria-required="true" required min="1948-01-01" max="2030-12-31"/>
+                    <div class="invalid-feedback" role="alert"> Informe a data de início da formação. </div>
                 </div>
                 <div class="form-group col-6">
                     <label class="control-label">Data de conclusão</label>
@@ -57,12 +57,12 @@
                 </div>
                 <div class="form-group col-6">
                     <label class="control-label">Situação *</label>
-                    <select class="custom-select form-control" asp-for="Situacao" required>
+                    <select class="custom-select form-control" asp-for="Situacao" aria-required="true" required>
                         <option selected disabled value="">-</option>
                         <option>Completo</option>
                         <option>Incompleto</option>
                     </select>
-                    <div class="invalid-feedback"> Selecione uma opção. </div>
+                    <div class="invalid-feedback" role="alert"> Selecione uma opção. </div>
                 </div>
                 <div class="form-group d-flex mt-4 justify-content-end">
                     <hr />
