@@ -222,6 +222,38 @@ namespace Andor.Migrations
                     b.ToTable("Moradias");
                 });
 
+            modelBuilder.Entity("Andor.Models.Ong", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<string>("Imagem")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Site")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ongs");
+                });
+
             modelBuilder.Entity("Andor.Models.Pessoa", b =>
                 {
                     b.Property<int>("Id")
@@ -230,21 +262,26 @@ namespace Andor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bairro")
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("CEP")
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
+                        .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("CRNM")
+                        .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Cidade")
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Classe")
+                        .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("DataCadastro")
@@ -255,16 +292,20 @@ namespace Andor.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Endereco")
+                        .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Nacionalidade")
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("Numero")
@@ -275,12 +316,15 @@ namespace Andor.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Sexo")
+                        .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Telefone")
+                        .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("UF")
+                        .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
                     b.HasKey("Id");

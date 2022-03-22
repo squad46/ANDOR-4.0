@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<InputLocale>pt-br</InputLocale>
+			<SystemLocale>pt-br</SystemLocale>
+			<UILanguage>pt-br</UILanguage>
+			<UILanguageFallback>pt-br</UILanguageFallback>
+			<UserLocale>pt-br</UserLocale>
+		</component>
+	</settings>
+	<cpi:offlineImage cpi:source="wim:c:/install.wim#Windows Server 2012 SERVERDATACENTER" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+</unattend>
