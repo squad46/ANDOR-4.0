@@ -1485,6 +1485,10 @@ footer {
         text-decoration: none;
     }
 
+.form-perfil {
+    direction: rtl;
+}
+
 .btn-excluir-x {
     border-radius: 50%;
     border: solid 3px #F76879;
