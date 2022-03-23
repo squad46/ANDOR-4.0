@@ -110,10 +110,10 @@
                                         <div class="col">
                                             <h2 class="title-details">@formacao.Nome</h2>
                                         </div>
-                                        <div class="col text-right">
-                                            <form asp-controller="Pessoa" asp-action="deletarFormacao">
+                                        <div class="col text-right" style= "text-align: end;">
+                                            <form  asp-controller="Pessoa" asp-action="deletarFormacao">
                                                 <input asp-for="Id" type="text" value="@formacao.Id" style="display:none;">
-                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir</b></button>
                                             </form>
                                         </div>
                                     </div>
@@ -158,10 +158,10 @@
                                         <div class="col">
                                             <h2 class="title-details">@experiencia.Nome</h2>
                                         </div>
-                                        <div class="col text-right">
+                                        <div class="col text-right" style= "text-align: end;">
                                             <form asp-controller="Pessoa" asp-action="deletarExperiencia">
                                                 <input asp-for="Id" type="text" value="@experiencia.Id" style="display:none;">
-                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir</b></button>
                                             </form>
                                         </div>
                                     </div>
@@ -206,10 +206,10 @@
                                         <div class="col">
                                             <h2 class="title-details">@trabalho.Nome</h2>
                                         </div>
-                                        <div class="col text-right">
+                                        <div class="col text-right" style= "text-align: end;">
                                             <form asp-controller="Pessoa" asp-action="deletarTrabalho">
                                                 <input asp-for="Id" type="text" value="@trabalho.Id" style="display:none;">
-                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir</b></button>
                                             </form>
                                         </div>
                                     </div>
@@ -262,10 +262,10 @@
                                         <div class="col">
                                             <h2 class="title-details">@moradia.Name</h2>
                                         </div>
-                                        <div class="col text-right">
+                                        <div class="col text-right" style= "text-align: end;">
                                             <form asp-controller="Moradia" asp-action="Excluir">
                                                 <input asp-for="Id" type="text" value="@moradia.Id" style="display:none;">
-                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir X</b></button>
+                                                <button class="btnn btn-excluir-x" type="submit"><b>Excluir</b></button>
                                             </form>
                                         </div>
                                     </div>
